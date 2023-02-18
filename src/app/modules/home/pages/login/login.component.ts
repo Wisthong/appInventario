@@ -23,9 +23,9 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.authSvc.verifyToken()) {
-      this.router.navigate(['/dashboard']);
-    }
+    // if (this.authSvc.verifyToken()) {
+    //   this.router.navigate(['/dashboard']);
+    // }
   }
 
   onLogin() {
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.authSvc.login(email, password).subscribe(
         (resOk) => {
           Swal.fire('Login', resOk, 'success');
-          this.router.navigate(['/dashboard']);
+          // this.router.navigate(['/dashboard']);
         },
         ({ error }: HttpErrorResponse) => {
           Swal.fire('Login', error.message, 'error');
