@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Device } from 'src/app/modules/model/auth';
 import { AuthService } from 'src/app/modules/services/auth.service';
+import { HostnameService } from 'src/app/modules/services/hostname.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forms',
@@ -23,18 +26,31 @@ export class FormsComponent implements OnInit {
     descripcion: ['', [Validators.required, Validators.minLength(5)]],
     procesador: ['', [Validators.required, Validators.minLength(5)]],
     licencias: ['', [Validators.required, Validators.minLength(5)]],
-    precio: ['', [Validators.required, Validators.min(3)]],
+    precio: [0, [Validators.required, Validators.min(3)]],
   });
 
   constructor(
     private readonly fb: FormBuilder,
     private readonly authSvc: AuthService,
+    private readonly hostnameSvc: HostnameService,
     private readonly router: Router
   ) {}
 
   ngOnInit(): void {}
 
   onRegister() {
-    console.log(this.deviceForm.getRawValue());
+    if (this.deviceForm.valid) {
+      const body = this.deviceForm.getRawValue();
+      this.hostnameSvc.registrarDevice(body).subscribe(
+        (resOk) => {
+          Swal.fire('Exitoso', resOk, 'success');
+          console.log(this.deviceForm.getRawValue());
+          this.router.navigate(['home']);
+        },
+        (resFail) => {
+          Swal.fire('Error', 'No se pudo', 'error');
+        }
+      );
+    }
   }
 }

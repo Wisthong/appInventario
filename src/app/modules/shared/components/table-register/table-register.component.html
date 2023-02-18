@@ -16,6 +16,7 @@
         <th scope="col">Fecha de ingreso</th>
         <th scope="col">Fecha de baja</th>
         <th scope="col">Ram</th>
+        <th scope="col">Precio</th>
         <th scope="col">Descripcion</th>
         <th scope="col">Procesador</th>
         <th scope="col">Licencias</th>
@@ -30,9 +31,10 @@
         <td>{{ item.so | titlecase }}</td>
         <td>{{ item.ip | titlecase }}</td>
         <td>{{ item.antivirus | titlecase }}</td>
-        <td>{{ item.fecha_ingreso | titlecase }}</td>
+        <td>{{ item.fecha_ingreso | date }}</td>
         <td>{{ item.fecha_baja | fechaBaja }}</td>
         <td>{{ item.ram | titlecase }}</td>
+        <td>{{ item.precio | currency}}</td>
         <td>{{ item.descripcion | titlecase }}</td>
         <td>{{ item.procesador | titlecase }}</td>
         <td>{{ item.licencias | titlecase }}</td>

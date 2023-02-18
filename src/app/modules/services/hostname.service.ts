@@ -1,6 +1,7 @@
+import { ResponseAuth } from './../model/auth';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Device, ResponseTrue } from '../model/auth';
 
@@ -18,5 +19,31 @@ export class HostnameService {
 
   obtenerUno(id: string): Observable<Device> {
     return this.http.get<Device>(this.apiUrl + '/devices' + id);
+  }
+
+  registrarDevice(device: Device): Observable<string> {
+    const body = {
+      antivirus: device.antivirus,
+      descripcion: device.descripcion,
+      estado: device.estado,
+      fecha_baja: device.fecha_baja,
+      fecha_ingreso: device.fecha_ingreso,
+      hostname: device.hostname,
+      ip: device.ip,
+      licencias: device.licencias,
+      precio: device.precio,
+      procesador: device.procesador,
+      ram: device.ram,
+      so: device.so,
+      device: device.device,
+    };
+    return this.http.post<ResponseAuth>(this.apiUrl + '/devices', body).pipe(
+      tap(({ token }) => {
+        localStorage.setItem('token', token);
+      }),
+      map(({ message }) => {
+        return message;
+      })
+    );
   }
 }
