@@ -3,15 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsComponent } from './components/forms/forms.component';
-
+import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    FormsComponent
-  ],
+  declarations: [FormsComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule
-  ]
+    AdminRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

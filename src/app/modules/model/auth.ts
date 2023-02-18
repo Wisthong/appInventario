@@ -7,7 +7,8 @@ export interface ResponseAuth {
 export interface Device {
   _id?:          string;
   device:        string;
-  estado:        ['activo', 'inactivo','mantenimiento'];
+  estado:        string;
+  // estado:        ['activo', 'inactivo','mantenimiento'];
   hostname:      string;
   so:            string;
   ip:            string;
@@ -18,6 +19,7 @@ export interface Device {
   descripcion:   string;
   procesador:    string;
   licencias:     string;
+  precio:     number;
 }
 
 export interface ResponseTrue {

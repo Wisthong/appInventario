@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.authSvc.login(email, password).subscribe(
         (resOk) => {
           Swal.fire('Login', resOk, 'success');
-          // this.router.navigate(['/dashboard']);
+          this.router.navigate(['/admin']);
         },
         ({ error }: HttpErrorResponse) => {
           Swal.fire('Login', error.message, 'error');
