@@ -1,0 +1,21 @@
+.activo {
+  background-color: #2ec4b6;
+  color: white;
+}
+.inactivo {
+  background-color: #d62828;
+  color: white;
+}
+.mtn {
+  background-color: #ffba08;
+  color: white;
+}
+
+.my-actions { margin: 0 2em; }
+.order-1 { order: 1; }
+.order-2 { order: 2; }
+.order-3 { order: 3; }
+
+.right-gap {
+  margin-right: auto;
+}

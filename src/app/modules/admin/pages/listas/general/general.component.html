@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+
+<div class="table-responsive">
+  <h4 class="text-center">
+    Tabla de registro de HostName,
+    <p class="fw-bolder">Papeleria Universal</p>
+  </h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Dispositivo</th>
+        <th scope="col">Hostname</th>
+        <th scope="col">Estado</th>
+        <th scope="col">SO</th>
+        <th scope="col">IP</th>
+        <th scope="col">Antivirus</th>
+        <th scope="col">Fecha de ingreso</th>
+        <th scope="col">Fecha de baja</th>
+        <th scope="col">Ram</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Procesador</th>
+        <th scope="col">Licencias</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listDevice; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ item.device | titlecase }}</td>
+        <td>{{ item.hostname | titlecase }}</td>
+        <td
+          [ngClass]="{
+            activo: item.estado === 'Activo',
+            inactivo: item.estado === 'Inactivo',
+            mtn: item.estado === 'Mantenimiento'
+          }"
+        >
+          {{ item.estado }}
+        </td>
+        <td>{{ item.so | titlecase }}</td>
+        <td>{{ item.ip | titlecase }}</td>
+        <td>{{ item.antivirus | titlecase }}</td>
+        <td>{{ item.fecha_ingreso | date : "longDate" | titlecase }}</td>
+        <td>{{ item.fecha_baja | date : "longDate" }}</td>
+        <td>{{ item.ram | titlecase }}</td>
+        <td>{{ item.precio | currency }}</td>
+        <td>{{ item.descripcion | titlecase }}</td>
+        <td>{{ item.procesador | titlecase }}</td>
+        <td>{{ item.licencias | titlecase }}</td>
+        <td>
+          <!-- <button
+            (click)="onUpdate(item._id)"
+            type="button"
+            class="btn btn-outline-warning"
+          >
+            Actualizar
+          </button> -->
+          <button
+            (click)="onUpdate(item._id)"
+            type="submit"
+            mat-mini-fab
+            extended
+            color="primary"
+            class=""
+          >
+            <mat-icon> settings </mat-icon>
+          </button>
+          <button
+            (click)="onDelete(item._id)"
+            type="submit"
+            mat-mini-fab
+            extended
+            color="warn"
+            class=""
+          >
+            <mat-icon> delete_forever </mat-icon>
+          </button>
+          <!-- <button
+            (click)="onDelete(item._id)"
+            type="button"
+            class="btn btn-outline-danger"
+          >
+            Eliminar
+          </button> -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
