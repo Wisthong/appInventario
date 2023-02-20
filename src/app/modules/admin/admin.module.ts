@@ -9,9 +9,10 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SharedModule } from '../shared/shared.module';
 import { GeneralComponent } from './pages/listas/general/general.component';
+import { CerrarsesionComponent } from './components/cerrarsesion/cerrarsesion.component';
 
 @NgModule({
-  declarations: [FormsComponent, DashboardComponent, NavbarComponent, GeneralComponent],
+  declarations: [FormsComponent, DashboardComponent, NavbarComponent, GeneralComponent, CerrarsesionComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
