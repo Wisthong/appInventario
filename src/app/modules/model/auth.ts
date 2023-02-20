@@ -28,6 +28,12 @@ export interface ResponseTrue {
   message: string
 }
 
+export interface ResponseData {
+  data:    Device;
+  ok:      boolean,
+  message: string
+}
+
 
 export interface User {
   name:       string;

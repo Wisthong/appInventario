@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './modules/guards/auth.guard';
+import { NotfoundComponent } from './Pages/notfound/notfound.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
     title: 'Administador',
     canActivate: [AuthGuard],
   },
+  {
+    path:'**',
+    component: NotfoundComponent
+  }
 ];
 
 @NgModule({

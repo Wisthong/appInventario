@@ -1,4 +1,4 @@
-
+<app-navbar></app-navbar>
 <form [formGroup]="deviceForm" (ngSubmit)="onRegister()" class="mt-5">
   <mat-card class="shipping-card">
     <mat-card-header>
@@ -248,7 +248,7 @@
               [matDatepicker]="picker2"
               formControlName="fecha_baja"
             />
-            <mat-error
+            <!-- <mat-error
               *ngIf="
                 deviceForm.controls['fecha_baja'].touched &&
                 deviceForm.controls['fecha_baja'].hasError('required')
@@ -263,7 +263,7 @@
               "
             >
               Debes ingresar al menos 5 caracteres
-            </mat-error>
+            </mat-error> -->
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle
               matIconSuffix
@@ -388,9 +388,9 @@
     </mat-card-content>
 
     <div class="d-grid mx-4 mb-3">
-      <button type="submit" mat-fab extended color="primary" class="">
-        <mat-icon>assignment_turned_in</mat-icon>
-        Registrar
+      <button type="submit" mat-fab extended color={{btn.clase}} class="">
+        <mat-icon> {{btn.icon}} </mat-icon>
+        {{btn.accion}}
       </button>
     </div>
   </mat-card>

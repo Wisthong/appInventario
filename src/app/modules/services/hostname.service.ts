@@ -1,4 +1,4 @@
-import { ResponseAuth } from './../model/auth';
+import { ResponseAuth, ResponseData } from './../model/auth';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
@@ -18,7 +18,11 @@ export class HostnameService {
   }
 
   obtenerUno(id: string): Observable<Device> {
-    return this.http.get<Device>(this.apiUrl + '/devices' + id);
+    return this.http.get<ResponseData>(this.apiUrl + '/devices/' + id).pipe(
+      map(({ data }) => {
+        return data;
+      })
+    );
   }
 
   registrarDevice(device: Device): Observable<string> {
@@ -41,6 +45,14 @@ export class HostnameService {
       tap(({ token }) => {
         localStorage.setItem('token', token);
       }),
+      map(({ message }) => {
+        return message;
+      })
+    );
+  }
+
+  eliminarDevice(id: string): Observable<string> {
+    return this.http.delete<ResponseAuth>(this.apiUrl + '/devices/' + id).pipe(
       map(({ message }) => {
         return message;
       })
