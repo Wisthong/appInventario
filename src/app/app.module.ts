@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './modules/interceptors/jwt.interceptor';
 import { NotfoundComponent } from './Pages/notfound/notfound.component';
+
+import localeColombia from '@angular/common/locales/es-CO';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeColombia);
 
 @NgModule({
   declarations: [AppComponent, NotfoundComponent],
@@ -22,6 +27,10 @@ import { NotfoundComponent } from './Pages/notfound/notfound.component';
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true,
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'es-CO',
     },
   ],
   bootstrap: [AppComponent],

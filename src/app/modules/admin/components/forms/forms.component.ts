@@ -12,11 +12,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./forms.component.css'],
 })
 export class FormsComponent implements OnInit {
-  btn={
-    accion:'Registrar',
-    clase:'primary',
-    icon:'assignment_turned_in'
-  }
+  btn = {
+    accion: 'Registrar',
+    clase: 'primary',
+    icon: 'assignment_turned_in',
+  };
   id!: string | null;
   estados = ['Activo', 'Inactivo', 'Mantenimiento'];
   deviceForm = this.fb.nonNullable.group({
@@ -48,9 +48,9 @@ export class FormsComponent implements OnInit {
     if (this.id !== null) {
       this.btn = {
         accion: 'Actualizar',
-        clase:'warn',
-        icon: 'settings'
-      }
+        clase: 'warn',
+        icon: 'settings',
+      };
       this.hostnameSvc.obtenerUno(this.id!).subscribe((resOk) => {
         this.deviceForm.patchValue({
           device: resOk.device,
@@ -74,15 +74,35 @@ export class FormsComponent implements OnInit {
   onRegister() {
     if (this.deviceForm.valid) {
       const body = this.deviceForm.getRawValue();
-      this.hostnameSvc.registrarDevice(body).subscribe(
-        (resOk) => {
-          Swal.fire('Exitoso', resOk, 'success');
-          console.log(this.deviceForm.getRawValue());
-          this.router.navigate(['/admin']);
-        },
-        (resFail) => {
-          Swal.fire('Error', 'No se pudo', 'error');
-        }
+      if (this.id !== null) {
+        //FIXME: Actualizar
+        this.hostnameSvc.actualizarDevice(body, this.id!).subscribe(
+          (resOk) => {
+            Swal.fire('Exitoso', resOk, 'success');
+            console.log(this.deviceForm.getRawValue());
+            this.router.navigate(['/admin']);
+          },
+          (resFail) => {
+            Swal.fire('Error', 'No se pudo', 'error');
+          }
+        );
+      } else {
+        this.hostnameSvc.registrarDevice(body).subscribe(
+          (resOk) => {
+            Swal.fire('Exitoso', resOk, 'success');
+            console.log(this.deviceForm.getRawValue());
+            this.router.navigate(['/admin']);
+          },
+          (resFail) => {
+            Swal.fire('Error', 'No se pudo', 'error');
+          }
+        );
+      }
+    } else {
+      Swal.fire(
+        'Aviso',
+        'Faltan campos por llenar, por favor intenta nuevamente',
+        'info'
       );
     }
   }

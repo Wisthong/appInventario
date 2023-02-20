@@ -42,8 +42,8 @@
         <td>{{ item.so | titlecase }}</td>
         <td>{{ item.ip | titlecase }}</td>
         <td>{{ item.antivirus | titlecase }}</td>
-        <td>{{ item.fecha_ingreso | date }}</td>
-        <td>{{ item.fecha_baja | date }}</td>
+        <td>{{ item.fecha_ingreso | date : "longDate" | titlecase }}</td>
+        <td>{{ item.fecha_baja | date : "longDate" }}</td>
         <td>{{ item.ram | titlecase }}</td>
         <td>{{ item.precio | currency }}</td>
         <td>{{ item.descripcion | titlecase }}</td>
@@ -60,7 +60,8 @@
           <button
             (click)="onUpdate(item._id)"
             type="submit"
-            mat-mini-fab extended
+            mat-mini-fab
+            extended
             color="primary"
             class=""
           >
@@ -69,7 +70,8 @@
           <button
             (click)="onDelete(item._id)"
             type="submit"
-            mat-mini-fab extended
+            mat-mini-fab
+            extended
             color="warn"
             class=""
           >

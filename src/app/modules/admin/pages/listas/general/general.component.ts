@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Device } from 'src/app/modules/model/auth';
 import { AuthService } from 'src/app/modules/services/auth.service';
 import { HostnameService } from 'src/app/modules/services/hostname.service';
@@ -16,13 +16,36 @@ export class GeneralComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly hostnameSvc: HostnameService,
-    private readonly authSvc: AuthService
+    private readonly authSvc: AuthService,
+    private readonly route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
-      this.listDevice = data;
-    });
+    const path = this.route.snapshot.url[0].path;
+
+    if (path === 'listageneral') {
+      this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
+        return (this.listDevice = data);
+      });
+    }
+    if (path === 'listadispactivos') {
+      this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
+        const arrayTmp = data.filter((m) => m.estado === 'Activo');
+        return (this.listDevice = arrayTmp);
+      });
+    }
+    if (path === 'listadispinactivos') {
+      this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
+        const arrayTmp = data.filter((m) => m.estado === 'Inactivo');
+        return (this.listDevice = arrayTmp);
+      });
+    }
+    if (path === 'listadispmant') {
+      this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
+        const arrayTmp = data.filter((m) => m.estado === 'Mantenimiento');
+        return (this.listDevice = arrayTmp);
+      });
+    }
   }
 
   onUpdate(id: string | undefined) {
@@ -31,7 +54,7 @@ export class GeneralComponent implements OnInit {
   onDelete(id: string | undefined) {
     Swal.fire({
       title: '¿Deseas eliminar el registro?',
-      icon: 'info',
+      icon: 'question',
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: 'Si',
@@ -46,6 +69,8 @@ export class GeneralComponent implements OnInit {
       if (result.isConfirmed) {
         this.hostnameSvc.eliminarDevice(id!).subscribe(
           (resOk) => {
+            const arrayTmp = this.listDevice.filter((m) => m._id !== id);
+            this.listDevice = arrayTmp;
             Swal.fire('Acción', resOk, 'success');
           },
           (resFail) => {

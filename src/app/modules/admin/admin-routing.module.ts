@@ -15,6 +15,21 @@ const routes: Routes = [
     title: 'Lista de dispositivos',
   },
   {
+    path: 'listadispactivos',
+    component: GeneralComponent,
+    title: 'Dispositivos activos',
+  },
+  {
+    path: 'listadispinactivos',
+    component: GeneralComponent,
+    title: 'Dispositivos inactivos',
+  },
+  {
+    path: 'listadispmant',
+    component: GeneralComponent,
+    title: 'Dispositivos en mantenimiento',
+  },
+  {
     path: 'create',
     component: FormsComponent,
   },
