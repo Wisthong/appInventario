@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Device } from 'src/app/modules/model/auth';
 import { AuthService } from 'src/app/modules/services/auth.service';
@@ -10,40 +13,87 @@ import Swal from 'sweetalert2';
   templateUrl: './general.component.html',
   styleUrls: ['./general.component.css'],
 })
-export class GeneralComponent implements OnInit {
+export class GeneralComponent implements OnInit, AfterViewInit {
   listDevice: Device[] = [];
+  dataSource = new MatTableDataSource(this.listDevice);
+  displayedColumns: string[] = [
+    'device',
+    'hostname',
+    'so',
+    'ram',
+    'procesador',
+    'ip',
+    'precio',
+    'antivirus',
+    'fecha_ingreso',
+    'fecha_baja',
+    'estado',
+    'licencias',
+    'descripcion',
+    'acciones',
+  ];
 
   constructor(
     private readonly router: Router,
     private readonly hostnameSvc: HostnameService,
     private readonly authSvc: AuthService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly _liveAnnouncer: LiveAnnouncer
   ) {}
+
+  @ViewChild(MatSort) sort!: MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
 
   ngOnInit(): void {
     const path = this.route.snapshot.url[0].path;
 
     if (path === 'listageneral') {
       this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
-        return (this.listDevice = data);
+        Swal.fire(
+          'Total dispositivos',
+          'Hay ' + data.length + ' dispositivos',
+          'info'
+        );
+        return (this.dataSource.data = data);
       });
     }
     if (path === 'listadispactivos') {
       this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
         const arrayTmp = data.filter((m) => m.estado === 'Activo');
-        return (this.listDevice = arrayTmp);
+        Swal.fire(
+          'Total dispositivos',
+          'Hay ' + arrayTmp.length + ' dispositivos',
+          'info'
+        );
+
+        return (this.dataSource.data = arrayTmp);
       });
     }
     if (path === 'listadispinactivos') {
       this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
         const arrayTmp = data.filter((m) => m.estado === 'Inactivo');
-        return (this.listDevice = arrayTmp);
+        Swal.fire(
+          'Total dispositivos',
+          'Hay ' + arrayTmp.length + ' dispositivos',
+          'info'
+        );
+
+        return (this.dataSource.data = arrayTmp);
       });
     }
     if (path === 'listadispmant') {
       this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
         const arrayTmp = data.filter((m) => m.estado === 'Mantenimiento');
-        return (this.listDevice = arrayTmp);
+        Swal.fire(
+          'Total dispositivos',
+          'Hay ' + arrayTmp.length + ' dispositivos',
+          'info'
+        );
+
+        return (this.dataSource.data = arrayTmp);
       });
     }
   }
@@ -51,6 +101,7 @@ export class GeneralComponent implements OnInit {
   onUpdate(id: string | undefined) {
     this.router.navigate(['/admin/update/' + id]);
   }
+
   onDelete(id: string | undefined) {
     Swal.fire({
       title: '¿Deseas eliminar el registro?',
@@ -85,5 +136,21 @@ export class GeneralComponent implements OnInit {
         Swal.fire('Accion', 'No se elimino el registro', 'info');
       }
     });
+  }
+
+  onTotales() {
+    Swal.fire(
+      'Total dispositivos',
+      'Hay ' + this.listDevice + ' dispositivos',
+      'info'
+    );
+  }
+
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
   }
 }

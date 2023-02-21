@@ -29,6 +29,50 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Listas de dispositivos
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li>
+                <a
+                  class="dropdown-item"
+                  aria-current="page"
+                  [routerLink]="['/home/lista']"
+                  >Lista de dispositivos</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  [routerLink]="['/home/activos']"
+                  >Dispositivos activos</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  [routerLink]="['/home/inactivos']"
+                  >Dispositivos inactivos</a
+                >
+              </li>
+              <!-- <li><hr class="dropdown-divider" /></li> -->
+              <li>
+                <a class="dropdown-item" [routerLink]="['/home/mant']"
+                  >Dispositivos en mantenimiento</a
+                >
+              </li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a
               class="nav-link active"

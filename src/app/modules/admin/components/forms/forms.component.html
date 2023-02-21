@@ -90,7 +90,7 @@
                   deviceForm.controls['ip'].hasError('minlength')
                 "
               >
-                Debes ingresar al menos 5 caracteres
+                Debes ingresar al menos 11 caracteres
               </mat-error>
             </mat-form-field>
           </div>
@@ -157,10 +157,10 @@
             <mat-form-field class="full-width">
               <mat-label>Ram</mat-label>
               <input
-                type="text"
+                type="number"
                 matInput
                 formControlName="ram"
-                placeholder="4gb"
+                placeholder="4"
               />
               <mat-error
                 *ngIf="
