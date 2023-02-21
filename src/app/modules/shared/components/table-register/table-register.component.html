@@ -27,7 +27,13 @@
         <th scope="row">{{ i + 1 }}</th>
         <td>{{ item.device | titlecase }}</td>
         <td>{{ item.hostname | titlecase }}</td>
-        <td [ngClass]="{activo: item.estado === 'Activo', inactivo: item.estado === 'Inactivo', mtn : item.estado === 'Mantenimiento'}">
+        <td
+          [ngClass]="{
+            activo: item.estado === 'Activo',
+            inactivo: item.estado === 'Inactivo',
+            mtn: item.estado === 'Mantenimiento'
+          }"
+        >
           {{ item.estado }}
         </td>
         <td>{{ item.so | titlecase }}</td>

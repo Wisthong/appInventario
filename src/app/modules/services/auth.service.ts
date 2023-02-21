@@ -36,6 +36,24 @@ export class AuthService {
       );
   }
 
+  // //TODO: Este servicio, login lo tengo como un observable string ya que la respuesta retorna un string, hice uso de pipe para poder mapear esa respuesta a un string
+  // login(email: string, password: string): Observable<string> {
+  //   const body = {
+  //     email,
+  //     password,
+  //   };
+  //   return this.http
+  //     .post<ResponseAuth>(this.apiUrl + '/users/login', body)
+  //     .pipe(
+  //       tap(({ token }) => {
+  //         localStorage.setItem('token', token);
+  //       }),
+  //       map(({ message }) => {
+  //         return message;
+  //       })
+  //     );
+  // }
+
   //TODO: Este servicio, register lo tengo como un observable string ya que la respuesta retorna un string, hice uso de pipe para poder mapear esa respuesta a un string
   register(user: User): Observable<string> {
     return this.http
@@ -64,7 +82,13 @@ export class AuthService {
           name,
           role,
         };
-        return ok;
+
+        if (role?.[0] === 'admin') {
+          return ok;
+        } else {
+          return false;
+        }
+        // return ok;
       }),
       catchError(() => of(false))
     );
