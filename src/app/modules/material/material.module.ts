@@ -12,6 +12,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [],
@@ -27,7 +28,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatRadioModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    TableModule
   ],
 })
 export class MaterialModule {}

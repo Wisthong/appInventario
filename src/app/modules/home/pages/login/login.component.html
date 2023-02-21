@@ -1,81 +1,83 @@
 <app-navbar></app-navbar>
 
-<form class="mt-5 pt-5" [formGroup]="loginForm" (ngSubmit)="onLogin()">
-  <mat-card class="shipping-card">
-    <mat-card-content>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>Email</mat-label>
-            <input
-              type="email"
-              matInput
-              formControlName="email"
-              placeholder="test@example.com"
-            />
-            <mat-error
-              *ngIf="
-                loginForm.controls['email'].touched &&
-                loginForm.controls['email'].hasError('required')
-              "
-            >
-              Campo requerido
-            </mat-error>
-            <mat-error
-              *ngIf="
-                loginForm.controls['email'].touched &&
-                loginForm.controls['email'].hasError('email')
-              "
-            >
-              Debes ingresar un email
-            </mat-error>
-          </mat-form-field>
+<div class="container">
+  <form class="mt-5 pt-5" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <mat-card class="shipping-card">
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input
+                type="email"
+                matInput
+                formControlName="email"
+                placeholder="test@example.com"
+              />
+              <mat-error
+                *ngIf="
+                  loginForm.controls['email'].touched &&
+                  loginForm.controls['email'].hasError('required')
+                "
+              >
+                Campo requerido
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  loginForm.controls['email'].touched &&
+                  loginForm.controls['email'].hasError('email')
+                "
+              >
+                Debes ingresar un email
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>Contraseña</mat-label>
-            <input
-              type="password"
-              matInput
-              formControlName="password"
-              placeholder="*******"
-            />
-            <mat-error
-              *ngIf="
-                loginForm.controls['password'].touched &&
-                loginForm.controls['password'].hasError('required')
-              "
-            >
-              Campo requerido
-            </mat-error>
-            <mat-error
-              *ngIf="
-                loginForm.controls['password'].touched &&
-                loginForm.controls['password'].hasError('minlength')
-              "
-            >
-              Debes ingresar al menos 5 caracteres
-            </mat-error>
-          </mat-form-field>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Contraseña</mat-label>
+              <input
+                type="password"
+                matInput
+                formControlName="password"
+                placeholder="*******"
+              />
+              <mat-error
+                *ngIf="
+                  loginForm.controls['password'].touched &&
+                  loginForm.controls['password'].hasError('required')
+                "
+              >
+                Campo requerido
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  loginForm.controls['password'].touched &&
+                  loginForm.controls['password'].hasError('minlength')
+                "
+              >
+                Debes ingresar al menos 5 caracteres
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
-      </div>
-    </mat-card-content>
+      </mat-card-content>
 
-    <div class="d-grid mx-4 mb-3">
-      <button type="submit" mat-fab extended color="primary" class="">
-        <mat-icon>login</mat-icon>
-        Iniciar Sesion
-      </button>
-      <!-- <div class="">
-        <a
-          [routerLink]="['/register']"
-          class=""
-          >Registrarse</a
-        >
-      </div> -->
-    </div>
-  </mat-card>
-</form>
+      <div class="d-grid mx-4 mb-3">
+        <button type="submit" mat-fab extended color="primary" class="">
+          <mat-icon>login</mat-icon>
+          Iniciar Sesion
+        </button>
+        <!-- <div class="">
+          <a
+            [routerLink]="['/register']"
+            class=""
+            >Registrarse</a
+          >
+        </div> -->
+      </div>
+    </mat-card>
+  </form>
+</div>

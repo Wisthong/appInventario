@@ -28,7 +28,7 @@ export class FormsComponent implements OnInit {
     antivirus: ['', [Validators.required, Validators.minLength(5)]],
     fecha_ingreso: ['', [Validators.required, Validators.minLength(5)]],
     fecha_baja: ['', []],
-    ram: ['', [Validators.required, Validators.minLength(5)]],
+    ram: ['', [Validators.required, Validators.minLength(1)]],
     descripcion: ['', [Validators.required, Validators.minLength(5)]],
     procesador: ['', [Validators.required, Validators.minLength(5)]],
     licencias: ['', [Validators.required, Validators.minLength(5)]],
