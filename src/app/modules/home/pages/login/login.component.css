@@ -25,3 +25,14 @@
 .col:last-child {
   margin-right: 0;
 }
+
+.svg{
+  height: 20%;
+  text-align: center;
+}
+
+img{
+  height: 30%;
+  width: 20%;
+}
+

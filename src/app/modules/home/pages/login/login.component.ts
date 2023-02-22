@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/modules/services/auth.service';
@@ -11,16 +11,20 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  fb = inject(FormBuilder);
+  authSvc = inject(AuthService);
+  router = inject(Router);
+
   loginForm = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(5)]],
   });
 
-  constructor(
-    private readonly fb: FormBuilder,
-    private readonly authSvc: AuthService,
-    private readonly router: Router
-  ) {}
+  // constructor(
+  //   private readonly fb: FormBuilder,
+  //   private readonly authSvc: AuthService,
+  //   private readonly router: Router
+  // ) {}
 
   ngOnInit(): void {
     // if (this.authSvc.verifyToken()) {

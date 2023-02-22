@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { SigninComponent } from './pages/signin/signin.component';
+import { AdminModule } from '@admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SigninComponent } from './pages/signin/signin.component';
     SharedModule,
     ReactiveFormsModule,
     MaterialModule,
+    AdminModule,
   ],
 })
 export class HomeModule {}
