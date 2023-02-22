@@ -19,9 +19,34 @@ export class FormsComponent implements OnInit {
   };
   id!: string | null;
   estados = ['Activo', 'Inactivo', 'Mantenimiento'];
+  list_centro_operacion = [
+    'Avenida sexta',
+    'Cedi',
+    'Centro',
+    'Cosmocentro',
+    '14',
+    'Pasoancho',
+  ];
+  list_areas = [
+    'Inventario',
+    'Recursos humanos',
+    'Compras',
+    'Contabilidad',
+    'Sistemas',
+    'Ventas',
+    'Tesoseria',
+    'Bodega',
+    'Otro',
+  ];
+
   deviceForm = this.fb.nonNullable.group({
+    providers: ['', [Validators.required, Validators.minLength(5)]],
+    co: ['', [Validators.required]],
     device: ['', [Validators.required, Validators.minLength(5)]],
     estado: ['', [Validators.required]],
+    area: ['', [Validators.required]],
+    discoduro: ['', [Validators.required, Validators.minLength(5)]],
+    numserie: ['', [Validators.required]],
     hostname: ['', [Validators.required, Validators.minLength(5)]],
     so: [''],
     ip: ['', [Validators.required, Validators.minLength(11)]],
@@ -72,38 +97,40 @@ export class FormsComponent implements OnInit {
   }
 
   onRegister() {
-    if (this.deviceForm.valid) {
-      const body = this.deviceForm.getRawValue();
-      if (this.id !== null) {
-        //FIXME: Actualizar
-        this.hostnameSvc.actualizarDevice(body, this.id!).subscribe(
-          (resOk) => {
-            Swal.fire('Exitoso', resOk, 'success');
-            console.log(this.deviceForm.getRawValue());
-            this.router.navigate(['/admin']);
-          },
-          (resFail) => {
-            Swal.fire('Error', 'No se pudo', 'error');
-          }
-        );
-      } else {
-        this.hostnameSvc.registrarDevice(body).subscribe(
-          (resOk) => {
-            Swal.fire('Exitoso', resOk, 'success');
-            console.log(this.deviceForm.getRawValue());
-            this.router.navigate(['/admin']);
-          },
-          (resFail) => {
-            Swal.fire('Error', 'No se pudo', 'error');
-          }
-        );
-      }
-    } else {
-      Swal.fire(
-        'Aviso',
-        'Faltan campos por llenar, por favor intenta nuevamente',
-        'info'
-      );
-    }
+    console.log(this.deviceForm.getRawValue());
+
+    // if (this.deviceForm.valid) {
+    //   const body = this.deviceForm.getRawValue();
+    //   if (this.id !== null) {
+    //     //FIXME: Actualizar
+    //     this.hostnameSvc.actualizarDevice(body, this.id!).subscribe(
+    //       (resOk) => {
+    //         Swal.fire('Exitoso', resOk, 'success');
+    //         console.log(this.deviceForm.getRawValue());
+    //         this.router.navigate(['/admin']);
+    //       },
+    //       (resFail) => {
+    //         Swal.fire('Error', 'No se pudo', 'error');
+    //       }
+    //     );
+    //   } else {
+    //     this.hostnameSvc.registrarDevice(body).subscribe(
+    //       (resOk) => {
+    //         Swal.fire('Exitoso', resOk, 'success');
+    //         console.log(this.deviceForm.getRawValue());
+    //         this.router.navigate(['/admin']);
+    //       },
+    //       (resFail) => {
+    //         Swal.fire('Error', 'No se pudo', 'error');
+    //       }
+    //     );
+    //   }
+    // } else {
+    //   Swal.fire(
+    //     'Aviso',
+    //     'Faltan campos por llenar, por favor intenta nuevamente',
+    //     'info'
+    //   );
+    // }
   }
 }

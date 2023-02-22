@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./general.component.css'],
 })
 export class GeneralComponent implements OnInit, AfterViewInit {
+  titulo = 'Lista de todos los dispositivos';
   listDevice: Device[] = [];
   dataSource = new MatTableDataSource(this.listDevice);
   displayedColumns: string[] = [
@@ -51,16 +52,25 @@ export class GeneralComponent implements OnInit, AfterViewInit {
     const path = this.route.snapshot.url[0].path;
 
     if (path === 'listageneral') {
+      this.titulo = 'Lista de todos los dispositivos';
       this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
         Swal.fire(
           'Total dispositivos',
           'Hay ' + data.length + ' dispositivos',
           'info'
         );
+
+        let total = 0;
+        data.forEach((element) => {
+          total += element.precio;
+        });
+        console.log(total);
+
         return (this.dataSource.data = data);
       });
     }
     if (path === 'listadispactivos') {
+      this.titulo = 'Lista de dispositivos activos';
       this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
         const arrayTmp = data.filter((m) => m.estado === 'Activo');
         Swal.fire(
@@ -73,6 +83,7 @@ export class GeneralComponent implements OnInit, AfterViewInit {
       });
     }
     if (path === 'listadispinactivos') {
+      this.titulo = 'Lista de dispositivos inactivos';
       this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
         const arrayTmp = data.filter((m) => m.estado === 'Inactivo');
         Swal.fire(
@@ -85,6 +96,7 @@ export class GeneralComponent implements OnInit, AfterViewInit {
       });
     }
     if (path === 'listadispmant') {
+      this.titulo = 'Lista de dispositivos en mantenimiento';
       this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
         const arrayTmp = data.filter((m) => m.estado === 'Mantenimiento');
         Swal.fire(
