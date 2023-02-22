@@ -218,11 +218,10 @@
         <!-- Boton Update -->
         <button
           (click)="onUpdate(element._id)"
+          matTooltip="Modificar"
           type="submit"
           mat-mini-fab
-          extended
           color="primary"
-          class=""
         >
           <mat-icon> settings </mat-icon>
         </button>
@@ -230,11 +229,10 @@
         <!-- Boton eliminar -->
         <button
           (click)="onDelete(element._id)"
+          matTooltip="Eliminar"
           type="submit"
           mat-mini-fab
-          extended
           color="warn"
-          class=""
         >
           <mat-icon> delete_forever </mat-icon>
         </button>

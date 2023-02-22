@@ -61,6 +61,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
         break;
 
       case 'activos':
+        this.titulo = 'Lista de dispositivos activos';
         this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
           const arrayTmp = data.filter((m) => m.estado === 'Activo');
           Swal.fire(
@@ -73,6 +74,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
         break;
 
       case 'inactivos':
+        this.titulo = 'Lista de dispositivos inactivos';
         this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
           const arrayTmp = data.filter((m) => m.estado === 'Inactivo');
           Swal.fire(
@@ -85,6 +87,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
         break;
 
       case 'mant':
+        this.titulo = 'Lista de dispositivos en mantenimiento';
         this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
           const arrayTmp = data.filter((m) => m.estado === 'Mantenimiento');
           Swal.fire(

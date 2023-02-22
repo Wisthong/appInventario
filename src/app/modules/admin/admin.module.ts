@@ -13,7 +13,14 @@ import { CerrarsesionComponent } from './components/cerrarsesion/cerrarsesion.co
 import { GbPipe } from './pipes/gb.pipe';
 
 @NgModule({
-  declarations: [FormsComponent, DashboardComponent, NavbarComponent, GeneralComponent, CerrarsesionComponent, GbPipe],
+  declarations: [
+    FormsComponent,
+    DashboardComponent,
+    NavbarComponent,
+    GeneralComponent,
+    CerrarsesionComponent,
+    GbPipe,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -21,5 +28,6 @@ import { GbPipe } from './pipes/gb.pipe';
     ReactiveFormsModule,
     SharedModule,
   ],
+  exports: [GbPipe],
 })
 export class AdminModule {}

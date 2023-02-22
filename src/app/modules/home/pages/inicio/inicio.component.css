@@ -1,0 +1,13 @@
+.activo {
+  background-color: #2ec4b6;
+  color: white;
+}
+.inactivo {
+  background-color: #d62828;
+  color: white;
+}
+.mtn {
+  background-color: #ffba08;
+  color: white;
+}
+
