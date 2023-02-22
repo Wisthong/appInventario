@@ -15,11 +15,11 @@ export interface Device {
   antivirus:     string;
   fecha_ingreso: string;
   fecha_baja:    string;
-  ram:           string;
+  ram:           number;
   descripcion:   string;
   procesador:    string;
   licencias:     string;
-  precio:     number;
+  precio:        number;
 }
 
 export interface ResponseTrue {
@@ -39,6 +39,6 @@ export interface User {
   name:       string;
   lastname:   string;
   email:      string;
-  role?:      string;
+  role?:      string[];
   password?:  string;
 }
