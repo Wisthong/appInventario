@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Device } from 'src/app/modules/model/auth';
 import { AuthService } from 'src/app/modules/services/auth.service';
 import { HostnameService } from 'src/app/modules/services/hostname.service';
 import Swal from 'sweetalert2';
@@ -97,40 +96,41 @@ export class FormsComponent implements OnInit {
   }
 
   onRegister() {
-    console.log(this.deviceForm.getRawValue());
+    // console.log(this.deviceForm.getRawValue());
 
-    // if (this.deviceForm.valid) {
-    //   const body = this.deviceForm.getRawValue();
-    //   if (this.id !== null) {
-    //     //FIXME: Actualizar
-    //     this.hostnameSvc.actualizarDevice(body, this.id!).subscribe(
-    //       (resOk) => {
-    //         Swal.fire('Exitoso', resOk, 'success');
-    //         console.log(this.deviceForm.getRawValue());
-    //         this.router.navigate(['/admin']);
-    //       },
-    //       (resFail) => {
-    //         Swal.fire('Error', 'No se pudo', 'error');
-    //       }
-    //     );
-    //   } else {
-    //     this.hostnameSvc.registrarDevice(body).subscribe(
-    //       (resOk) => {
-    //         Swal.fire('Exitoso', resOk, 'success');
-    //         console.log(this.deviceForm.getRawValue());
-    //         this.router.navigate(['/admin']);
-    //       },
-    //       (resFail) => {
-    //         Swal.fire('Error', 'No se pudo', 'error');
-    //       }
-    //     );
-    //   }
-    // } else {
-    //   Swal.fire(
-    //     'Aviso',
-    //     'Faltan campos por llenar, por favor intenta nuevamente',
-    //     'info'
-    //   );
-    // }
+    if (this.deviceForm.valid) {
+      const body = this.deviceForm.getRawValue();
+      if (this.id !== null) {
+        //FIXME: Actualizar
+        this.hostnameSvc.actualizarDevice(body, this.id!).subscribe(
+          (resOk) => {
+            Swal.fire('Exitoso', resOk, 'success');
+            console.log(this.deviceForm.getRawValue());
+            this.router.navigate(['/admin']);
+          },
+          (resFail) => {
+            Swal.fire('Error', 'No se pudo', 'error');
+          }
+        );
+      } else {
+
+        this.hostnameSvc.registrarDevice(body).subscribe(
+          (resOk) => {
+            Swal.fire('Exitoso', resOk, 'success');
+            console.log(this.deviceForm.getRawValue());
+            this.router.navigate(['/admin']);
+          },
+          (resFail) => {
+            Swal.fire('Error', 'No se pudo', 'error');
+          }
+        );
+      }
+    } else {
+      Swal.fire(
+        'Aviso',
+        'Faltan campos por llenar, por favor intenta nuevamente',
+        'info'
+      );
+    }
   }
 }

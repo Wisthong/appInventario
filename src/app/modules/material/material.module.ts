@@ -1,3 +1,5 @@
+import { MenuItem } from 'primeng/api';
+import { MenubarModule } from 'primeng/menubar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -34,6 +36,7 @@ import { MatTableModule } from '@angular/material/table';
     TableModule,
     MatSortModule,
     MatTableModule,
+    MenubarModule,
   ],
 })
 export class MaterialModule {}

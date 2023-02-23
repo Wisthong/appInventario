@@ -8,17 +8,22 @@ export interface Device {
   _id?:          string;
   device:        string;
   estado:        string;
+  providers:     string;
+  co:            string;
+  area:          string;
+  discoduro?:    string;
+  numserie:      string;
   // estado:        ['activo', 'inactivo','mantenimiento'];
   hostname:      string;
-  so:            string;
+  so?:           string;
   ip:            string;
-  antivirus:     string;
+  antivirus?:    string;
   fecha_ingreso: string;
-  fecha_baja:    string;
-  ram:           number;
+  fecha_baja?:   string;
+  ram?:          number;
   descripcion:   string;
-  procesador:    string;
-  licencias:     string;
+  procesador?:   string;
+  licencias?:    string;
   precio:        number;
 }
 

@@ -26,21 +26,7 @@ export class HostnameService {
   }
 
   registrarDevice(device: Device): Observable<string> {
-    const body = {
-      antivirus: device.antivirus,
-      descripcion: device.descripcion,
-      estado: device.estado,
-      fecha_baja: device.fecha_baja,
-      fecha_ingreso: device.fecha_ingreso,
-      hostname: device.hostname,
-      ip: device.ip,
-      licencias: device.licencias,
-      precio: device.precio,
-      procesador: device.procesador,
-      ram: device.ram,
-      so: device.so,
-      device: device.device,
-    };
+    const body = device;
     return this.http.post<ResponseAuth>(this.apiUrl + '/devices', body).pipe(
       tap(({ token }) => {
         localStorage.setItem('token', token);
@@ -52,21 +38,7 @@ export class HostnameService {
   }
 
   actualizarDevice(device: Device, id: string): Observable<string> {
-    const body = {
-      antivirus: device.antivirus,
-      descripcion: device.descripcion,
-      estado: device.estado,
-      fecha_baja: device.fecha_baja,
-      fecha_ingreso: device.fecha_ingreso,
-      hostname: device.hostname,
-      ip: device.ip,
-      licencias: device.licencias,
-      precio: device.precio,
-      procesador: device.procesador,
-      ram: device.ram,
-      so: device.so,
-      device: device.device,
-    };
+    const body = device;
     return this.http
       .put<ResponseAuth>(this.apiUrl + '/devices/' + id, body)
       .pipe(

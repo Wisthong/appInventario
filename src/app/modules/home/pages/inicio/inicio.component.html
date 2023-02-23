@@ -4,7 +4,9 @@
   <h1 class="text-center fw-bolder">
     Inventario Papeleria Universal Distribuidora SAS
   </h1>
-  <h4 class="text-center fw-bold">{{ titulo }}</h4>
+  <h4 class="text-center fw-bold">
+    {{ titulo }} {{ totalPorEstado | currency : "COP" }}
+  </h4>
   <table
     mat-table
     [dataSource]="dataSource"
@@ -12,17 +14,17 @@
     (matSortChange)="announceSortChange($event)"
     class="mat-elevation-z8"
   >
-    <!-- Position Device -->
-    <ng-container matColumnDef="device">
+    <!-- Symbol Column IP-->
+    <ng-container matColumnDef="ip">
       <th
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        sortActionDescription="Sort by number"
+        sortActionDescription="Sort by ip"
       >
-        Dispositivo
+        IP
       </th>
-      <td mat-cell *matCellDef="let element">{{ element.device }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.ip }}</td>
     </ng-container>
 
     <!-- Name Hostname -->
@@ -38,17 +40,154 @@
       <td mat-cell *matCellDef="let element">{{ element.hostname }}</td>
     </ng-container>
 
-    <!-- Weight SO -->
-    <ng-container matColumnDef="so">
+    <!-- Position Device -->
+    <ng-container matColumnDef="device">
       <th
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        sortActionDescription="Sort by so"
+        sortActionDescription="Sort by number"
       >
-        SO
+        Dispositivo
       </th>
-      <td mat-cell *matCellDef="let element">{{ element.so }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.device }}</td>
+    </ng-container>
+
+    <!-- Symbol Column Descripcion-->
+    <ng-container matColumnDef="descripcion">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by descripcion"
+      >
+        Descripcion
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
+    </ng-container>
+
+    <!-- Symbol Column Centro de operacion-->
+    <ng-container matColumnDef="area">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by area"
+      >
+        Area
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.area }}</td>
+    </ng-container>
+
+    <!-- Symbol Column Centro de operacion-->
+    <ng-container matColumnDef="co">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by co"
+      >
+        Centro de operacion
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.co }}</td>
+    </ng-container>
+
+    <!-- Symbol Column Precio-->
+    <ng-container matColumnDef="precio">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by precio"
+      >
+        Valor de compra
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.precio | currency : "COP" }}
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column Proveedor-->
+    <ng-container matColumnDef="providers">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by providers"
+      >
+        Proveedor
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.providers }}
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column Fecha ingreso-->
+    <ng-container matColumnDef="fecha_ingreso">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by fecha_ingreso"
+      >
+        Fecha de ingreso
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.fecha_ingreso | date }}
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column Estados-->
+    <ng-container matColumnDef="estado">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by estado"
+      >
+        Estado
+      </th>
+      <td
+        [ngClass]="{
+          activo: element.estado === 'Activo',
+          inactivo: element.estado === 'Inactivo',
+          mtn: element.estado === 'Mantenimiento'
+        }"
+        mat-cell
+        *matCellDef="let element"
+      >
+        {{ element.estado }}
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column Fecha de baja-->
+    <ng-container matColumnDef="fecha_baja">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by fecha_baja"
+      >
+        Fecha de baja
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.fecha_baja | date }}
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column Fecha de baja-->
+    <ng-container matColumnDef="discoduro">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by discoduro"
+      >
+        Disco duro
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.discoduro }}
+      </td>
     </ng-container>
 
     <!-- Weight RAM -->
@@ -77,32 +216,17 @@
       <td mat-cell *matCellDef="let element">{{ element.procesador }}</td>
     </ng-container>
 
-    <!-- Symbol Column IP-->
-    <ng-container matColumnDef="ip">
+    <!-- Weight SO -->
+    <ng-container matColumnDef="so">
       <th
         mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        sortActionDescription="Sort by ip"
+        sortActionDescription="Sort by so"
       >
-        IP
+        SO
       </th>
-      <td mat-cell *matCellDef="let element">{{ element.ip }}</td>
-    </ng-container>
-
-    <!-- Symbol Column Precio-->
-    <ng-container matColumnDef="precio">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by precio"
-      >
-        Precio
-      </th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.precio | currency : "COP" }}
-      </td>
+      <td mat-cell *matCellDef="let element">{{ element.so }}</td>
     </ng-container>
 
     <!-- Symbol Column Antivirus-->
@@ -118,59 +242,6 @@
       <td mat-cell *matCellDef="let element">{{ element.antivirus }}</td>
     </ng-container>
 
-    <!-- Symbol Column Fecha ingreso-->
-    <ng-container matColumnDef="fecha_ingreso">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by fecha_ingreso"
-      >
-        Fecha de ingreso
-      </th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.fecha_ingreso | date }}
-      </td>
-    </ng-container>
-
-    <!-- Symbol Column Fecha de baja-->
-    <ng-container matColumnDef="fecha_baja">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by fecha_baja"
-      >
-        Fecha de baja
-      </th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.fecha_baja | date }}
-      </td>
-    </ng-container>
-
-    <!-- Symbol Column Estados-->
-    <ng-container matColumnDef="estado">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by estado"
-      >
-        Estado
-      </th>
-      <td
-        [ngClass]="{
-          activo: element.estado === 'Activo',
-          inactivo: element.estado === 'Inactivo',
-          mtn: element.estado === 'Mantenimiento'
-        }"
-        mat-cell
-        *matCellDef="let element"
-      >
-        {{ element.estado }}
-      </td>
-    </ng-container>
-
     <!-- Symbol Column Licencias-->
     <ng-container matColumnDef="licencias">
       <th
@@ -182,19 +253,6 @@
         Licencias
       </th>
       <td mat-cell *matCellDef="let element">{{ element.licencias }}</td>
-    </ng-container>
-
-    <!-- Symbol Column Descripcion-->
-    <ng-container matColumnDef="descripcion">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by descripcion"
-      >
-        Descripcion
-      </th>
-      <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

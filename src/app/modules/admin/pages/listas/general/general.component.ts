@@ -14,30 +14,34 @@ import Swal from 'sweetalert2';
   styleUrls: ['./general.component.css'],
 })
 export class GeneralComponent implements OnInit, AfterViewInit {
-  titulo = 'Lista de todos los dispositivos';
+  totalPorEstado: number = 0;
   listDevice: Device[] = [];
+  titulo = 'Lista de todos los dispositivos';
   dataSource = new MatTableDataSource(this.listDevice);
   displayedColumns: string[] = [
-    'device',
+    'ip',
     'hostname',
-    'so',
+    'device',
+    'descripcion',
+    'area',
+    'co',
+    'precio',
+    'providers',
+    'fecha_ingreso',
+    'estado',
+    'fecha_baja',
+    'discoduro',
     'ram',
     'procesador',
-    'ip',
-    'precio',
+    'so',
     'antivirus',
-    'fecha_ingreso',
-    'fecha_baja',
-    'estado',
     'licencias',
-    'descripcion',
     'acciones',
   ];
 
   constructor(
     private readonly router: Router,
     private readonly hostnameSvc: HostnameService,
-    private readonly authSvc: AuthService,
     private readonly route: ActivatedRoute,
     private readonly _liveAnnouncer: LiveAnnouncer
   ) {}
@@ -49,65 +53,525 @@ export class GeneralComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    const path = this.route.snapshot.url[0].path;
+    this.route.url.subscribe(
+      (params) => {
+        console.log(params);
 
-    if (path === 'listageneral') {
-      this.titulo = 'Lista de todos los dispositivos';
-      this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
-        Swal.fire(
-          'Total dispositivos',
-          'Hay ' + data.length + ' dispositivos',
-          'info'
-        );
+        switch (params[0].path) {
+          case 'lista':
+            this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+              this.dataSource.data = data;
+              data.forEach((element) => {
+                this.totalPorEstado += element.precio;
+              });
 
-        let total = 0;
-        data.forEach((element) => {
-          total += element.precio;
-        });
-        console.log(total);
+              this.titulo =
+                'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+            });
+            break;
 
-        return (this.dataSource.data = data);
-      });
-    }
-    if (path === 'listadispactivos') {
-      this.titulo = 'Lista de dispositivos activos';
-      this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
-        const arrayTmp = data.filter((m) => m.estado === 'Activo');
-        Swal.fire(
-          'Total dispositivos',
-          'Hay ' + arrayTmp.length + ' dispositivos',
-          'info'
-        );
+          case 'avenidasexta':
+            switch (params[1].path) {
+              case 'lista':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter((m) => m.co === 'Avenida sexta');
+                  this.dataSource.data = arrayTmp;
 
-        return (this.dataSource.data = arrayTmp);
-      });
-    }
-    if (path === 'listadispinactivos') {
-      this.titulo = 'Lista de dispositivos inactivos';
-      this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
-        const arrayTmp = data.filter((m) => m.estado === 'Inactivo');
-        Swal.fire(
-          'Total dispositivos',
-          'Hay ' + arrayTmp.length + ' dispositivos',
-          'info'
-        );
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
 
-        return (this.dataSource.data = arrayTmp);
-      });
-    }
-    if (path === 'listadispmant') {
-      this.titulo = 'Lista de dispositivos en mantenimiento';
-      this.hostnameSvc.obtenerLista().subscribe(({ data, message }) => {
-        const arrayTmp = data.filter((m) => m.estado === 'Mantenimiento');
-        Swal.fire(
-          'Total dispositivos',
-          'Hay ' + arrayTmp.length + ' dispositivos',
-          'info'
-        );
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
 
-        return (this.dataSource.data = arrayTmp);
-      });
-    }
+              case 'activos':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Avenida sexta' && m.estado === 'Activo'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+
+              case 'inactivos':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Avenida sexta' && m.estado === 'Inactivo'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos inactivos, y el precio total del valor de compra de los dispositivos es ';
+                });
+
+                break;
+
+              case 'mantenimiento':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) =>
+                      m.co === 'Avenida sexta' && m.estado === 'Mantenimiento'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos en mantenimiento, y el precio total del valor de compra de los dispositivos es ';
+                });
+
+                break;
+
+              default:
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter((m) => m.co === 'Cedi');
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+            }
+            break;
+
+          case '14':
+            switch (params[1].path) {
+              case 'lista':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter((m) => m.co === '14');
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+
+              case 'activos':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === '14' && m.estado === 'Activo'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+
+              case 'inactivos':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === '14' && m.estado === 'Inactivo'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos inactivos, y el precio total del valor de compra de los dispositivos es ';
+                });
+
+                break;
+
+              case 'mantenimiento':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === '14' && m.estado === 'Mantenimiento'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos en mantenimiento, y el precio total del valor de compra de los dispositivos es ';
+                });
+
+                break;
+
+              default:
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter((m) => m.co === 'Cedi');
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+            }
+            break;
+
+          case 'cedi':
+            switch (params[1].path) {
+              case 'lista':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter((m) => m.co === 'Cedi');
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+
+              case 'activos':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Cedi' && m.estado === 'Activo'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+
+              case 'inactivos':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Cedi' && m.estado === 'Inactivo'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos inactivos, y el precio total del valor de compra de los dispositivos es ';
+                });
+
+                break;
+
+              case 'mantenimiento':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Cedi' && m.estado === 'Mantenimiento'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos en mantenimiento, y el precio total del valor de compra de los dispositivos es ';
+                });
+
+                break;
+
+              default:
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter((m) => m.co === 'Cedi');
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+            }
+            break;
+
+          case 'cosmocentro':
+            switch (params[1].path) {
+              case 'lista':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter((m) => m.co === 'Cosmocentro');
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+
+              case 'activos':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Cosmocentro' && m.estado === 'Activo'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+
+              case 'inactivos':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Cosmocentro' && m.estado === 'Inactivo'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos inactivos, y el precio total del valor de compra de los dispositivos es ';
+                });
+
+                break;
+
+              case 'mantenimiento':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) =>
+                      m.co === 'Cosmocentro' && m.estado === 'Mantenimiento'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos en mantenimiento, y el precio total del valor de compra de los dispositivos es ';
+                });
+
+                break;
+
+              default:
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter((m) => m.co === 'Cosmocentro');
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+            }
+            break;
+
+          case 'centro':
+            switch (params[1].path) {
+              case 'lista':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter((m) => m.co === 'Centro');
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+
+              case 'activos':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Centro' && m.estado === 'Activo'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+
+              case 'inactivos':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Centro' && m.estado === 'Inactivo'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos inactivos, y el precio total del valor de compra de los dispositivos es ';
+                });
+
+                break;
+
+              case 'mantenimiento':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Centro' && m.estado === 'Mantenimiento'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos en mantenimiento, y el precio total del valor de compra de los dispositivos es ';
+                });
+
+                break;
+
+              default:
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter((m) => m.co === 'Centro');
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+            }
+            break;
+
+          case 'pasoancho':
+            switch (params[1].path) {
+              case 'lista':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter((m) => m.co === 'Pasoancho');
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+
+              case 'activos':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Pasoancho' && m.estado === 'Activo'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+
+              case 'inactivos':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Pasoancho' && m.estado === 'Inactivo'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos inactivos, y el precio total del valor de compra de los dispositivos es ';
+                });
+
+                break;
+
+              case 'mantenimiento':
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter(
+                    (m) => m.co === 'Pasoancho' && m.estado === 'Mantenimiento'
+                  );
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos en mantenimiento, y el precio total del valor de compra de los dispositivos es ';
+                });
+
+                break;
+
+              default:
+                this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+                  const arrayTmp = data.filter((m) => m.co === 'Pasoancho');
+                  this.dataSource.data = arrayTmp;
+
+                  arrayTmp.forEach((element) => {
+                    this.totalPorEstado += element.precio;
+                  });
+
+                  this.titulo =
+                    'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                });
+                break;
+            }
+            break;
+
+          default:
+            break;
+        }
+      },
+      (resFail) => {
+        console.log('Error', resFail);
+      }
+    );
   }
 
   onUpdate(id: string | undefined) {
@@ -148,14 +612,6 @@ export class GeneralComponent implements OnInit, AfterViewInit {
         Swal.fire('Accion', 'No se elimino el registro', 'info');
       }
     });
-  }
-
-  onTotales() {
-    Swal.fire(
-      'Total dispositivos',
-      'Hay ' + this.listDevice + ' dispositivos',
-      'info'
-    );
   }
 
   announceSortChange(sortState: Sort) {
