@@ -37,6 +37,33 @@
               </mat-error>
             </mat-form-field>
           </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label> Proveedor</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="providers"
+                placeholder="Juanito Perez"
+              />
+              <mat-error
+                *ngIf="
+                  deviceForm.controls['providers'].touched &&
+                  deviceForm.controls['providers'].hasError('required')
+                "
+              >
+                Campo requerido
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  deviceForm.controls['providers'].touched &&
+                  deviceForm.controls['providers'].hasError('minlength')
+                "
+              >
+                Debes ingresar al menos 5 caracteres
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
 
         <div class="row">
@@ -67,6 +94,7 @@
               </mat-error>
             </mat-form-field>
           </div>
+
           <div class="col">
             <mat-form-field class="full-width">
               <mat-label>IP</mat-label>
@@ -91,6 +119,93 @@
                 "
               >
                 Debes ingresar al menos 11 caracteres
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Numero de serie</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="numserie"
+                placeholder="12JHSA98-SAJH87ASH-"
+              />
+              <mat-error
+                *ngIf="
+                  deviceForm.controls['numserie'].touched &&
+                  deviceForm.controls['numserie'].hasError('required')
+                "
+              >
+                Campo requerido
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  deviceForm.controls['numserie'].touched &&
+                  deviceForm.controls['numserie'].hasError('minlength')
+                "
+              >
+                Debes ingresar al menos 5 caracteres
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Area / Departamento</mat-label>
+
+              <mat-select
+                placeholder="Area / Departamento"
+                formControlName="area"
+              >
+                <mat-option *ngFor="let area of list_areas" [value]="area">
+                  {{ area | titlecase }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  deviceForm.controls['area'].touched &&
+                  deviceForm.controls['area'].hasError('required')
+                "
+              >
+                Campo requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Centro de operaciones</mat-label>
+
+              <mat-select
+                placeholder="Centro de operaciones"
+                formControlName="co"
+              >
+                <mat-option
+                  *ngFor="let co of list_centro_operacion"
+                  [value]="co"
+                >
+                  {{ co | titlecase }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  deviceForm.controls['co'].touched &&
+                  deviceForm.controls['co'].hasError('required')
+                "
+              >
+                Campo requerido
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  deviceForm.controls['co'].touched &&
+                  deviceForm.controls['co'].hasError('minlength')
+                "
+              >
+                Debes ingresar al menos 5 caracteres
               </mat-error>
             </mat-form-field>
           </div>
@@ -180,12 +295,40 @@
               </mat-error>
             </mat-form-field>
           </div>
+
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Disco Duro</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="discoduro"
+                placeholder="Sata 1 tera"
+              />
+              <mat-error
+                *ngIf="
+                  deviceForm.controls['discoduro'].touched &&
+                  deviceForm.controls['discoduro'].hasError('required')
+                "
+              >
+                Campo requerido
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  deviceForm.controls['discoduro'].touched &&
+                  deviceForm.controls['discoduro'].hasError('minlength')
+                "
+              >
+                Debes ingresar al menos 5 caracter
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
 
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <mat-label>Precio</mat-label>
+              <mat-label>Valor de compra</mat-label>
               <input
                 type="number"
                 matInput

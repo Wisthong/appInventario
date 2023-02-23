@@ -46,6 +46,8 @@
                   class="dropdown-item"
                   aria-current="page"
                   [routerLink]="['/home/lista']"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
                   >Lista de dispositivos</a
                 >
               </li>
@@ -55,6 +57,8 @@
                 <a
                   class="dropdown-item"
                   [routerLink]="['/home/activos']"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
                   >Dispositivos activos</a
                 >
               </li>
@@ -62,23 +66,32 @@
                 <a
                   class="dropdown-item"
                   [routerLink]="['/home/inactivos']"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
                   >Dispositivos inactivos</a
                 >
               </li>
               <!-- <li><hr class="dropdown-divider" /></li> -->
               <li>
-                <a class="dropdown-item" [routerLink]="['/home/mant']"
+                <a
+                  class="dropdown-item"
+                  [routerLink]="['/home/mant']"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
                   >Dispositivos en mantenimiento</a
                 >
               </li>
             </ul>
           </li>
+
           <li class="nav-item">
             <a
-              class="nav-link active"
+              class="nav-link"
               aria-current="page"
               [routerLink]="['/home/login']"
-              >Iniciar Sesión</a
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Inicio Sesión</a
             >
           </li>
         </ul>
