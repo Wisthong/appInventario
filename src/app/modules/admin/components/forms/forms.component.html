@@ -1,12 +1,10 @@
 <app-navbar></app-navbar>
 
-<div class="container pt-5">
+<div class="container">
   <form [formGroup]="deviceForm" (ngSubmit)="onRegister()" class="mt-5">
     <mat-card class="shipping-card">
       <mat-card-header>
-        <mat-card-title class="my-2"
-          >Formulario de registro de dispositivo</mat-card-title
-        >
+        <mat-card-title class="my-2"> {{ titulo }} </mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="row">

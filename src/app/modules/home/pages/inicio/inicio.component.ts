@@ -53,8 +53,6 @@ export class InicioComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.route.url.subscribe(
       (params) => {
-        console.log(params);
-
         switch (params[0].path) {
           case 'lista':
             this.hostnameSvc.obtenerLista().subscribe(({ data }) => {

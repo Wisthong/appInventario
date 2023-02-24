@@ -1,5 +1,11 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,6 +20,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./general.component.css'],
 })
 export class GeneralComponent implements OnInit, AfterViewInit {
+  private readonly router = inject(Router);
+  private readonly hostnameSvc = inject(HostnameService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly _liveAnnouncer = inject(LiveAnnouncer);
+
   totalPorEstado: number = 0;
   listDevice: Device[] = [];
   titulo = 'Lista de todos los dispositivos';
@@ -22,6 +33,7 @@ export class GeneralComponent implements OnInit, AfterViewInit {
     'ip',
     'hostname',
     'device',
+    'numserie',
     'descripcion',
     'area',
     'co',
@@ -38,13 +50,6 @@ export class GeneralComponent implements OnInit, AfterViewInit {
     'licencias',
     'acciones',
   ];
-
-  constructor(
-    private readonly router: Router,
-    private readonly hostnameSvc: HostnameService,
-    private readonly route: ActivatedRoute,
-    private readonly _liveAnnouncer: LiveAnnouncer
-  ) {}
 
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -74,10 +79,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
             switch (params[1].path) {
               case 'lista':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === 'Avenida sexta');
-                  this.dataSource.data = arrayTmp;
+                  this.listDevice = data.filter(
+                    (m) => m.co === 'Avenida sexta'
+                  );
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -88,12 +95,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'activos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Avenida sexta' && m.estado === 'Activo'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -104,12 +111,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'inactivos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Avenida sexta' && m.estado === 'Inactivo'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -121,13 +128,13 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'mantenimiento':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) =>
                       m.co === 'Avenida sexta' && m.estado === 'Mantenimiento'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -139,10 +146,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               default:
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === 'Cedi');
-                  this.dataSource.data = arrayTmp;
+                  this.listDevice = data.filter((m) => m.co === 'Cedi');
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -157,10 +164,9 @@ export class GeneralComponent implements OnInit, AfterViewInit {
             switch (params[1].path) {
               case 'lista':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === '14');
-                  this.dataSource.data = arrayTmp;
-
-                  arrayTmp.forEach((element) => {
+                  this.listDevice = data.filter((m) => m.co === '14');
+                  this.dataSource.data = this.listDevice;
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -171,12 +177,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'activos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === '14' && m.estado === 'Activo'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -187,12 +193,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'inactivos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === '14' && m.estado === 'Inactivo'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -204,12 +210,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'mantenimiento':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === '14' && m.estado === 'Mantenimiento'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -221,10 +227,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               default:
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === 'Cedi');
-                  this.dataSource.data = arrayTmp;
+                  this.listDevice = data.filter((m) => m.co === 'Cedi');
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -239,10 +245,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
             switch (params[1].path) {
               case 'lista':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === 'Cedi');
-                  this.dataSource.data = arrayTmp;
+                  this.listDevice = data.filter((m) => m.co === 'Cedi');
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -253,12 +259,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'activos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Cedi' && m.estado === 'Activo'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -269,12 +275,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'inactivos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Cedi' && m.estado === 'Inactivo'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -286,12 +292,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'mantenimiento':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Cedi' && m.estado === 'Mantenimiento'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -303,10 +309,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               default:
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === 'Cedi');
-                  this.dataSource.data = arrayTmp;
+                  this.listDevice = data.filter((m) => m.co === 'Cedi');
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -321,10 +327,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
             switch (params[1].path) {
               case 'lista':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === 'Cosmocentro');
-                  this.dataSource.data = arrayTmp;
+                  this.listDevice = data.filter((m) => m.co === 'Cosmocentro');
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -335,12 +341,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'activos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Cosmocentro' && m.estado === 'Activo'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -351,12 +357,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'inactivos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Cosmocentro' && m.estado === 'Inactivo'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -368,13 +374,13 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'mantenimiento':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) =>
                       m.co === 'Cosmocentro' && m.estado === 'Mantenimiento'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -386,10 +392,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               default:
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === 'Cosmocentro');
-                  this.dataSource.data = arrayTmp;
+                  this.listDevice = data.filter((m) => m.co === 'Cosmocentro');
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -404,10 +410,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
             switch (params[1].path) {
               case 'lista':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === 'Centro');
-                  this.dataSource.data = arrayTmp;
+                  this.listDevice = data.filter((m) => m.co === 'Centro');
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -418,12 +424,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'activos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Centro' && m.estado === 'Activo'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -434,12 +440,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'inactivos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Centro' && m.estado === 'Inactivo'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -451,12 +457,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'mantenimiento':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Centro' && m.estado === 'Mantenimiento'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -468,10 +474,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               default:
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === 'Centro');
-                  this.dataSource.data = arrayTmp;
+                  this.listDevice = data.filter((m) => m.co === 'Centro');
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -486,10 +492,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
             switch (params[1].path) {
               case 'lista':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === 'Pasoancho');
-                  this.dataSource.data = arrayTmp;
+                  this.listDevice = data.filter((m) => m.co === 'Pasoancho');
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -500,12 +506,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'activos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Pasoancho' && m.estado === 'Activo'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -516,12 +522,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'inactivos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Pasoancho' && m.estado === 'Inactivo'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -533,12 +539,12 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               case 'mantenimiento':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter(
+                  this.listDevice = data.filter(
                     (m) => m.co === 'Pasoancho' && m.estado === 'Mantenimiento'
                   );
-                  this.dataSource.data = arrayTmp;
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -550,10 +556,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
 
               default:
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === 'Pasoancho');
-                  this.dataSource.data = arrayTmp;
+                  this.listDevice = data.filter((m) => m.co === 'Pasoancho');
+                  this.dataSource.data = this.listDevice;
 
-                  arrayTmp.forEach((element) => {
+                  this.listDevice.forEach((element) => {
                     this.totalPorEstado += element.precio;
                   });
 
@@ -596,8 +602,8 @@ export class GeneralComponent implements OnInit, AfterViewInit {
       if (result.isConfirmed) {
         this.hostnameSvc.eliminarDevice(id!).subscribe(
           (resOk) => {
-            const arrayTmp = this.listDevice.filter((m) => m._id !== id);
-            this.listDevice = arrayTmp;
+            const arrayTmp = this.dataSource.data.filter((m) => m._id !== id);
+            this.dataSource.data = arrayTmp;
             Swal.fire('Acción', resOk, 'success');
           },
           (resFail) => {

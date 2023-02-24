@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3001/api',
+  apiUrl: 'http://apiinventario-production-33fc.up.railway.app/api',
 };

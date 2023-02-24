@@ -17,7 +17,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSortModule } from '@angular/material/sort';
 import { TableModule } from 'primeng/table';
 import { MatTableModule } from '@angular/material/table';
-
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 @NgModule({
   declarations: [],
   imports: [CommonModule],
@@ -37,6 +37,7 @@ import { MatTableModule } from '@angular/material/table';
     MatSortModule,
     MatTableModule,
     MenubarModule,
+    ProgressSpinnerModule,
   ],
 })
 export class MaterialModule {}
