@@ -210,6 +210,7 @@ export class NavbarComponent {
           },
         ],
       },
+
       // {
       //   label: 'Events',
       //   icon: 'pi pi-fw pi-calendar',
@@ -240,11 +241,11 @@ export class NavbarComponent {
       //     },
       //   ],
       // },
-      // {
-      //   label: 'Iniciar Sesion',
-      //   icon: 'pi pi-fw pi-users',
-      //   routerLink: ['/home/login'],
-      // },
+      {
+        label: 'Iniciar Sesion',
+        icon: 'pi pi-fw pi-users',
+        routerLink: ['/home/login'],
+      },
     ];
 
     this.itemSesion = [

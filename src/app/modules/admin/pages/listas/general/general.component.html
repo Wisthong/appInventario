@@ -1,14 +1,15 @@
 <app-navbar></app-navbar>
+<div class="container my-2">
+  <h1 class="text-center fw-bolder">
+    Inventario Papeleria Universal Distribuidora SAS
+  </h1>
+  <h4 class="text-center fw-bold">
+    {{ titulo }} {{ totalPorEstado | currency : "COP" }}
+  </h4>
+</div>
 
 <ng-container *ngIf="dataSource.data.length > 0; else dataSpinner">
   <div class="table-responsive">
-    <h1 class="text-center fw-bolder">
-      Inventario Papeleria Universal Distribuidora SAS
-    </h1>
-    <h4 class="text-center fw-bold">
-      {{ titulo }} {{ totalPorEstado | currency : "COP" }}
-    </h4>
-
     <table
       mat-table
       [dataSource]="dataSource"

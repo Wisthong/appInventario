@@ -71,7 +71,7 @@ export class GeneralComponent implements OnInit, AfterViewInit {
               });
 
               this.titulo =
-                'Lista de los dispositivos activos, y el precio total del valor de compra de los dispositivos es ';
+                'Lista de los dispositivos, y el precio total del valor de compra de los dispositivos es ';
             });
             break;
 
