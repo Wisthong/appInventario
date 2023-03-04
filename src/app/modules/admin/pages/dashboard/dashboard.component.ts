@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/modules/services/auth.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
+  panelOpenState = false;
   private readonly authSvc = inject(AuthService);
 
   get usuario() {

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -113,8 +114,8 @@ export class FormsComponent implements OnInit {
             console.log(this.deviceForm.getRawValue());
             this.router.navigate(['/admin']);
           },
-          (resFail) => {
-            Swal.fire('Error', 'No se pudo', 'error');
+          ({ error }: HttpErrorResponse) => {
+            Swal.fire('Advertencia', error.message, 'warning');
           }
         );
       } else {
@@ -124,8 +125,8 @@ export class FormsComponent implements OnInit {
             console.log(this.deviceForm.getRawValue());
             this.router.navigate(['/admin']);
           },
-          (resFail) => {
-            Swal.fire('Error', 'No se pudo', 'error');
+          ({ error }: HttpErrorResponse) => {
+            Swal.fire('Advertencia', error.message, 'warning');
           }
         );
       }

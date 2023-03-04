@@ -1,7 +1,6 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Device } from 'src/app/modules/model/auth';
-import { AuthService } from 'src/app/modules/services/auth.service';
 import { HostnameService } from 'src/app/modules/services/hostname.service';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
@@ -39,7 +38,6 @@ export class InicioComponent implements OnInit, AfterViewInit {
 
   constructor(
     private readonly hostnameSvc: HostnameService,
-    private readonly authSvc: AuthService,
     private readonly _liveAnnouncer: LiveAnnouncer,
     private readonly route: ActivatedRoute
   ) {}
@@ -570,7 +568,12 @@ export class InicioComponent implements OnInit, AfterViewInit {
     );
   }
 
+  /** Announce the change in sort state for assistive technology. */
   announceSortChange(sortState: Sort) {
+    // This example uses English messages. If your application supports
+    // multiple language, you would internationalize these strings.
+    // Furthermore, you can customize the message to add additional
+    // details about the values being sorted.
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {
