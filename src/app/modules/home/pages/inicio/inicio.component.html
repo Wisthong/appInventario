@@ -9,7 +9,10 @@
   </h4>
 </div>
 
-<ng-container *ngIf="dataSource.data.length > 0; else dataSpinner">
+<ng-container *ngIf="listHost.length > 0; else dataSpinner">
+  <pre>
+    {{ listHost.length }}
+  </pre>
   <div class="table-responsive">
     <table
       mat-table
@@ -265,23 +268,4 @@
   </div>
 </ng-container>
 
-<ng-template #dataSpinner>
-  <h1 class="text-center pt-5">No hay datos</h1>
-  <p-progressSpinner
-    [style]="{
-      width: '100px',
-      height: '200px',
-      position: 'fixed',
-      transform: 'translate(-50%, -50%)',
-      top: '50%',
-      left: '50%'
-    }"
-    styleClass="custom-spinner"
-    strokeWidth="8"
-    fill="#EEEEEE"
-    animationDuration=".5s"
-  ></p-progressSpinner>
-  <!-- <div class="spinner">
-    <p class="fw-bolder">No hay información</p>
-  </div> -->
-</ng-template>
+<ng-template #dataSpinner> </ng-template>

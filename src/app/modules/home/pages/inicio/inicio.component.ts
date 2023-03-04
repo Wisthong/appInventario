@@ -1,21 +1,35 @@
-import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { Device } from 'src/app/modules/model/auth';
-import { HostnameService } from 'src/app/modules/services/hostname.service';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
+import { Device } from 'src/app/modules/model/auth';
+import { HostnameService } from 'src/app/modules/services/hostname.service';
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InicioComponent implements OnInit, AfterViewInit {
-  totalPorEstado: number = 0;
-  listDevice: Device[] = [];
+export class InicioComponent implements AfterViewInit, OnInit {
+  private readonly _liveAnnouncer = inject(LiveAnnouncer);
+  private readonly hostnameSvc = inject(HostnameService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly cdr = inject(ChangeDetectorRef);
+
+  listHost: Device[] = [];
   titulo = 'Lista de todos los dispositivos';
-  dataSource = new MatTableDataSource(this.listDevice);
+  totalPorEstado: number = 0;
+
   displayedColumns: string[] = [
     'ip',
     'hostname',
@@ -36,17 +50,8 @@ export class InicioComponent implements OnInit, AfterViewInit {
     'licencias',
   ];
 
-  constructor(
-    private readonly hostnameSvc: HostnameService,
-    private readonly _liveAnnouncer: LiveAnnouncer,
-    private readonly route: ActivatedRoute
-  ) {}
-
-  @ViewChild(MatSort) sort!: MatSort;
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
+  // displayedColumns: string[] = ['ip', 'device'];
+  dataSource = new MatTableDataSource(this.listHost);
 
   ngOnInit(): void {
     this.route.url.subscribe(
@@ -54,7 +59,9 @@ export class InicioComponent implements OnInit, AfterViewInit {
         switch (params[0].path) {
           case 'lista':
             this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
+              this.listHost = data;
               this.dataSource.data = data;
+              console.log(this.dataSource.sort);
               data.forEach((element) => {
                 this.totalPorEstado += element.precio;
               });
@@ -566,6 +573,12 @@ export class InicioComponent implements OnInit, AfterViewInit {
         console.log('Error', resFail);
       }
     );
+  }
+
+  @ViewChild(MatSort) sort!: MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 
   /** Announce the change in sort state for assistive technology. */
