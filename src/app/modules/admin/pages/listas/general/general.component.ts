@@ -6,6 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,6 +21,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./general.component.css'],
 })
 export class GeneralComponent implements OnInit, AfterViewInit {
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   private readonly router = inject(Router);
   private readonly hostnameSvc = inject(HostnameService);
   private readonly route = inject(ActivatedRoute);
@@ -51,17 +55,19 @@ export class GeneralComponent implements OnInit, AfterViewInit {
     'acciones',
   ];
 
-  @ViewChild(MatSort) sort!: MatSort;
-
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnInit(): void {
+    this.paginator._intl.itemsPerPageLabel = 'Dispositivos';
+    this.paginator._intl.firstPageLabel = 'Primera página';
+    this.paginator._intl.previousPageLabel = 'Página anterior';
+    this.paginator._intl.nextPageLabel = 'Siguiente página';
+    this.paginator._intl.lastPageLabel = 'Última página';
     this.route.url.subscribe(
       (params) => {
-        console.log(params);
-
         switch (params[0].path) {
           case 'lista':
             this.hostnameSvc.obtenerLista().subscribe(({ data }) => {

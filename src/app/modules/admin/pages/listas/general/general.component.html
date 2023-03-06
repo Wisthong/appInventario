@@ -8,7 +8,7 @@
   </h4>
 </div>
 
-<ng-container *ngIf="dataSource.data.length > 0; else dataSpinner">
+<ng-container>
   <div class="table-responsive">
     <table
       mat-table
@@ -308,6 +308,12 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
   </div>
 </ng-container>
 
@@ -327,7 +333,4 @@
     fill="#EEEEEE"
     animationDuration=".5s"
   ></p-progressSpinner>
-  <!-- <div class="spinner">
-    <p class="fw-bolder">No hay información</p>
-  </div> -->
 </ng-template>
