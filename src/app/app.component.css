@@ -1,0 +1,9 @@
+.container-fluid {
+  min-height: 80%;
+  /* padding-bottom: 81px; */
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+}
