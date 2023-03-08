@@ -35,14 +35,14 @@ export class FormsComponent implements OnInit {
     'Pasoancho',
   ];
   list_areas = [
-    'Inventario',
-    'Recursos humanos',
+    'Bodega',
     'Compras',
     'Contabilidad',
+    'Inventario',
     'Sistemas',
+    'Recursos humanos',
     'Ventas',
-    'Tesoseria',
-    'Bodega',
+    'Tesoreria',
     'Otro',
   ];
 

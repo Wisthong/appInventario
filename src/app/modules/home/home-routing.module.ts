@@ -16,6 +16,204 @@ const routes: Routes = [
     title: 'Lista de dispositivos',
   },
 
+  //TODO: Rutas la por AREA Bodega
+  {
+    path: 'bodega/lista',
+    component: InicioComponent,
+    title: 'Bodega Lista de dispositivos',
+  },
+  {
+    path: 'bodega/activos',
+    component: InicioComponent,
+    title: 'Bodega dispositivos activos',
+  },
+  {
+    path: 'bodega/inactivos',
+    component: InicioComponent,
+    title: 'Bodega dispositivos inactivos',
+  },
+  {
+    path: 'bodega/mantenimiento',
+    component: InicioComponent,
+    title: 'Bodega dispositivos mantenimiento',
+  },
+
+  //TODO: Rutas la por AREA Compras
+  {
+    path: 'compras/lista',
+    component: InicioComponent,
+    title: 'Compras Lista de dispositivos',
+  },
+  {
+    path: 'compras/activos',
+    component: InicioComponent,
+    title: 'Compras dispositivos activos',
+  },
+  {
+    path: 'compras/inactivos',
+    component: InicioComponent,
+    title: 'Compras dispositivos inactivos',
+  },
+  {
+    path: 'compras/mantenimiento',
+    component: InicioComponent,
+    title: 'Compras dispositivos mantenimiento',
+  },
+
+  //TODO: Rutas la por AREA Recursos humanos
+  {
+    path: 'recursoshumanos/lista',
+    component: InicioComponent,
+    title: 'Recursos humanos Lista de dispositivos',
+  },
+  {
+    path: 'recursoshumanos/activos',
+    component: InicioComponent,
+    title: 'Recursos humanos dispositivos activos',
+  },
+  {
+    path: 'recursoshumanos/inactivos',
+    component: InicioComponent,
+    title: 'Recursos humanos dispositivos inactivos',
+  },
+  {
+    path: 'recursoshumanos/mantenimiento',
+    component: InicioComponent,
+    title: 'Recursos humanos dispositivos mantenimiento',
+  },
+
+  //TODO: Rutas la por AREA tesoreria
+  {
+    path: 'tesoreria/lista',
+    component: InicioComponent,
+    title: 'Tesoreria Lista de dispositivos',
+  },
+  {
+    path: 'tesoreria/activos',
+    component: InicioComponent,
+    title: 'Tesoreria dispositivos activos',
+  },
+  {
+    path: 'tesoreria/inactivos',
+    component: InicioComponent,
+    title: 'Tesoreria dispositivos inactivos',
+  },
+  {
+    path: 'tesoreria/mantenimiento',
+    component: InicioComponent,
+    title: 'Tesoreria dispositivos mantenimiento',
+  },
+
+  //TODO: Rutas la por AREA Ventas
+  {
+    path: 'ventas/lista',
+    component: InicioComponent,
+    title: 'Ventas Lista de dispositivos',
+  },
+  {
+    path: 'ventas/activos',
+    component: InicioComponent,
+    title: 'Ventas dispositivos activos',
+  },
+  {
+    path: 'ventas/inactivos',
+    component: InicioComponent,
+    title: 'Ventas dispositivos inactivos',
+  },
+  {
+    path: 'ventas/mantenimiento',
+    component: InicioComponent,
+    title: 'Ventas dispositivos mantenimiento',
+  },
+
+  //TODO: Rutas la por AREA Contabilidad
+  {
+    path: 'otro/lista',
+    component: InicioComponent,
+    title: 'Otros Lista de dispositivos',
+  },
+  {
+    path: 'otro/activos',
+    component: InicioComponent,
+    title: 'Otros dispositivos activos',
+  },
+  {
+    path: 'otro/inactivos',
+    component: InicioComponent,
+    title: 'Otros dispositivos inactivos',
+  },
+  {
+    path: 'otro/mantenimiento',
+    component: InicioComponent,
+    title: 'Otros dispositivos mantenimiento',
+  },
+
+  //TODO: Rutas la por AREA Contabilidad
+  {
+    path: 'contabilidad/lista',
+    component: InicioComponent,
+    title: 'Contabilidad Lista de dispositivos',
+  },
+  {
+    path: 'contabilidad/activos',
+    component: InicioComponent,
+    title: 'Contabilidad dispositivos activos',
+  },
+  {
+    path: 'contabilidad/inactivos',
+    component: InicioComponent,
+    title: 'Contabilidad dispositivos inactivos',
+  },
+  {
+    path: 'contabilidad/mantenimiento',
+    component: InicioComponent,
+    title: 'Contabilidad dispositivos mantenimiento',
+  },
+
+  //TODO: Rutas la por AREA Sistemas
+  {
+    path: 'sistemas/lista',
+    component: InicioComponent,
+    title: 'Sistemas Lista de dispositivos',
+  },
+  {
+    path: 'sistemas/activos',
+    component: InicioComponent,
+    title: 'Sistemas dispositivos activos',
+  },
+  {
+    path: 'sistemas/inactivos',
+    component: InicioComponent,
+    title: 'Sistemas dispositivos inactivos',
+  },
+  {
+    path: 'sistemas/mantenimiento',
+    component: InicioComponent,
+    title: 'Sistemas dispositivos mantenimiento',
+  },
+
+  //TODO: Rutas la por AREA Inventario
+  {
+    path: 'inventario/lista',
+    component: InicioComponent,
+    title: 'Inventario Lista de dispositivos',
+  },
+  {
+    path: 'inventario/activos',
+    component: InicioComponent,
+    title: 'Inventario dispositivos activos',
+  },
+  {
+    path: 'inventario/inactivos',
+    component: InicioComponent,
+    title: 'Inventario dispositivos inactivos',
+  },
+  {
+    path: 'inventario/mantenimiento',
+    component: InicioComponent,
+    title: 'Inventario dispositivos mantenimiento',
+  },
+
   //TODO: Rutas la 14
   {
     path: '14/lista',
@@ -147,7 +345,6 @@ const routes: Routes = [
     component: InicioComponent,
     title: 'pasoancho dispositivos mantenimiento',
   },
-
 
   {
     path: 'login',

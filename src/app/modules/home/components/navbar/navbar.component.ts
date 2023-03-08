@@ -211,36 +211,300 @@ export class NavbarComponent {
         ],
       },
 
-      // {
-      //   label: 'Events',
-      //   icon: 'pi pi-fw pi-calendar',
-      //   items: [
-      //     {
-      //       label: 'Edit',
-      //       icon: 'pi pi-fw pi-pencil',
-      //       items: [
-      //         {
-      //           label: 'Save',
-      //           icon: 'pi pi-fw pi-calendar-plus',
-      //         },
-      //         {
-      //           label: 'Delete',
-      //           icon: 'pi pi-fw pi-calendar-minus',
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       label: 'Archieve',
-      //       icon: 'pi pi-fw pi-calendar-times',
-      //       items: [
-      //         {
-      //           label: 'Remove',
-      //           icon: 'pi pi-fw pi-calendar-minus',
-      //         },
-      //       ],
-      //     },
-      //   ],
-      // },
+      {
+        label: 'Areas',
+        icon: 'pi pi-fw pi-book',
+        items: [
+          {
+            label: 'Bodega',
+            icon: 'pi pi-fw pi-pencil',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/bodega/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/bodega/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/bodega/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/bodega/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Compras',
+            icon: 'pi pi-fw pi-pencil',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/compras/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/compras/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/compras/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/compras/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Contabilidad',
+            icon: 'pi pi-fw pi-pencil',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/contabilidad/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/contabilidad/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/contabilidad/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/contabilidad/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Inventario',
+            icon: 'pi pi-fw pi-pencil',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/inventario/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/inventario/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/inventario/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/inventario/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Sistemas',
+            icon: 'pi pi-fw pi-pencil',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/sistemas/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/sistemas/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/sistemas/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/sistemas/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Recursos humanos',
+            icon: 'pi pi-fw pi-pencil',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/recursoshumanos/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/recursoshumanos/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/recursoshumanos/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/recursoshumanos/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Tesoreria',
+            icon: 'pi pi-fw pi-pencil',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/tesoreria/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/tesoreria/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/tesoreria/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/tesoreria/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Ventas',
+            icon: 'pi pi-fw pi-pencil',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/ventas/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/ventas/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/ventas/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/ventas/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Otro',
+            icon: 'pi pi-fw pi-pencil',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/otro/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/otro/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/otro/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/otro/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
       {
         label: 'Iniciar Sesion',
         icon: 'pi pi-fw pi-users',
