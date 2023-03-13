@@ -1,3 +1,4 @@
+import { ViewGetComponent } from './pages/view-get/view-get.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './pages/inicio/inicio.component';
@@ -15,7 +16,16 @@ const routes: Routes = [
     component: InicioComponent,
     title: 'Lista de dispositivos',
   },
-
+  // {
+  //   path: 'view',
+  //   component: ViewGetComponent,
+  //   title: 'Detalles de dispositivo',
+  // },
+  {
+    path: 'view/:id',
+    component: ViewGetComponent,
+    title: 'Detalles de dispositivo',
+  },
   //TODO: Rutas la por AREA Bodega
   {
     path: 'bodega/lista',

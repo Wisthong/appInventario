@@ -1,0 +1,13 @@
+.example-card {
+  max-width: 100%;
+}
+
+.example-header-image {
+  background-image: url('../../../../../assets/img/login.png');
+  /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+  background-size: cover;
+}
+
+img{
+  width: 100%;
+}

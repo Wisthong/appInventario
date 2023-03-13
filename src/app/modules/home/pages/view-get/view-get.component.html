@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+
+<div class="container my-2">
+  <h1 class="text-center fw-bolder my-2">
+    Inventario Papeleria Universal Distribuidora SAS
+  </h1>
+  <h4 class="text-center fw-bold">Detalles de dispostivo</h4>
+  <!-- {{ device | json}} -->
+</div>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title> {{ device.device }} </mat-card-title>
+    <mat-card-subtitle> {{ device.hostname }} </mat-card-subtitle>
+  </mat-card-header>
+  <div [ngSwitch]="device.device | uppercase">
+    <div *ngSwitchCase="'COMPUTADOR'">
+      <img
+        mat-card-image
+        src="https://winphonemetro.com/files/2017/09/HP-EliteBook-1040-G4.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+    </div>
+    <div *ngSwitchCase="'EXCEPTEUR MAGNI CUM'">
+      <img
+        mat-card-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+    </div>
+
+    <div *ngSwitchDefault>
+      <img
+        mat-card-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+    </div>
+  </div>
+  <mat-card-content>
+    <p class="fw-bold">IP: <em class="text-primary"> {{ device.ip }}</em></p>
+    <p class="fw-bold">Area: <em class="text-primary"> {{ device.area }}</em></p>
+    <p class="fw-bold">Centro de operación: <em class="text-primary"> {{ device.co }}</em></p>
+    <p class="fw-bold">Valor de compra: <em class="text-primary"> {{ device.precio }}</em></p>
+    <p class="fw-bold">Proveedor: <em class="text-primary"> {{ device.providers }}</em></p>
+    <p class="fw-bold">Fecha de ingreso:<em class="text-primary"> {{ device.fecha_ingreso | date }}</em> </p>
+    <p class="fw-bold">Estado: <em class="text-primary"> {{ device.estado }}</em></p>
+    <p class="fw-bold">Fecha de baja:<em class="text-primary"> {{ device.fecha_baja | date }}</em></p>
+    <p class="fw-bold">Disco duro: <em class="text-primary"> {{ device.discoduro }}</em></p>
+    <p class="fw-bold">Ram:<em class="text-primary"> {{ device.ram | gb }}</em></p>
+    <p class="fw-bold">Procesador: <em class="text-primary"> {{ device.procesador }}</em></p>
+    <p class="fw-bold">Sistema Operativo: <em class="text-primary"> {{ device.so }}</em></p>
+    <p class="fw-bold">Antivirus: <em class="text-primary"> {{ device.antivirus }}</em></p>
+    <p class="fw-bold">Licencias: <em class="text-primary"> {{ device.licencias }}</em></p>
+    <p class="fw-bold">Descripción: <em class="text-primary"> {{ device.descripcion }}</em></p>
+  </mat-card-content>
+  <mat-card-actions>
+    <a role="button" [routerLink]="['/home']" mat-raised-button color="primary">
+      <mat-icon>undo</mat-icon> Regresar
+    </a>
+  </mat-card-actions>
+</mat-card>

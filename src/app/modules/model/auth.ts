@@ -20,7 +20,7 @@ export interface Device {
   antivirus?:    string;
   fecha_ingreso: string;
   fecha_baja?:   string;
-  ram?:          number;
+  ram?:          any;
   descripcion:   string;
   procesador?:   string;
   licencias?:    string;

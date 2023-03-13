@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { SigninComponent } from './pages/signin/signin.component';
 import { AdminModule } from '@admin/admin.module';
+import { ViewGetComponent } from './pages/view-get/view-get.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { AdminModule } from '@admin/admin.module';
     InicioComponent,
     LoginComponent,
     SigninComponent,
+    ViewGetComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +28,7 @@ import { AdminModule } from '@admin/admin.module';
     ReactiveFormsModule,
     MaterialModule,
     AdminModule,
+    QRCodeModule,
   ],
 })
 export class HomeModule {}

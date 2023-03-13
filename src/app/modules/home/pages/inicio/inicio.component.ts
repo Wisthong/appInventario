@@ -40,6 +40,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
   totalPorEstado: number = 0;
 
   displayedColumns: string[] = [
+    'qr',
     'ip',
     'hostname',
     'device',
