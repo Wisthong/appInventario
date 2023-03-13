@@ -10,7 +10,7 @@
     </p>
 
     <div class="row">
-      <div class="col-6">
+      <div class="col-8">
         <mat-accordion>
           <mat-expansion-panel
             (opened)="panelOpenState = true"
@@ -37,6 +37,15 @@
             </p>
             <p>
               Email: <strong class="text-primary">{{ usuario.email }}</strong>
+            </p>
+            <p>
+              Avatar:
+              <img
+                [src]="['../../../../../assets/img/login.png']"
+                [width]="80"
+                alt=""
+                srcset=""
+              />
             </p>
           </mat-expansion-panel>
         </mat-accordion>

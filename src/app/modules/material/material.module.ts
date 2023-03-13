@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [],
   imports: [CommonModule],

@@ -1,4 +1,10 @@
-<p-menubar [model]="items">
+<p-menubar
+  [model]="items"
+  [style]="{
+    'background-color': '#ada996',
+    background: 'linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea)'
+  }"
+>
   <ng-template pTemplate="start">
     <a [routerLink]="['/home']">
       <img src="../../../../../assets/img/logo.png" height="40" class="mr-2" />

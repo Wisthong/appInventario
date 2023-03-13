@@ -12,6 +12,7 @@ export class NavbarComponent {
 
   ngOnInit() {
     this.items = [
+      //TODO: Centros de operaciones
       {
         label: 'Centros de Operaciones',
         icon: 'pi pi-fw pi-th-large',
@@ -211,13 +212,14 @@ export class NavbarComponent {
         ],
       },
 
+      //TODO: Areas
       {
         label: 'Areas',
         icon: 'pi pi-fw pi-book',
         items: [
           {
             label: 'Bodega',
-            icon: 'pi pi-fw pi-pencil',
+            icon: 'pi pi-fw pi-circle-fill',
             items: [
               {
                 label: 'Listas',
@@ -249,7 +251,7 @@ export class NavbarComponent {
           },
           {
             label: 'Compras',
-            icon: 'pi pi-fw pi-pencil',
+            icon: 'pi pi-fw pi-circle-fill',
             items: [
               {
                 label: 'Listas',
@@ -281,7 +283,7 @@ export class NavbarComponent {
           },
           {
             label: 'Contabilidad',
-            icon: 'pi pi-fw pi-pencil',
+            icon: 'pi pi-fw pi-circle-fill',
             items: [
               {
                 label: 'Listas',
@@ -313,7 +315,7 @@ export class NavbarComponent {
           },
           {
             label: 'Inventario',
-            icon: 'pi pi-fw pi-pencil',
+            icon: 'pi pi-fw pi-circle-fill',
             items: [
               {
                 label: 'Listas',
@@ -345,7 +347,7 @@ export class NavbarComponent {
           },
           {
             label: 'Sistemas',
-            icon: 'pi pi-fw pi-pencil',
+            icon: 'pi pi-fw pi-circle-fill',
             items: [
               {
                 label: 'Listas',
@@ -377,7 +379,7 @@ export class NavbarComponent {
           },
           {
             label: 'Recursos humanos',
-            icon: 'pi pi-fw pi-pencil',
+            icon: 'pi pi-fw pi-circle-fill',
             items: [
               {
                 label: 'Listas',
@@ -409,7 +411,7 @@ export class NavbarComponent {
           },
           {
             label: 'Tesoreria',
-            icon: 'pi pi-fw pi-pencil',
+            icon: 'pi pi-fw pi-circle-fill',
             items: [
               {
                 label: 'Listas',
@@ -441,7 +443,7 @@ export class NavbarComponent {
           },
           {
             label: 'Ventas',
-            icon: 'pi pi-fw pi-pencil',
+            icon: 'pi pi-fw pi-circle-fill',
             items: [
               {
                 label: 'Listas',
@@ -473,7 +475,7 @@ export class NavbarComponent {
           },
           {
             label: 'Otro',
-            icon: 'pi pi-fw pi-pencil',
+            icon: 'pi pi-fw pi-circle-fill',
             items: [
               {
                 label: 'Listas',

@@ -1112,9 +1112,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
                 switch (params[1].path) {
                   case 'lista':
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                      const arrayTmp = data.filter(
-                        (m) => m.area === 'Ventas'
-                      );
+                      const arrayTmp = data.filter((m) => m.area === 'Ventas');
                       this.dataSource.data = arrayTmp;
 
                       arrayTmp.forEach((element) => {
@@ -1129,8 +1127,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
                   case 'activos':
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
                       const arrayTmp = data.filter(
-                        (m) =>
-                          m.area === 'Ventas' && m.estado === 'Activo'
+                        (m) => m.area === 'Ventas' && m.estado === 'Activo'
                       );
                       this.dataSource.data = arrayTmp;
 
@@ -1146,9 +1143,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
                   case 'inactivos':
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
                       const arrayTmp = data.filter(
-                        (m) =>
-                          m.area === 'Ventas' &&
-                          m.estado === 'Inactivo'
+                        (m) => m.area === 'Ventas' && m.estado === 'Inactivo'
                       );
                       this.dataSource.data = arrayTmp;
 
@@ -1166,8 +1161,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
                       const arrayTmp = data.filter(
                         (m) =>
-                          m.area === 'Ventas' &&
-                          m.estado === 'Mantenimiento'
+                          m.area === 'Ventas' && m.estado === 'Mantenimiento'
                       );
                       this.dataSource.data = arrayTmp;
                       arrayTmp.forEach((element) => {
@@ -1182,9 +1176,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
 
                   default:
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                      const arrayTmp = data.filter(
-                        (m) => m.area === 'Ventas'
-                      );
+                      const arrayTmp = data.filter((m) => m.area === 'Ventas');
                       arrayTmp.forEach((element) => {
                         this.dataSource.data = arrayTmp;
 
@@ -1219,8 +1211,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
                   case 'activos':
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
                       const arrayTmp = data.filter(
-                        (m) =>
-                          m.area === 'Tesoreria' && m.estado === 'Activo'
+                        (m) => m.area === 'Tesoreria' && m.estado === 'Activo'
                       );
                       this.dataSource.data = arrayTmp;
 
@@ -1236,9 +1227,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
                   case 'inactivos':
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
                       const arrayTmp = data.filter(
-                        (m) =>
-                          m.area === 'Tesoreria' &&
-                          m.estado === 'Inactivo'
+                        (m) => m.area === 'Tesoreria' && m.estado === 'Inactivo'
                       );
                       this.dataSource.data = arrayTmp;
 
@@ -1256,8 +1245,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
                       const arrayTmp = data.filter(
                         (m) =>
-                          m.area === 'Tesoreria' &&
-                          m.estado === 'Mantenimiento'
+                          m.area === 'Tesoreria' && m.estado === 'Mantenimiento'
                       );
                       this.dataSource.data = arrayTmp;
                       arrayTmp.forEach((element) => {
@@ -1292,9 +1280,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
                 switch (params[1].path) {
                   case 'lista':
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                      const arrayTmp = data.filter(
-                        (m) => m.area === 'Otro'
-                      );
+                      const arrayTmp = data.filter((m) => m.area === 'Otro');
                       this.dataSource.data = arrayTmp;
 
                       arrayTmp.forEach((element) => {
@@ -1309,8 +1295,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
                   case 'activos':
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
                       const arrayTmp = data.filter(
-                        (m) =>
-                          m.area === 'Otro' && m.estado === 'Activo'
+                        (m) => m.area === 'Otro' && m.estado === 'Activo'
                       );
                       this.dataSource.data = arrayTmp;
 
@@ -1326,9 +1311,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
                   case 'inactivos':
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
                       const arrayTmp = data.filter(
-                        (m) =>
-                          m.area === 'Otro' &&
-                          m.estado === 'Inactivo'
+                        (m) => m.area === 'Otro' && m.estado === 'Inactivo'
                       );
                       this.dataSource.data = arrayTmp;
 
@@ -1345,9 +1328,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
                   case 'mantenimiento':
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
                       const arrayTmp = data.filter(
-                        (m) =>
-                          m.area === 'Otro' &&
-                          m.estado === 'Mantenimiento'
+                        (m) => m.area === 'Otro' && m.estado === 'Mantenimiento'
                       );
                       this.dataSource.data = arrayTmp;
                       arrayTmp.forEach((element) => {
@@ -1362,9 +1343,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
 
                   default:
                     this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                      const arrayTmp = data.filter(
-                        (m) => m.area === 'Otro'
-                      );
+                      const arrayTmp = data.filter((m) => m.area === 'Otro');
                       arrayTmp.forEach((element) => {
                         this.dataSource.data = arrayTmp;
 

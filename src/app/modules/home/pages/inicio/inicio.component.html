@@ -41,7 +41,9 @@
         >
           Hostname
         </th>
-        <td mat-cell *matCellDef="let element">{{ element.hostname }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.hostname | uppercase }}
+        </td>
       </ng-container>
 
       <!-- Position Device -->
@@ -54,7 +56,9 @@
         >
           Dispositivo
         </th>
-        <td mat-cell *matCellDef="let element">{{ element.device }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.device | titlecase }}
+        </td>
       </ng-container>
 
       <!-- Symbol Column Descripcion-->
@@ -67,7 +71,9 @@
         >
           Descripcion
         </th>
-        <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.descripcion | titlecase }}
+        </td>
       </ng-container>
 
       <!-- Symbol Column Centro de operacion-->
@@ -80,7 +86,9 @@
         >
           Area
         </th>
-        <td mat-cell *matCellDef="let element">{{ element.area }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.area | titlecase }}
+        </td>
       </ng-container>
 
       <!-- Symbol Column Centro de operacion-->
@@ -93,7 +101,7 @@
         >
           Centro de operacion
         </th>
-        <td mat-cell *matCellDef="let element">{{ element.co }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.co | titlecase}}</td>
       </ng-container>
 
       <!-- Symbol Column Precio-->
@@ -122,7 +130,7 @@
           Proveedor
         </th>
         <td mat-cell *matCellDef="let element">
-          {{ element.providers }}
+          {{ element.providers | uppercase }}
         </td>
       </ng-container>
 
@@ -190,7 +198,7 @@
           Disco duro
         </th>
         <td mat-cell *matCellDef="let element">
-          {{ element.discoduro }}
+          {{ element.discoduro | titlecase}}
         </td>
       </ng-container>
 
@@ -217,7 +225,7 @@
         >
           Procesador
         </th>
-        <td mat-cell *matCellDef="let element">{{ element.procesador }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.procesador | titlecase}}</td>
       </ng-container>
 
       <!-- Weight SO -->
@@ -230,7 +238,7 @@
         >
           SO
         </th>
-        <td mat-cell *matCellDef="let element">{{ element.so }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.so | titlecase }}</td>
       </ng-container>
 
       <!-- Symbol Column Antivirus-->
@@ -243,7 +251,7 @@
         >
           Antivirus
         </th>
-        <td mat-cell *matCellDef="let element">{{ element.antivirus }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.antivirus | titlecase }}</td>
       </ng-container>
 
       <!-- Symbol Column Licencias-->
@@ -256,7 +264,7 @@
         >
           Licencias
         </th>
-        <td mat-cell *matCellDef="let element">{{ element.licencias }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.licencias | titlecase }}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

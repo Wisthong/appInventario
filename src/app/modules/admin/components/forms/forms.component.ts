@@ -101,9 +101,30 @@ export class FormsComponent implements OnInit {
     }
   }
 
-  onRegister() {
-    // console.log(this.deviceForm.getRawValue());
+  cleanForms(): void {
+    return this.deviceForm.setValue({
+      providers: '',
+      co: '',
+      device: '',
+      estado: '',
+      area: '',
+      discoduro: '',
+      numserie: '',
+      hostname: '',
+      so: '',
+      ip: '',
+      antivirus: '',
+      fecha_ingreso: '',
+      fecha_baja: '',
+      ram: 0,
+      descripcion: '',
+      procesador: '',
+      licencias: '',
+      precio: 0,
+    });
+  }
 
+  onRegister() {
     if (this.deviceForm.valid) {
       const body = this.deviceForm.getRawValue();
       if (this.id !== null) {
@@ -111,7 +132,7 @@ export class FormsComponent implements OnInit {
         this.hostnameSvc.actualizarDevice(body, this.id!).subscribe(
           (resOk) => {
             Swal.fire('Exitoso', resOk, 'success');
-            console.log(this.deviceForm.getRawValue());
+            this.cleanForms();
             this.router.navigate(['/admin']);
           },
           ({ error }: HttpErrorResponse) => {
@@ -122,7 +143,7 @@ export class FormsComponent implements OnInit {
         this.hostnameSvc.registrarDevice(body).subscribe(
           (resOk) => {
             Swal.fire('Exitoso', resOk, 'success');
-            console.log(this.deviceForm.getRawValue());
+            this.cleanForms();
             this.router.navigate(['/admin']);
           },
           ({ error }: HttpErrorResponse) => {
