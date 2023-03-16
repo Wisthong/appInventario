@@ -25,6 +25,22 @@ export class FormsComponent implements OnInit {
   };
   id!: string | null;
   estados = ['Activo', 'Inactivo', 'Mantenimiento'];
+  list_dispositivo = [
+    'Computador todo en uno',
+    'Computador portatil',
+    'Camara',
+    'DVR',
+    'Torre',
+    'Impresora',
+    'Lectores de barra',
+    'NVR',
+    'Router',
+    'Switch',
+    'Rasberry',
+    'Terminales',
+    'Televisor',
+    'Video beam',
+  ];
   list_centro_operacion = [
     'Avenida sexta',
     'Cedi',
@@ -48,7 +64,8 @@ export class FormsComponent implements OnInit {
   deviceForm = this.fb.nonNullable.group({
     providers: ['', [Validators.required, Validators.minLength(5)]],
     co: ['', [Validators.required]],
-    device: ['', [Validators.required, Validators.minLength(5)]],
+    device: ['', [Validators.required]],
+    // device: ['', [Validators.required, Validators.minLength(5)]],
     estado: ['', [Validators.required]],
     area: ['', [Validators.required]],
     discoduro: ['', [Validators.required, Validators.minLength(5)]],

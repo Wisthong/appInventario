@@ -52,12 +52,13 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
     'fecha_ingreso',
     'estado',
     'fecha_baja',
-    'discoduro',
-    'ram',
-    'procesador',
-    'so',
-    'antivirus',
-    'licencias',
+    // 'discoduro',
+    // 'ram',
+    // 'procesador',
+    // 'so',
+    // 'antivirus',
+    // 'licencias',
+    'accion',
   ];
 
   dataSource = new MatTableDataSource(this.listHost);
@@ -1381,6 +1382,10 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+
+  onDetails(id: string) {
+    this.router.navigate(['home/view/' + id]);
   }
 
   announceSortChange(sortState: Sort) {

@@ -34,6 +34,7 @@ export class GeneralComponent implements OnInit, AfterViewInit {
   titulo = 'Lista de todos los dispositivos';
   dataSource = new MatTableDataSource(this.listHost);
   displayedColumns: string[] = [
+    'qr',
     'ip',
     'hostname',
     'device',

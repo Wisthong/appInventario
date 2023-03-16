@@ -11,7 +11,26 @@
           <div class="col">
             <mat-form-field class="full-width">
               <mat-label>Dispositivo</mat-label>
-              <input
+              <mat-select
+                placeholder="Area / Departamento"
+                formControlName="device"
+              >
+                <mat-option
+                  *ngFor="let dispositivo of list_dispositivo"
+                  [value]="dispositivo"
+                >
+                  {{ dispositivo | titlecase }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  deviceForm.controls['device'].touched &&
+                  deviceForm.controls['device'].hasError('required')
+                "
+              >
+                Campo requerido
+              </mat-error>
+              <!-- <input
                 type="device"
                 matInput
                 formControlName="device"
@@ -24,15 +43,15 @@
                 "
               >
                 Campo requerido
-              </mat-error>
-              <mat-error
+              </mat-error> -->
+              <!-- <mat-error
                 *ngIf="
                   deviceForm.controls['device'].touched &&
                   deviceForm.controls['device'].hasError('minlength')
                 "
               >
                 Debes ingresar al menos 5 caracteres
-              </mat-error>
+              </mat-error> -->
             </mat-form-field>
           </div>
           <div class="col">
