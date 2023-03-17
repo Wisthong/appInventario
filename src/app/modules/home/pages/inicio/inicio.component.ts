@@ -51,7 +51,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
     'providers',
     'fecha_ingreso',
     'estado',
-    'fecha_baja',
+    // 'fecha_baja',
     // 'discoduro',
     // 'ram',
     // 'procesador',

@@ -26,17 +26,17 @@ export class FormsComponent implements OnInit {
   id!: string | null;
   estados = ['Activo', 'Inactivo', 'Mantenimiento'];
   list_dispositivo = [
+    'Camara',
     'Computador todo en uno',
     'Computador portatil',
-    'Camara',
     'DVR',
     'Torre',
     'Impresora',
     'Lectores de barra',
     'NVR',
     'Router',
-    'Switch',
     'Rasberry',
+    'Switch',
     'Terminales',
     'Televisor',
     'Video beam',

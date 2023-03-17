@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -9,6 +10,7 @@ import { MenuItem } from 'primeng/api';
 export class NavbarComponent {
   items!: MenuItem[];
   itemSesion!: MenuItem[];
+  private readonly router = inject(Router);
 
   ngOnInit() {
     this.items = [
@@ -507,19 +509,23 @@ export class NavbarComponent {
           },
         ],
       },
-      {
-        label: 'Iniciar Sesion',
-        icon: 'pi pi-fw pi-users',
-        routerLink: ['/home/login'],
-      },
+      // {
+      //   label: 'Iniciar Sesion',
+      //   icon: 'pi pi-fw pi-users',
+      //   routerLink: ['/home/login'],
+      // },
     ];
 
-    this.itemSesion = [
-      {
-        label: 'Iniciar Sesion',
-        icon: 'pi pi-fw pi-users',
-        routerLink: ['/home/login'],
-      },
-    ];
+    // this.itemSesion = [
+    //   {
+    //     label: 'Iniciar Sesion',
+    //     icon: 'pi pi-fw pi-users',
+    //     routerLink: ['/home/login'],
+    //   },
+    // ];
+  }
+
+  onRedirigir() {
+    this.router.navigate(['/home/login']);
   }
 }
