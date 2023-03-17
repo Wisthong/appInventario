@@ -1395,4 +1395,6 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
+
+
 }

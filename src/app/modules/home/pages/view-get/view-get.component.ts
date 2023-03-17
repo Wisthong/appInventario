@@ -15,11 +15,12 @@ export class ViewGetComponent implements OnInit {
   private readonly hostnameSvc = inject(HostnameService);
   private readonly authSvc = inject(AuthService);
   private readonly route = inject(ActivatedRoute);
+
   device!: Device;
   flag: boolean = false;
 
   ngOnInit(): void {
-    this.authSvc.validarToken().subscribe((resOk) => {
+     this.authSvc.validarToken().subscribe((resOk) => {
       if (resOk) {
         console.log(resOk);
 
@@ -40,4 +41,5 @@ export class ViewGetComponent implements OnInit {
       );
     }
   }
+
 }

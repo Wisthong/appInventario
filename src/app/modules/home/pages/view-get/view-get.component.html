@@ -8,6 +8,7 @@
   <!-- {{ device | json}} -->
 </div>
 
+
 <mat-card class="example-card" *ngIf="device">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
@@ -102,55 +103,62 @@
     </div>
   </div>
   <mat-card-content>
-    <p class="fw-bold">
-      IP: <em class="text-primary"> {{ device.ip }}</em>
+    <p>
+      <strong> IP:</strong> <em class="text-primary"> {{ device.ip }}</em>
     </p>
-    <p class="fw-bold">
-      Area: <em class="text-primary"> {{ device.area }}</em>
+    <p>
+      <strong>Area:</strong> <em class="text-primary"> {{ device.area }}</em>
     </p>
-    <p class="fw-bold">
-      Centro de operación: <em class="text-primary"> {{ device.co }}</em>
+    <p>
+      <strong>Centro de operación:</strong>
+      <em class="text-primary"> {{ device.co }}</em>
     </p>
-    <p class="fw-bold">
-      Valor de compra:
+    <p>
+      <strong>Valor de compra:</strong>
       <em class="text-primary"> {{ device.precio | currency : "COP" }}</em>
     </p>
-    <p class="fw-bold">
-      Proveedor: <em class="text-primary"> {{ device.providers }}</em>
+    <p>
+      <strong>Proveedor:</strong>
+      <em class="text-primary"> {{ device.providers }}</em>
     </p>
-    <p class="fw-bold">
-      Fecha de ingreso:<em class="text-primary">
-        {{ device.fecha_ingreso | date }}</em
-      >
+    <p>
+      <strong> Fecha de ingreso:</strong
+      ><em class="text-primary"> {{ device.fecha_ingreso | date }}</em>
     </p>
-    <p class="fw-bold">
-      Estado: <em class="text-primary"> {{ device.estado }}</em>
+    <p>
+      <strong> Estado:</strong>
+      <em class="text-primary"> {{ device.estado }}</em>
     </p>
-    <p class="fw-bold">
-      Fecha de baja:<em class="text-primary">
-        {{ device.fecha_baja | date }}</em
-      >
+    <p>
+      <strong>Fecha de baja:</strong
+      ><em class="text-primary"> {{ device.fecha_baja | date }}</em>
     </p>
-    <p class="fw-bold">
-      Disco duro: <em class="text-primary"> {{ device.discoduro }}</em>
+    <p>
+      <strong>Disco duro:</strong>
+      <em class="text-primary"> {{ device.discoduro }}</em>
     </p>
-    <p class="fw-bold">
-      Ram:<em class="text-primary"> {{ device.ram | gb }}</em>
+    <p>
+      <strong>Ram:</strong><em class="text-primary"> {{ device.ram | gb }}</em>
     </p>
-    <p class="fw-bold">
-      Procesador: <em class="text-primary"> {{ device.procesador }}</em>
+    <p>
+      <strong>Procesador:</strong>
+      <em class="text-primary"> {{ device.procesador }}</em>
     </p>
-    <p class="fw-bold">
-      Sistema Operativo: <em class="text-primary"> {{ device.so }}</em>
+    <p>
+      <strong>Sistema Operativo:</strong>
+      <em class="text-primary"> {{ device.so }}</em>
     </p>
-    <p class="fw-bold">
-      Antivirus: <em class="text-primary"> {{ device.antivirus }}</em>
+    <p>
+      <strong>Antivirus:</strong>
+      <em class="text-primary"> {{ device.antivirus }}</em>
     </p>
-    <p class="fw-bold">
-      Licencias: <em class="text-primary"> {{ device.licencias }}</em>
+    <p>
+      <strong> Licencias:</strong>
+      <em class="text-primary"> {{ device.licencias }}</em>
     </p>
-    <p class="fw-bold">
-      Descripción: <em class="text-primary"> {{ device.descripcion }}</em>
+    <p>
+      <strong>Descripción: </strong
+      ><em class="text-primary"> {{ device.descripcion }}</em>
     </p>
   </mat-card-content>
   <div class="btn-group gap-4 m-4">
