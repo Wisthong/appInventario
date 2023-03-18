@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Device } from 'src/app/modules/model/auth';
-import { AuthService } from 'src/app/modules/services/auth.service';
 import { HostnameService } from 'src/app/modules/services/hostname.service';
 import Swal from 'sweetalert2';
 
@@ -12,6 +11,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./forms.component.css'],
 })
 export class FormsComponent implements OnInit {
+  private readonly fb = inject(FormBuilder);
+  private readonly hostnameSvc = inject(HostnameService);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+
+  titulo: string = 'Formulario de registro de dispositivo';
+
   btn = {
     accion: 'Registrar',
     clase: 'primary',
@@ -19,6 +25,22 @@ export class FormsComponent implements OnInit {
   };
   id!: string | null;
   estados = ['Activo', 'Inactivo', 'Mantenimiento'];
+  list_dispositivo = [
+    'Camara',
+    'Computador todo en uno',
+    'Computador portatil',
+    'DVR',
+    'Torre',
+    'Impresora',
+    'Lectores de barra',
+    'NVR',
+    'Router',
+    'Rasberry',
+    'Switch',
+    'Terminales',
+    'Televisor',
+    'Video beam',
+  ];
   list_centro_operacion = [
     'Avenida sexta',
     'Cedi',
@@ -28,21 +50,22 @@ export class FormsComponent implements OnInit {
     'Pasoancho',
   ];
   list_areas = [
-    'Inventario',
-    'Recursos humanos',
+    'Bodega',
     'Compras',
     'Contabilidad',
+    'Inventario',
     'Sistemas',
+    'Recursos humanos',
     'Ventas',
-    'Tesoseria',
-    'Bodega',
+    'Tesoreria',
     'Otro',
   ];
 
   deviceForm = this.fb.nonNullable.group({
     providers: ['', [Validators.required, Validators.minLength(5)]],
     co: ['', [Validators.required]],
-    device: ['', [Validators.required, Validators.minLength(5)]],
+    device: ['', [Validators.required]],
+    // device: ['', [Validators.required, Validators.minLength(5)]],
     estado: ['', [Validators.required]],
     area: ['', [Validators.required]],
     discoduro: ['', [Validators.required, Validators.minLength(5)]],
@@ -60,26 +83,24 @@ export class FormsComponent implements OnInit {
     precio: [0, [Validators.required, Validators.min(3)]],
   });
 
-  constructor(
-    private readonly fb: FormBuilder,
-    private readonly authSvc: AuthService,
-    private readonly hostnameSvc: HostnameService,
-    private readonly router: Router,
-    private readonly route: ActivatedRoute
-  ) {}
-
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id !== null) {
+      this.titulo = 'Formulario de actualizacion de dispositivo';
       this.btn = {
         accion: 'Actualizar',
         clase: 'warn',
         icon: 'settings',
       };
       this.hostnameSvc.obtenerUno(this.id!).subscribe((resOk) => {
-        this.deviceForm.patchValue({
+        return this.deviceForm.patchValue({
+          providers: resOk.providers,
+          co: resOk.co,
           device: resOk.device,
           estado: resOk.estado,
+          area: resOk.area,
+          discoduro: resOk.discoduro,
+          numserie: resOk.numserie,
           hostname: resOk.hostname,
           so: resOk.so,
           ip: resOk.ip,
@@ -96,41 +117,62 @@ export class FormsComponent implements OnInit {
     }
   }
 
-  onRegister() {
-    console.log(this.deviceForm.getRawValue());
+  cleanForms(): void {
+    return this.deviceForm.setValue({
+      providers: '',
+      co: '',
+      device: '',
+      estado: '',
+      area: '',
+      discoduro: '',
+      numserie: '',
+      hostname: '',
+      so: '',
+      ip: '',
+      antivirus: '',
+      fecha_ingreso: '',
+      fecha_baja: '',
+      ram: 0,
+      descripcion: '',
+      procesador: '',
+      licencias: '',
+      precio: 0,
+    });
+  }
 
-    // if (this.deviceForm.valid) {
-    //   const body = this.deviceForm.getRawValue();
-    //   if (this.id !== null) {
-    //     //FIXME: Actualizar
-    //     this.hostnameSvc.actualizarDevice(body, this.id!).subscribe(
-    //       (resOk) => {
-    //         Swal.fire('Exitoso', resOk, 'success');
-    //         console.log(this.deviceForm.getRawValue());
-    //         this.router.navigate(['/admin']);
-    //       },
-    //       (resFail) => {
-    //         Swal.fire('Error', 'No se pudo', 'error');
-    //       }
-    //     );
-    //   } else {
-    //     this.hostnameSvc.registrarDevice(body).subscribe(
-    //       (resOk) => {
-    //         Swal.fire('Exitoso', resOk, 'success');
-    //         console.log(this.deviceForm.getRawValue());
-    //         this.router.navigate(['/admin']);
-    //       },
-    //       (resFail) => {
-    //         Swal.fire('Error', 'No se pudo', 'error');
-    //       }
-    //     );
-    //   }
-    // } else {
-    //   Swal.fire(
-    //     'Aviso',
-    //     'Faltan campos por llenar, por favor intenta nuevamente',
-    //     'info'
-    //   );
-    // }
+  onRegister() {
+    if (this.deviceForm.valid) {
+      const body = this.deviceForm.getRawValue();
+      if (this.id !== null) {
+        //FIXME: Actualizar
+        this.hostnameSvc.actualizarDevice(body, this.id!).subscribe(
+          (resOk) => {
+            Swal.fire('Exitoso', resOk, 'success');
+            this.cleanForms();
+            this.router.navigate(['/admin']);
+          },
+          ({ error }: HttpErrorResponse) => {
+            Swal.fire('Advertencia', error.message, 'warning');
+          }
+        );
+      } else {
+        this.hostnameSvc.registrarDevice(body).subscribe(
+          (resOk) => {
+            Swal.fire('Exitoso', resOk, 'success');
+            this.cleanForms();
+            this.router.navigate(['/admin']);
+          },
+          ({ error }: HttpErrorResponse) => {
+            Swal.fire('Advertencia', error.message, 'warning');
+          }
+        );
+      }
+    } else {
+      Swal.fire(
+        'Aviso',
+        'Faltan campos por llenar, por favor intenta nuevamente',
+        'info'
+      );
+    }
   }
 }

@@ -1,12 +1,118 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <section class="pt-4">
-    <h1 class="mt-5 text-center fw-bolder">Menu Dashboard</h1>
-    <blockquote>
+  <section class="my-2">
+    <h1 class="text-center fw-bolder">Menu Dashboard</h1>
+    <p class="lh-1">
       Has accedido al menú Dashboard del inventario de la
-      <blockquote class="text-white">Papeleria Universal. Distribuidora SAS Universal.</blockquote>
-      En la barra superior de la derecha, puedes mirar el menú y elegir tu
+      <strong> Papeleria Universal.</strong>
+      En la barra superior de esta ubicado un menú, en el cual puedes elegir tu
       opcion de preferencia.
-    </blockquote>
+    </p>
+
+    <div class="row">
+      <div class="col-8">
+        <mat-accordion>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title> Información de Usuario </mat-panel-title>
+              <mat-panel-description>
+                Expandir {{ panelOpenState ? "si" : "no" }}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>
+              Nombre: <strong class="text-primary">{{ usuario.name }}</strong>
+            </p>
+            <p>
+              Apellido:
+              <strong class="text-primary">{{ usuario.lastname }}</strong>
+            </p>
+            <p>
+              Rol:
+              <strong class="text-primary">{{
+                usuario.role?.[0] | titlecase
+              }}</strong>
+            </p>
+            <p>
+              Email: <strong class="text-primary">{{ usuario.email }}</strong>
+            </p>
+            <p>
+              Avatar:
+              <img
+                [src]="['../../../../../assets/img/login.png']"
+                [width]="80"
+                alt=""
+                srcset=""
+              />
+            </p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+      <!-- Slider de fotos -->
+      <div
+        id="carouselExampleControls"
+        class="carousel slide py-3"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              [src]="['../../../../../assets/img/carousel.jpg']"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Papeleria Universal</h5>
+              <p>Mes de la mujer</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              [src]="['../../../../../assets/img/carousel1.jpg']"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Papeleria Universal</h5>
+              <p>Nuestros productos</p>
+            </div>
+          </div>
+          <!-- <div class="carousel-item">
+            <img
+              [src]="[
+                'https://lh3.googleusercontent.com/p/AF1QipMPFOQP-EEZxgAzpBGp2deXr0byoTbCKWqKtBaA=s680-w680-h510'
+              ]"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Papeleria Universal</h5>
+              <p>Sede Centro</p>
+            </div>
+          </div> -->
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
+      </div>
+    </div>
   </section>
 </div>

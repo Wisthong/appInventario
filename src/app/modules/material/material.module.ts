@@ -1,3 +1,5 @@
+import { MenuItem } from 'primeng/api';
+import { MenubarModule } from 'primeng/menubar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -15,6 +17,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSortModule } from '@angular/material/sort';
 import { TableModule } from 'primeng/table';
 import { MatTableModule } from '@angular/material/table';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -34,6 +39,10 @@ import { MatTableModule } from '@angular/material/table';
     TableModule,
     MatSortModule,
     MatTableModule,
+    MenubarModule,
+    ProgressSpinnerModule,
+    MatExpansionModule,
+    MatPaginatorModule,
   ],
 })
 export class MaterialModule {}

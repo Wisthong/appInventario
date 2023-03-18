@@ -11,6 +11,7 @@ import { SharedModule } from '../shared/shared.module';
 import { GeneralComponent } from './pages/listas/general/general.component';
 import { CerrarsesionComponent } from './components/cerrarsesion/cerrarsesion.component';
 import { GbPipe } from './pipes/gb.pipe';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { GbPipe } from './pipes/gb.pipe';
     MaterialModule,
     ReactiveFormsModule,
     SharedModule,
+    QRCodeModule,
   ],
   exports: [GbPipe],
 })

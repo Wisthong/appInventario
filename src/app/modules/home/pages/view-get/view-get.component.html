@@ -1,0 +1,181 @@
+<app-navbar></app-navbar>
+
+<div class="container my-2">
+  <h1 class="text-center fw-bolder my-2">
+    Inventario Papeleria Universal Distribuidora SAS
+  </h1>
+  <h4 class="text-center fw-bold">Detalles de dispostivo</h4>
+  <!-- {{ device | json}} -->
+</div>
+
+
+<mat-card class="example-card" *ngIf="device">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title> {{ device.device }} </mat-card-title>
+    <mat-card-subtitle> {{ device.hostname }} </mat-card-subtitle>
+  </mat-card-header>
+  <div [ngSwitch]="device.device" class="container text-center">
+    <div *ngSwitchCase="'Computador todo en uno'">
+      <img
+        mat-card-image
+        src="https://pcsystemcolombia.com/wp-content/uploads/2020/11/Todo-En-Uno-HP-200-G4-22.png"
+        alt="Photo of a Shiba Inu"
+      />
+    </div>
+    <div *ngSwitchCase="'Computador portatil'">
+      <img
+        mat-card-image
+        src="https://winphonemetro.com/files/2017/09/HP-EliteBook-1040-G4.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+    </div>
+    <div *ngSwitchCase="'Camara'">
+      <img
+        mat-card-image
+        src="https://bydemes.com/ByDemesFiles/images/DAHUA-2617-FO.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+    </div>
+    <div *ngSwitchCase="'DVR'">
+      <img
+        mat-card-image
+        src="https://www.startech.com.bd/image/cache/catalog/DVR/Hikvision/HIKVISION%20DS-7204HGHI-F1-500x500.jpg"
+        alt="Foto DVR"
+      />
+    </div>
+    <div *ngSwitchCase="'Impresora'">
+      <img
+        mat-card-image
+        src="https://impresoras.com.co/wp-content/uploads/2022/05/Impresora-HP-multifuncion-Smart-Tank-750-ll.png"
+        alt="Foto de Impresora"
+      />
+    </div>
+    <div *ngSwitchCase="'Lectores de barra'">
+      <img
+        mat-card-image
+        src="https://www.elplural.com/uploads/s1/11/32/43/0/los-mejores-lectores-de-codigos-de-barras.jpeg"
+        alt="Foto de Lectores de barra"
+      />
+    </div>
+    <div *ngSwitchCase="'NVR'">
+      <img
+        mat-card-image
+        src="https://www.excelbd.com/wp-content/uploads/2022/08/DS-8661.jpg"
+        alt="Foto de NVR"
+      />
+    </div>
+    <div *ngSwitchCase="'Router'">
+      <img
+        mat-card-image
+        src="https://http2.mlstatic.com/D_NQ_NP_788930-MCO46885328490_072021-O.jpg"
+        alt="Foto de Router"
+      />
+    </div>
+    <div *ngSwitchCase="'Switch'">
+      <img
+        mat-card-image
+        src="https://www.guiahardware.es/wp-content/uploads/2019/04/mejores-switches-baratos-1024x538.jpg"
+        alt="Foto de Switch"
+      />
+    </div>
+    <div *ngSwitchCase="'Televisor'">
+      <img
+        mat-card-image
+        src="https://www.lg.com/co/images/televisores/md07550995/gallery/1100x55UQ8000PSB.jpg"
+        alt="Foto de Televisor"
+      />
+    </div>
+    <div *ngSwitchCase="'Video beam'">
+      <img
+        mat-card-image
+        src="https://ml8iidrzyich.i.optimole.com/cb:eBgE~2504/w:600/h:600/q:mauto/rt:fill/g:ce/f:avif/https://digiformats.com/wp-content/uploads/2020/11/homecinema1.gif"
+        alt="Foto de Video beam"
+      />
+    </div>
+
+    <div *ngSwitchDefault>
+      <img
+        mat-card-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+    </div>
+  </div>
+  <mat-card-content>
+    <p>
+      <strong> IP:</strong> <em class="text-primary"> {{ device.ip }}</em>
+    </p>
+    <p>
+      <strong>Area:</strong> <em class="text-primary"> {{ device.area }}</em>
+    </p>
+    <p>
+      <strong>Centro de operación:</strong>
+      <em class="text-primary"> {{ device.co }}</em>
+    </p>
+    <p>
+      <strong>Valor de compra:</strong>
+      <em class="text-primary"> {{ device.precio | currency : "COP" }}</em>
+    </p>
+    <p>
+      <strong>Proveedor:</strong>
+      <em class="text-primary"> {{ device.providers }}</em>
+    </p>
+    <p>
+      <strong> Fecha de ingreso:</strong
+      ><em class="text-primary"> {{ device.fecha_ingreso | date }}</em>
+    </p>
+    <p>
+      <strong> Estado:</strong>
+      <em class="text-primary"> {{ device.estado }}</em>
+    </p>
+    <p>
+      <strong>Fecha de baja:</strong
+      ><em class="text-primary"> {{ device.fecha_baja | date }}</em>
+    </p>
+    <p>
+      <strong>Disco duro:</strong>
+      <em class="text-primary"> {{ device.discoduro }}</em>
+    </p>
+    <p>
+      <strong>Ram:</strong><em class="text-primary"> {{ device.ram | gb }}</em>
+    </p>
+    <p>
+      <strong>Procesador:</strong>
+      <em class="text-primary"> {{ device.procesador }}</em>
+    </p>
+    <p>
+      <strong>Sistema Operativo:</strong>
+      <em class="text-primary"> {{ device.so }}</em>
+    </p>
+    <p>
+      <strong>Antivirus:</strong>
+      <em class="text-primary"> {{ device.antivirus }}</em>
+    </p>
+    <p>
+      <strong> Licencias:</strong>
+      <em class="text-primary"> {{ device.licencias }}</em>
+    </p>
+    <p>
+      <strong>Descripción: </strong
+      ><em class="text-primary"> {{ device.descripcion }}</em>
+    </p>
+  </mat-card-content>
+  <div class="btn-group gap-4 m-4">
+    <a role="button" [routerLink]="['/home']" mat-raised-button color="primary">
+      <mat-icon>undo</mat-icon> Regresar
+    </a>
+
+    <a
+      *ngIf="flag"
+      role="button"
+      [routerLink]="['/admin/update/' + device._id]"
+      mat-raised-button
+      matTooltip="Actualizar"
+      color="warn"
+    >
+      <mat-icon>build</mat-icon> Actualizar
+    </a>
+  </div>
+  <mat-card-actions> </mat-card-actions>
+</mat-card>
