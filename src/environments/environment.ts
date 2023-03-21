@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   apiUrl: 'http://192.168.40.51:3001/api',
   // apiUrl: 'http://192.168.40.47:3001/api',
   // apiUrl: 'http://apiinventario-production-33fc.up.railway.app/api',
