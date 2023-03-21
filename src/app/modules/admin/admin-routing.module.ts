@@ -215,26 +215,26 @@ const routes: Routes = [
     title: 'Inventario dispositivos mantenimiento',
   },
 
-  //TODO: Rutas la 14
+  //TODO: Rutas la Calima
   {
-    path: '14/lista',
+    path: 'calima/lista',
     component: GeneralComponent,
-    title: '14 Lista de dispositivos',
+    title: 'Calima Lista de dispositivos',
   },
   {
-    path: '14/activos',
+    path: 'calima/activos',
     component: GeneralComponent,
-    title: '14 dispositivos activos',
+    title: 'Calima dispositivos activos',
   },
   {
-    path: '14/inactivos',
+    path: 'calima/inactivos',
     component: GeneralComponent,
-    title: '14 dispositivos inactivos',
+    title: 'Calima dispositivos inactivos',
   },
   {
-    path: '14/mantenimiento',
+    path: 'calima/mantenimiento',
     component: GeneralComponent,
-    title: '14 dispositivos mantenimiento',
+    title: 'Calima dispositivos mantenimiento',
   },
 
   //TODO: Rutas Avenida Sexta

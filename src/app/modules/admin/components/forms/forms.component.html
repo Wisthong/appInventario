@@ -552,7 +552,13 @@
       </mat-card-content>
 
       <div class="d-grid mx-4 mb-3">
-        <button type="submit" mat-fab extended color="{{ btn.clase }}" class="">
+        <button
+          class="animate__animated animate__pulse animate__repeat-3"
+          type="submit"
+          mat-fab
+          extended
+          color="{{ btn.clase }}"
+        >
           <mat-icon> {{ btn.icon }} </mat-icon>
           {{ btn.accion }}
         </button>

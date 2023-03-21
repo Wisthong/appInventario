@@ -4,12 +4,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SigninComponent } from './pages/signin/signin.component';
+import { BienvenidaComponent } from './pages/bienvenida/bienvenida.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'lista',
+    redirectTo: 'bienvenida',
     pathMatch: 'full',
+  },
+  {
+    path: '',
+    component: BienvenidaComponent,
+    title: 'Bienvenida',
   },
   {
     path: 'lista',
@@ -224,26 +230,26 @@ const routes: Routes = [
     title: 'Inventario dispositivos mantenimiento',
   },
 
-  //TODO: Rutas la 14
+  //TODO: Rutas la calima
   {
-    path: '14/lista',
+    path: 'calima/lista',
     component: InicioComponent,
-    title: '14 Lista de dispositivos',
+    title: 'Calima Lista de dispositivos',
   },
   {
-    path: '14/activos',
+    path: 'calima/activos',
     component: InicioComponent,
-    title: '14 dispositivos activos',
+    title: 'Calima dispositivos activos',
   },
   {
-    path: '14/inactivos',
+    path: 'calima/inactivos',
     component: InicioComponent,
-    title: '14 dispositivos inactivos',
+    title: 'Calima dispositivos inactivos',
   },
   {
-    path: '14/mantenimiento',
+    path: 'calima/mantenimiento',
     component: InicioComponent,
-    title: '14 dispositivos mantenimiento',
+    title: 'Calima dispositivos mantenimiento',
   },
 
   //TODO: Rutas Avenida Sexta
