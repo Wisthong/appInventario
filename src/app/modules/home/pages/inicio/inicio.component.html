@@ -10,6 +10,17 @@
 </div>
 
 <ng-container>
+  <div class="container text-center">
+    <mat-form-field>
+      <mat-label> <mat-icon>search</mat-icon> Parametro de busqueda</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Developer"
+        #input
+      />
+    </mat-form-field>
+  </div>
   <div class="table-responsive">
     <table
       mat-table
@@ -30,7 +41,7 @@
         </th>
         <td mat-cell *matCellDef="let element">
           <qrcode
-            [qrdata]="'http://192.168.40.51:4200/home/view/' + element._id"
+            [qrdata]="'http://' + local + '/home/view/' + element._id"
             [width]="70"
             [errorCorrectionLevel]="'L'"
           ></qrcode>

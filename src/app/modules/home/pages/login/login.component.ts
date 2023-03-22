@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  hide = true;
+
   fb = inject(FormBuilder);
   authSvc = inject(AuthService);
   router = inject(Router);

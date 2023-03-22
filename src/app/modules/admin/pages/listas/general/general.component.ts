@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Device } from 'src/app/modules/model/auth';
 import { AuthService } from 'src/app/modules/services/auth.service';
 import { HostnameService } from 'src/app/modules/services/hostname.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -28,6 +29,8 @@ export class GeneralComponent implements OnInit, AfterViewInit {
   private readonly hostnameSvc = inject(HostnameService);
   private readonly route = inject(ActivatedRoute);
   private readonly _liveAnnouncer = inject(LiveAnnouncer);
+
+  public readonly local = environment.direccion + ':' + environment.port;
 
   totalPorEstado: number = 0;
   listHost: Device[] = [];
@@ -1379,5 +1382,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

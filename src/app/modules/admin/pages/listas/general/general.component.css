@@ -10,3 +10,9 @@
   background-color: #ffba08;
   color: white;
 }
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  text-align: center;
+  width: 80%;
+}
