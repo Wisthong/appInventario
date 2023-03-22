@@ -22,9 +22,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path:'**',
-    component: NotfoundComponent
-  }
+    path: '**',
+    component: NotfoundComponent,
+    title: 'Recurso no accesible',
+  },
 ];
 
 @NgModule({

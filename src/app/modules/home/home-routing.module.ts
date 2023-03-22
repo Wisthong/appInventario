@@ -256,66 +256,66 @@ const routes: Routes = [
   {
     path: 'avenidasexta/lista',
     component: InicioComponent,
-    title: 'avenidasexta Lista de dispositivos',
+    title: 'Avenidasexta Lista de dispositivos',
   },
   {
     path: 'avenidasexta/activos',
     component: InicioComponent,
-    title: 'avenidasexta dispositivos activos',
+    title: 'Avenidasexta dispositivos activos',
   },
   {
     path: 'avenidasexta/inactivos',
     component: InicioComponent,
-    title: 'avenidasexta dispositivos inactivos',
+    title: 'Avenidasexta dispositivos inactivos',
   },
   {
     path: 'avenidasexta/mantenimiento',
     component: InicioComponent,
-    title: 'avenidasexta dispositivos mantenimiento',
+    title: 'Avenidasexta dispositivos mantenimiento',
   },
 
   //TODO: Rutas Cedi
   {
     path: 'cedi/lista',
     component: InicioComponent,
-    title: 'cedi Lista de dispositivos',
+    title: 'Cedi Lista de dispositivos',
   },
   {
     path: 'cedi/activos',
     component: InicioComponent,
-    title: 'cedi dispositivos activos',
+    title: 'Cedi dispositivos activos',
   },
   {
     path: 'cedi/inactivos',
     component: InicioComponent,
-    title: 'cedi dispositivos inactivos',
+    title: 'Cedi dispositivos inactivos',
   },
   {
     path: 'cedi/mantenimiento',
     component: InicioComponent,
-    title: 'cedi dispositivos mantenimiento',
+    title: 'Cedi dispositivos mantenimiento',
   },
 
   //TODO: Rutas Centro
   {
     path: 'centro/lista',
     component: InicioComponent,
-    title: 'centro Lista de dispositivos',
+    title: 'Centro Lista de dispositivos',
   },
   {
     path: 'centro/activos',
     component: InicioComponent,
-    title: 'centro dispositivos activos',
+    title: 'Centro dispositivos activos',
   },
   {
     path: 'centro/inactivos',
     component: InicioComponent,
-    title: 'centro dispositivos inactivos',
+    title: 'Centro dispositivos inactivos',
   },
   {
     path: 'centro/mantenimiento',
     component: InicioComponent,
-    title: 'centro dispositivos mantenimiento',
+    title: 'Centro dispositivos mantenimiento',
   },
 
   //TODO: Rutas Cosmocentro
@@ -344,22 +344,22 @@ const routes: Routes = [
   {
     path: 'pasoancho/lista',
     component: InicioComponent,
-    title: 'pasoancho Lista de dispositivos',
+    title: 'Pasoancho Lista de dispositivos',
   },
   {
     path: 'pasoancho/activos',
     component: InicioComponent,
-    title: 'pasoancho dispositivos activos',
+    title: 'Pasoancho dispositivos activos',
   },
   {
     path: 'pasoancho/inactivos',
     component: InicioComponent,
-    title: 'pasoancho dispositivos inactivos',
+    title: 'Pasoancho dispositivos inactivos',
   },
   {
     path: 'pasoancho/mantenimiento',
     component: InicioComponent,
-    title: 'pasoancho dispositivos mantenimiento',
+    title: 'Pasoancho dispositivos mantenimiento',
   },
 
   {

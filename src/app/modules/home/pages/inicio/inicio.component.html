@@ -11,6 +11,15 @@
 
 <ng-container>
   <div class="table-responsive">
+    <mat-form-field>
+      <mat-label> <mat-icon>search</mat-icon> Parametro de busqueda</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Developer"
+        #input
+      />
+    </mat-form-field>
     <table
       mat-table
       [dataSource]="dataSource"

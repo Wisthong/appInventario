@@ -11,3 +11,9 @@
   color: white;
 }
 
+.mat-mdc-form-field {
+  font-size: 14px;
+  text-align: center;
+  align-items: center;
+  width: 50%;
+}
