@@ -22,23 +22,23 @@
                 Expandir {{ panelOpenState ? "si" : "no" }}
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <p>
+            <p class="text-dark">
               Nombre: <strong class="text-primary">{{ usuario.name }}</strong>
             </p>
-            <p>
+            <p class="text-dark">
               Apellido:
               <strong class="text-primary">{{ usuario.lastname }}</strong>
             </p>
-            <p>
+            <p class="text-dark">
               Rol:
               <strong class="text-primary">{{
                 usuario.role?.[0] | titlecase
               }}</strong>
             </p>
-            <p>
+            <p class="text-dark">
               Email: <strong class="text-primary">{{ usuario.email }}</strong>
             </p>
-            <p>
+            <p class="text-dark">
               Avatar:
               <img
                 [src]="['../../../../../assets/img/login.png']"

@@ -168,11 +168,11 @@ export class GeneralComponent implements OnInit, AfterViewInit {
             }
             break;
 
-          case '14':
+          case 'calima':
             switch (params[1].path) {
               case 'lista':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
-                  const arrayTmp = data.filter((m) => m.co === '14');
+                  const arrayTmp = data.filter((m) => m.co === 'Calima');
                   this.dataSource.data = arrayTmp;
 
                   arrayTmp.forEach((element) => {
@@ -187,7 +187,7 @@ export class GeneralComponent implements OnInit, AfterViewInit {
               case 'activos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
                   const arrayTmp = data.filter(
-                    (m) => m.co === '14' && m.estado === 'Activo'
+                    (m) => m.co === 'Calima' && m.estado === 'Activo'
                   );
                   this.dataSource.data = arrayTmp;
 
@@ -203,7 +203,7 @@ export class GeneralComponent implements OnInit, AfterViewInit {
               case 'inactivos':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
                   const arrayTmp = data.filter(
-                    (m) => m.co === '14' && m.estado === 'Inactivo'
+                    (m) => m.co === 'Calima' && m.estado === 'Inactivo'
                   );
                   this.dataSource.data = arrayTmp;
 
@@ -220,7 +220,7 @@ export class GeneralComponent implements OnInit, AfterViewInit {
               case 'mantenimiento':
                 this.hostnameSvc.obtenerLista().subscribe(({ data }) => {
                   const arrayTmp = data.filter(
-                    (m) => m.co === '14' && m.estado === 'Mantenimiento'
+                    (m) => m.co === 'Calima' && m.estado === 'Mantenimiento'
                   );
                   this.dataSource.data = arrayTmp;
 

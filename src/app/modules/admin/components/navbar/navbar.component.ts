@@ -20,46 +20,14 @@ export class NavbarComponent {
     this.items = [
       //TODO: Centros de Operaciones
       {
+        label: 'Lista general',
+        icon: 'pi pi-fw pi-list',
+        routerLink: ['/admin/lista'],
+      },
+      {
         label: 'Centros de Operaciones',
         icon: 'pi pi-fw pi-th-large',
         items: [
-          {
-            label: 'Lista general',
-            icon: 'pi pi-fw pi-list',
-            routerLink: ['/admin/lista'],
-          },
-          {
-            label: '14',
-            icon: 'pi pi-fw pi-circle-fill',
-            items: [
-              {
-                label: 'Listas',
-                icon: 'pi pi-fw pi-list',
-                items: [
-                  {
-                    label: 'General',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/admin/14/lista'],
-                  },
-                  {
-                    label: 'Activos',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/admin/14/activos'],
-                  },
-                  {
-                    label: 'Inactivos',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/admin/14/inactivos'],
-                  },
-                  {
-                    label: 'Mantenimiento',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/admin/14/mantenimiento'],
-                  },
-                ],
-              },
-            ],
-          },
           {
             label: 'Avenida sexta',
             icon: 'pi pi-fw pi-circle-fill',
@@ -87,6 +55,38 @@ export class NavbarComponent {
                     label: 'Mantenimiento',
                     icon: 'pi pi-fw pi-filter-fill',
                     routerLink: ['/admin/avenidasexta/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Calima',
+            icon: 'pi pi-fw pi-circle-fill',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/calima/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/calima/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/calima/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/calima/mantenimiento'],
                   },
                 ],
               },

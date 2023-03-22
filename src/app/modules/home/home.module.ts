@@ -12,6 +12,7 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { AdminModule } from '@admin/admin.module';
 import { ViewGetComponent } from './pages/view-get/view-get.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { BienvenidaComponent } from './pages/bienvenida/bienvenida.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     LoginComponent,
     SigninComponent,
     ViewGetComponent,
+    BienvenidaComponent,
   ],
   imports: [
     CommonModule,
