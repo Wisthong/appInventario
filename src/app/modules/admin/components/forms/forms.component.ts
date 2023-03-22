@@ -43,8 +43,8 @@ export class FormsComponent implements OnInit {
   ];
   list_centro_operacion = [
     'Avenida sexta',
-    'Cedi',
     'Calima',
+    'Cedi',
     'Centro',
     'Cosmocentro',
     'Pasoancho',

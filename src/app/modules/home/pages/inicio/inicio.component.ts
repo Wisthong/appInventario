@@ -16,6 +16,7 @@ import { Subject, Subscription } from 'rxjs';
 import { Device } from 'src/app/modules/model/auth';
 import { AuthService } from 'src/app/modules/services/auth.service';
 import { HostnameService } from 'src/app/modules/services/hostname.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-inicio',
@@ -32,6 +33,8 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
   private readonly authSvc = inject(AuthService);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+
+  public readonly local = environment.direccion + ':' + environment.port;
 
   listObservers$: Array<Subscription> = [];
 
