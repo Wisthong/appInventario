@@ -1,6 +1,6 @@
 import { ResponseAuth, ResponseData } from './../model/auth';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Device, ResponseTrue } from '../model/auth';
@@ -11,7 +11,7 @@ import { Device, ResponseTrue } from '../model/auth';
 export class HostnameService {
   private readonly apiUrl = environment.apiUrl;
 
-  constructor(private readonly http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   obtenerLista(): Observable<ResponseTrue> {
     return this.http.get<ResponseTrue>(this.apiUrl + '/devices');

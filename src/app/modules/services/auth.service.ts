@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { ResponseAuth, User } from '../model/auth';
@@ -8,8 +8,9 @@ import { ResponseAuth, User } from '../model/auth';
   providedIn: 'root',
 })
 export class AuthService {
+  private readonly http = inject(HttpClient);
+
   private readonly apiUrl = environment.apiUrl;
-  constructor(private readonly http: HttpClient) {}
 
   private _usuario!: User;
 
