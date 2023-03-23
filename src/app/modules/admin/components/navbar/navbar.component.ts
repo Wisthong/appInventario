@@ -356,38 +356,6 @@ export class NavbarComponent {
             ],
           },
           {
-            label: 'Sistemas',
-            icon: 'pi pi-fw pi-circle-fill',
-            items: [
-              {
-                label: 'Listas',
-                icon: 'pi pi-fw pi-list',
-                items: [
-                  {
-                    label: 'General',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/admin/sistemas/lista'],
-                  },
-                  {
-                    label: 'Activos',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/admin/sistemas/activos'],
-                  },
-                  {
-                    label: 'Inactivos',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/admin/sistemas/inactivos'],
-                  },
-                  {
-                    label: 'Mantenimiento',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/admin/sistemas/mantenimiento'],
-                  },
-                ],
-              },
-            ],
-          },
-          {
             label: 'Recursos humanos',
             icon: 'pi pi-fw pi-circle-fill',
             items: [
@@ -414,6 +382,38 @@ export class NavbarComponent {
                     label: 'Mantenimiento',
                     icon: 'pi pi-fw pi-filter-fill',
                     routerLink: ['/admin/recursoshumanos/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Sistemas',
+            icon: 'pi pi-fw pi-circle-fill',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/sistemas/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/sistemas/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/sistemas/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/sistemas/mantenimiento'],
                   },
                 ],
               },

@@ -135,7 +135,7 @@
                   deviceForm.controls['ip'].hasError('minlength')
                 "
               >
-                Debes ingresar al menos 11 caracteres
+                Debes ingresar al menos 13 caracteres
               </mat-error>
             </mat-form-field>
           </div>
@@ -322,7 +322,7 @@
                 formControlName="discoduro"
                 placeholder="Sata 1 tera"
               />
-              <mat-error
+              <!-- <mat-error
                 *ngIf="
                   deviceForm.controls['discoduro'].touched &&
                   deviceForm.controls['discoduro'].hasError('required')
@@ -337,7 +337,7 @@
                 "
               >
                 Debes ingresar al menos 5 caracter
-              </mat-error>
+              </mat-error> -->
             </mat-form-field>
           </div>
         </div>
@@ -360,14 +360,14 @@
               >
                 Campo requerido
               </mat-error>
-              <mat-error
+              <!-- <mat-error
                 *ngIf="
                   deviceForm.controls['precio'].touched &&
                   deviceForm.controls['precio'].hasError('min')
                 "
               >
                 Debes ingresar al menos 5 caracteres
-              </mat-error>
+              </mat-error> -->
             </mat-form-field>
           </div>
 
@@ -448,7 +448,7 @@
                 formControlName="antivirus"
                 placeholder="Avast"
               />
-              <mat-error
+              <!-- <mat-error
                 *ngIf="
                   deviceForm.controls['antivirus'].touched &&
                   deviceForm.controls['antivirus'].hasError('required')
@@ -463,7 +463,7 @@
                 "
               >
                 Debes ingresar al menos 5 caracteres
-              </mat-error>
+              </mat-error> -->
             </mat-form-field>
           </div>
           <div class="col">
@@ -504,7 +504,7 @@
                 placeholder="Licencias del dispositivo"
                 formControlName="licencias"
               ></textarea>
-              <mat-error
+              <!-- <mat-error
                 *ngIf="
                   deviceForm.controls['licencias'].touched &&
                   deviceForm.controls['licencias'].hasError('required')
@@ -519,7 +519,7 @@
                 "
               >
                 Debes ingresar al menos 5 caracteres
-              </mat-error>
+              </mat-error> -->
             </mat-form-field>
           </div>
           <div class="col">

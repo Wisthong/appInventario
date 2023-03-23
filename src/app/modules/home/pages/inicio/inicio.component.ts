@@ -31,8 +31,8 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
   private readonly _liveAnnouncer = inject(LiveAnnouncer);
   private readonly hostnameSvc = inject(HostnameService);
   private readonly authSvc = inject(AuthService);
-  private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
 
   public readonly local = environment.direccion + ':' + environment.port;
 
