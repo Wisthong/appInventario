@@ -534,8 +534,35 @@ export class NavbarComponent {
   }
 
   onCerrarSesion() {
-    this.authSvc.logout();
-    Swal.fire('Aviso', 'Has cerrado sesión', 'info');
-    this.router.navigate(['/home']);
+    Swal.fire({
+      title: '¿Estas seguro de cerrar la sesión?',
+      icon: 'question',
+      showDenyButton: true,
+      // showCancelButton: true,
+      confirmButtonText: 'Si',
+      denyButtonText: 'No',
+      customClass: {
+        actions: 'my-actions',
+        // cancelButton: 'order-1 right-gap',
+        confirmButton: 'order-1',
+        denyButton: 'order-2',
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.authSvc.logout();
+        Swal.fire({
+          icon: 'info',
+          title: 'Has cerrado sesión',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 1500);
+      }
+      // else if (result.isDenied) {
+      //   // Swal.fire('Accion', '', 'info');
+      // }
+    });
   }
 }

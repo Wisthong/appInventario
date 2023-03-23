@@ -22,16 +22,10 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(5)]],
   });
 
-  // constructor(
-  //   private readonly fb: FormBuilder,
-  //   private readonly authSvc: AuthService,
-  //   private readonly router: Router
-  // ) {}
-
   ngOnInit(): void {
-    // if (this.authSvc.verifyToken()) {
-    //   this.router.navigate(['/dashboard']);
-    // }
+    if (this.authSvc.verifyToken()) {
+      this.router.navigate(['/admin']);
+    }
   }
 
   onLogin() {

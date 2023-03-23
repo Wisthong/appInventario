@@ -313,19 +313,31 @@
         <td mat-cell *matCellDef="let element">
           <div class="container">
             <div class="row">
-              <div class="col-6">
+              <div class="col-4">
+                <!-- Boton Ver mas -->
+                <button
+                  (click)="onDetails(element._id)"
+                  matTooltip="Ver más"
+                  type="submit"
+                  mat-mini-fab
+                  color="primary"
+                >
+                  <mat-icon>open_in_browser</mat-icon>
+                </button>
+              </div>
+              <div class="col-4">
                 <!-- Boton Update -->
                 <button
                   (click)="onUpdate(element._id)"
                   matTooltip="Modificar"
                   type="submit"
                   mat-mini-fab
-                  color="primary"
+                  color="accent"
                 >
                   <mat-icon> settings </mat-icon>
                 </button>
               </div>
-              <div class="col-6">
+              <div class="col-4">
                 <!-- Boton eliminar -->
                 <button
                   (click)="onDelete(element._id)"

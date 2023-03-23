@@ -149,18 +149,36 @@ export class FormsComponent implements OnInit {
         //FIXME: Actualizar
         this.hostnameSvc.actualizarDevice(body, this.id!).subscribe(
           (resOk) => {
-            Swal.fire('Exitoso', resOk, 'success');
+            Swal.fire({
+              title: 'Exitoso',
+              html: resOk,
+              icon: 'success',
+              timer: 3000,
+              showConfirmButton: false,
+            });
             this.cleanForms();
             this.router.navigate(['/admin']);
           },
           ({ error }: HttpErrorResponse) => {
-            Swal.fire('Advertencia', error.message, 'warning');
+            Swal.fire({
+              title: 'Advertencia',
+              html: error.message,
+              icon: 'warning',
+              showConfirmButton: false,
+              timer: 5000,
+            });
           }
         );
       } else {
         this.hostnameSvc.registrarDevice(body).subscribe(
           (resOk) => {
-            Swal.fire('Exitoso', resOk, 'success');
+            Swal.fire({
+              title: 'Exitoso',
+              html: resOk,
+              icon: 'success',
+              timer: 3000,
+              showConfirmButton: false,
+            });
             this.cleanForms();
             this.router.navigate(['/admin']);
           },
@@ -170,11 +188,13 @@ export class FormsComponent implements OnInit {
         );
       }
     } else {
-      Swal.fire(
-        'Aviso',
-        'Faltan campos por llenar, por favor intenta nuevamente',
-        'info'
-      );
+      Swal.fire({
+        title: 'Aviso',
+        html: 'Faltan campos por llenar, por favor intenta nuevamente',
+        icon: 'info',
+        showConfirmButton: false,
+        timer: 5000,
+      });
     }
   }
 }

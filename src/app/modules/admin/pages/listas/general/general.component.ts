@@ -1,4 +1,5 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { HttpErrorResponse } from '@angular/common/http';
 import {
   AfterViewInit,
   Component,
@@ -1345,14 +1346,14 @@ export class GeneralComponent implements OnInit, AfterViewInit {
       title: '¿Deseas eliminar el registro?',
       icon: 'question',
       showDenyButton: true,
-      showCancelButton: true,
+      // showCancelButton: true,
       confirmButtonText: 'Si',
       denyButtonText: 'No',
       customClass: {
         actions: 'my-actions',
-        cancelButton: 'order-1 right-gap',
-        confirmButton: 'order-2',
-        denyButton: 'order-3',
+        // cancelButton: 'order-1 right-gap',
+        confirmButton: 'order-1',
+        denyButton: 'order-2',
       },
     }).then((result) => {
       if (result.isConfirmed) {
@@ -1360,19 +1361,30 @@ export class GeneralComponent implements OnInit, AfterViewInit {
           (resOk) => {
             const arrayTmp = this.dataSource.data.filter((m) => m._id !== id);
             this.dataSource.data = arrayTmp;
-            Swal.fire('Acción', resOk, 'success');
+
+            Swal.fire({
+              title: 'Accion',
+              html: resOk,
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 4000,
+            });
+            // Swal.fire('Acción', resOk, 'success');
           },
-          (resFail) => {
-            Swal.fire(
-              'Error del servidor',
-              'No se pudo eliminar el registro, intentalo más tarde ',
-              'error'
-            );
+          ({ error }: HttpErrorResponse) => {
+            Swal.fire({
+              title: 'Error del servidor',
+              html: error.message,
+              icon: 'error',
+              showConfirmButton: false,
+              timer: 5000,
+            });
           }
         );
-      } else if (result.isDenied) {
-        Swal.fire('Accion', 'No se elimino el registro', 'info');
       }
+      // else if (result.isDenied) {
+      //   // Swal.fire('Accion', 'No se elimino el registro', 'info');
+      // }
     });
   }
 
@@ -1382,6 +1394,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  onDetails(id: string) {
+    this.router.navigate(['home/view/' + id]);
   }
 
   applyFilter(event: Event) {

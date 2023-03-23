@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -15,12 +16,13 @@ export class ViewGetComponent implements OnInit {
   private readonly hostnameSvc = inject(HostnameService);
   private readonly authSvc = inject(AuthService);
   private readonly route = inject(ActivatedRoute);
+  private readonly location = inject(Location);
 
   device!: Device;
   flag: boolean = false;
 
   ngOnInit(): void {
-     this.authSvc.validarToken().subscribe((resOk) => {
+    this.authSvc.validarToken().subscribe((resOk) => {
       if (resOk) {
         console.log(resOk);
 
@@ -42,4 +44,7 @@ export class ViewGetComponent implements OnInit {
     }
   }
 
+  onBack() {
+    this.location.back();
+  }
 }
