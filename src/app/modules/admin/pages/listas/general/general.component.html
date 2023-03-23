@@ -311,27 +311,34 @@
           Acciones
         </th>
         <td mat-cell *matCellDef="let element">
-          <!-- Boton Update -->
-          <button
-            (click)="onUpdate(element._id)"
-            matTooltip="Modificar"
-            type="submit"
-            mat-mini-fab
-            color="primary"
-          >
-            <mat-icon> settings </mat-icon>
-          </button>
-
-          <!-- Boton eliminar -->
-          <button
-            (click)="onDelete(element._id)"
-            matTooltip="Eliminar"
-            type="submit"
-            mat-mini-fab
-            color="warn"
-          >
-            <mat-icon> delete_forever </mat-icon>
-          </button>
+          <div class="container">
+            <div class="row">
+              <div class="col-6">
+                <!-- Boton Update -->
+                <button
+                  (click)="onUpdate(element._id)"
+                  matTooltip="Modificar"
+                  type="submit"
+                  mat-mini-fab
+                  color="primary"
+                >
+                  <mat-icon> settings </mat-icon>
+                </button>
+              </div>
+              <div class="col-6">
+                <!-- Boton eliminar -->
+                <button
+                  (click)="onDelete(element._id)"
+                  matTooltip="Eliminar"
+                  type="submit"
+                  mat-mini-fab
+                  color="warn"
+                >
+                  <mat-icon> delete_forever </mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
         </td>
       </ng-container>
 

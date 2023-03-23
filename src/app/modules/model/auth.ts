@@ -6,25 +6,26 @@ export interface ResponseAuth {
 
 export interface Device {
   _id?:          string;
-  device:        string;
-  estado:        string;
-  providers:     string;
-  co:            string;
-  area:          string;
-  discoduro?:    string;
-  numserie:      string;
-  // estado:        ['activo', 'inactivo','mantenimiento'];
-  hostname:      string;
-  so?:           string;
   ip:            string;
-  antivirus?:    string;
-  fecha_ingreso: string;
-  fecha_baja?:   string;
-  ram?:          any;
+  hostname:      string;
+  device:        string;
   descripcion:   string;
-  procesador?:   string;
-  licencias?:    string;
+  area:          string;
+  co:            string;
   precio:        number;
+  providers:     string;
+  numserie:      string;
+  fecha_ingreso: string;
+  estado:        string;
+  fecha_baja?:   string;
+  discoduro?:    string;
+  ram?:          any;
+  procesador?:   string;
+  so?:           string;
+  antivirus?:    string;
+  licencias?:    string;
+  usuario?:       string;
+  userAdmin?:     UserAdmin;
 }
 
 export interface ResponseTrue {
@@ -46,4 +47,13 @@ export interface User {
   email:      string;
   role?:      string[];
   password?:  string;
+}
+
+export interface UserAdmin {
+  _id:        string;
+  name:       string;
+  lastname:   string;
+  email:      string;
+  password:   string;
+  role?:      string[];
 }

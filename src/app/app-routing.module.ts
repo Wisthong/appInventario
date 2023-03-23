@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './modules/guards/auth.guard';
 import { NotfoundComponent } from './Pages/notfound/notfound.component';
 
@@ -27,9 +27,11 @@ const routes: Routes = [
     title: 'Recurso no accesible',
   },
 ];
-
+// { preloadingStrategy: PreloadAllModules }
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

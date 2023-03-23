@@ -18,9 +18,9 @@ export class HostnameService {
   }
 
   obtenerUno(id: string): Observable<Device> {
-    return this.http.get<ResponseData>(this.apiUrl + '/devices/' + id).pipe(
+    return this.http.get<ResponseTrue>(this.apiUrl + '/devices/' + id).pipe(
       map(({ data }) => {
-        return data;
+        return data[0];
       })
     );
   }

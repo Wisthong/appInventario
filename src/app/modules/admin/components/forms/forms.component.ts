@@ -62,25 +62,25 @@ export class FormsComponent implements OnInit {
   ];
 
   deviceForm = this.fb.nonNullable.group({
-    providers: ['', [Validators.required, Validators.minLength(5)]],
+    antivirus: [''],
+    area: ['', [Validators.required]],
     co: ['', [Validators.required]],
     device: ['', [Validators.required]],
-    // device: ['', [Validators.required, Validators.minLength(5)]],
+    descripcion: ['', [Validators.required, Validators.minLength(5)]],
+    discoduro: ['', []],
+    // discoduro: ['', [Validators.required, Validators.minLength(5)]],
     estado: ['', [Validators.required]],
-    area: ['', [Validators.required]],
-    discoduro: ['', [Validators.required, Validators.minLength(5)]],
-    numserie: ['', [Validators.required]],
-    hostname: ['', [Validators.required, Validators.minLength(5)]],
-    so: [''],
-    ip: ['', [Validators.required, Validators.minLength(11)]],
-    antivirus: [''],
     fecha_ingreso: ['', [Validators.required, Validators.minLength(5)]],
     fecha_baja: ['', []],
-    ram: [0],
-    descripcion: ['', [Validators.required, Validators.minLength(5)]],
-    procesador: [''],
+    ip: ['', [Validators.required, Validators.minLength(13)]],
+    hostname: ['', [Validators.required, Validators.minLength(4)]],
     licencias: [''],
-    precio: [0, [Validators.required, Validators.min(3)]],
+    numserie: ['', [Validators.required]],
+    providers: ['', [Validators.required, Validators.minLength(2)]],
+    precio: [0, [Validators.required]],
+    procesador: [''],
+    ram: [0],
+    so: [''],
   });
 
   ngOnInit(): void {
@@ -93,6 +93,8 @@ export class FormsComponent implements OnInit {
         icon: 'settings',
       };
       this.hostnameSvc.obtenerUno(this.id!).subscribe((resOk) => {
+        console.log(resOk);
+
         return this.deviceForm.patchValue({
           providers: resOk.providers,
           co: resOk.co,
