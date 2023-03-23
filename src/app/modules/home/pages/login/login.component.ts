@@ -45,7 +45,13 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/admin']);
         },
         ({ error }: HttpErrorResponse) => {
-          Swal.fire('Inicio sesión', error.message, 'error');
+          Swal.fire({
+            title: 'Inicio sesión',
+            html: error.message,
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 5000,
+          });
         }
       );
     } else {
