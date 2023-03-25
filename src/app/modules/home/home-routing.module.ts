@@ -15,24 +15,20 @@ const routes: Routes = [
   {
     path: '',
     component: BienvenidaComponent,
-    title: 'Bienvenida',
+    title: 'Bienvenid@s Distribuidora Universal',
   },
   {
     path: 'lista',
     component: InicioComponent,
     title: 'Lista de dispositivos',
   },
-  // {
-  //   path: 'view',
-  //   component: ViewGetComponent,
-  //   title: 'Detalles de dispositivo',
-  // },
   {
     path: 'view/:id',
     component: ViewGetComponent,
     title: 'Detalles de dispositivo',
   },
-  //TODO: Rutas la por AREA Bodega
+
+  //TODO: Rutas por AREA de Bodega
   {
     path: 'bodega/lista',
     component: InicioComponent,
@@ -54,7 +50,51 @@ const routes: Routes = [
     title: 'Bodega dispositivos mantenimiento',
   },
 
-  //TODO: Rutas la por AREA Compras
+  //TODO: Rutas por AREA de Callcenter
+  {
+    path: 'callcenter/lista',
+    component: InicioComponent,
+    title: 'Callcenter Lista de dispositivos',
+  },
+  {
+    path: 'callcenter/activos',
+    component: InicioComponent,
+    title: 'Callcenter dispositivos activos',
+  },
+  {
+    path: 'callcenter/inactivos',
+    component: InicioComponent,
+    title: 'Callcenter dispositivos inactivos',
+  },
+  {
+    path: 'callcenter/mantenimiento',
+    component: InicioComponent,
+    title: 'Callcenter dispositivos mantenimiento',
+  },
+
+  //TODO: Rutas por AREA de Mercadeo
+  {
+    path: 'mercadeo/lista',
+    component: InicioComponent,
+    title: 'Mercadeo Lista de dispositivos',
+  },
+  {
+    path: 'mercadeo/activos',
+    component: InicioComponent,
+    title: 'Mercadeo dispositivos activos',
+  },
+  {
+    path: 'mercadeo/inactivos',
+    component: InicioComponent,
+    title: 'Mercadeo dispositivos inactivos',
+  },
+  {
+    path: 'mercadeo/mantenimiento',
+    component: InicioComponent,
+    title: 'Mercadeo dispositivos mantenimiento',
+  },
+
+  //TODO: Rutas por AREA de Compras
   {
     path: 'compras/lista',
     component: InicioComponent,
@@ -76,7 +116,7 @@ const routes: Routes = [
     title: 'Compras dispositivos mantenimiento',
   },
 
-  //TODO: Rutas la por AREA Recursos humanos
+  //TODO: Rutas por AREA de Recursos humanos
   {
     path: 'recursoshumanos/lista',
     component: InicioComponent,
@@ -98,7 +138,7 @@ const routes: Routes = [
     title: 'Recursos humanos dispositivos mantenimiento',
   },
 
-  //TODO: Rutas la por AREA tesoreria
+  //TODO: Rutas por AREA de tesoreria
   {
     path: 'tesoreria/lista',
     component: InicioComponent,
@@ -120,7 +160,7 @@ const routes: Routes = [
     title: 'Tesoreria dispositivos mantenimiento',
   },
 
-  //TODO: Rutas la por AREA Ventas
+  //TODO: Rutas por AREA de Ventas
   {
     path: 'ventas/lista',
     component: InicioComponent,
@@ -142,7 +182,7 @@ const routes: Routes = [
     title: 'Ventas dispositivos mantenimiento',
   },
 
-  //TODO: Rutas la por AREA Contabilidad
+  //TODO: Rutas por AREA de Contabilidad
   {
     path: 'otro/lista',
     component: InicioComponent,
@@ -164,7 +204,7 @@ const routes: Routes = [
     title: 'Otros dispositivos mantenimiento',
   },
 
-  //TODO: Rutas la por AREA Contabilidad
+  //TODO: Rutas por AREA de Contabilidad
   {
     path: 'contabilidad/lista',
     component: InicioComponent,
@@ -186,7 +226,7 @@ const routes: Routes = [
     title: 'Contabilidad dispositivos mantenimiento',
   },
 
-  //TODO: Rutas la por AREA Sistemas
+  //TODO: Rutas por AREA de Sistemas
   {
     path: 'sistemas/lista',
     component: InicioComponent,
@@ -208,7 +248,7 @@ const routes: Routes = [
     title: 'Sistemas dispositivos mantenimiento',
   },
 
-  //TODO: Rutas la por AREA Inventario
+  //TODO: Rutas por AREA de Inventario
   {
     path: 'inventario/lista',
     component: InicioComponent,
@@ -230,7 +270,7 @@ const routes: Routes = [
     title: 'Inventario dispositivos mantenimiento',
   },
 
-  //TODO: Rutas la calima
+  //TODO: Rutas por AREA de Calima
   {
     path: 'calima/lista',
     component: InicioComponent,
@@ -362,6 +402,7 @@ const routes: Routes = [
     title: 'Pasoancho dispositivos mantenimiento',
   },
 
+  //TODO: Login
   {
     path: 'login',
     component: LoginComponent,

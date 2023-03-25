@@ -5,25 +5,25 @@ export interface ResponseAuth {
 }
 
 export interface Device {
-  _id?:          string;
-  ip:            string;
-  hostname:      string;
-  device:        string;
-  descripcion:   string;
-  area:          string;
-  co:            string;
-  precio:        number;
-  providers:     string;
-  numserie:      string;
-  fecha_ingreso: string;
-  estado:        string;
-  fecha_baja?:   string;
-  discoduro?:    string;
-  ram?:          any;
-  procesador?:   string;
-  so?:           string;
-  antivirus?:    string;
-  licencias?:    string;
+  _id?:           string;
+  ip:             string;
+  hostname:       string;
+  device:         string;
+  descripcion?:    string;
+  area:           string;
+  co:             string;
+  precio:         number;
+  providers:      string;
+  numserie:       string;
+  fecha_ingreso:  string;
+  estado:         string;
+  fecha_baja?:    string;
+  discoduro?:     string;
+  ram?:           any;
+  procesador?:    string;
+  so?:            string;
+  antivirus?:     string;
+  licencias?:     string;
   usuario?:       string;
   userAdmin?:     UserAdmin;
 }

@@ -260,6 +260,38 @@ export class NavbarComponent {
             ],
           },
           {
+            label: 'Callcenter',
+            icon: 'pi pi-fw pi-circle-fill',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/callcenter/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/callcenter/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/callcenter/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/callcenter/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
             label: 'Compras',
             icon: 'pi pi-fw pi-circle-fill',
             items: [
@@ -350,6 +382,38 @@ export class NavbarComponent {
                     label: 'Mantenimiento',
                     icon: 'pi pi-fw pi-filter-fill',
                     routerLink: ['/admin/inventario/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Mercadeo',
+            icon: 'pi pi-fw pi-circle-fill',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/mercadeo/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/mercadeo/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/mercadeo/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/admin/mercadeo/mantenimiento'],
                   },
                 ],
               },
@@ -478,38 +542,6 @@ export class NavbarComponent {
                     label: 'Mantenimiento',
                     icon: 'pi pi-fw pi-filter-fill',
                     routerLink: ['/admin/ventas/mantenimiento'],
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            label: 'Otro',
-            icon: 'pi pi-fw pi-circle-fill',
-            items: [
-              {
-                label: 'Listas',
-                icon: 'pi pi-fw pi-list',
-                items: [
-                  {
-                    label: 'General',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/admin/otro/lista'],
-                  },
-                  {
-                    label: 'Activos',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/admin/otro/activos'],
-                  },
-                  {
-                    label: 'Inactivos',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/admin/otro/inactivos'],
-                  },
-                  {
-                    label: 'Mantenimiento',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/admin/otro/mantenimiento'],
                   },
                 ],
               },

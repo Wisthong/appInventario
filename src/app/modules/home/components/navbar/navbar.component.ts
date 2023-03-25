@@ -257,6 +257,38 @@ export class NavbarComponent {
             ],
           },
           {
+            label: 'Call Center',
+            icon: 'pi pi-fw pi-circle-fill',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/callcenter/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/callcenter/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/callcenter/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/callcenter/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
             label: 'Compras',
             icon: 'pi pi-fw pi-circle-fill',
             items: [
@@ -347,6 +379,38 @@ export class NavbarComponent {
                     label: 'Mantenimiento',
                     icon: 'pi pi-fw pi-filter-fill',
                     routerLink: ['/home/inventario/mantenimiento'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            label: 'Mercadeo',
+            icon: 'pi pi-fw pi-circle-fill',
+            items: [
+              {
+                label: 'Listas',
+                icon: 'pi pi-fw pi-list',
+                items: [
+                  {
+                    label: 'General',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/mercadeo/lista'],
+                  },
+                  {
+                    label: 'Activos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/mercadeo/activos'],
+                  },
+                  {
+                    label: 'Inactivos',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/mercadeo/inactivos'],
+                  },
+                  {
+                    label: 'Mantenimiento',
+                    icon: 'pi pi-fw pi-filter-fill',
+                    routerLink: ['/home/mercadeo/mantenimiento'],
                   },
                 ],
               },
@@ -481,54 +545,9 @@ export class NavbarComponent {
               },
             ],
           },
-          {
-            label: 'Otro',
-            icon: 'pi pi-fw pi-circle-fill',
-            items: [
-              {
-                label: 'Listas',
-                icon: 'pi pi-fw pi-list',
-                items: [
-                  {
-                    label: 'General',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/home/otro/lista'],
-                  },
-                  {
-                    label: 'Activos',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/home/otro/activos'],
-                  },
-                  {
-                    label: 'Inactivos',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/home/otro/inactivos'],
-                  },
-                  {
-                    label: 'Mantenimiento',
-                    icon: 'pi pi-fw pi-filter-fill',
-                    routerLink: ['/home/otro/mantenimiento'],
-                  },
-                ],
-              },
-            ],
-          },
         ],
       },
-      // {
-      //   label: 'Iniciar Sesion',
-      //   icon: 'pi pi-fw pi-users',
-      //   routerLink: ['/home/login'],
-      // },
     ];
-
-    // this.itemSesion = [
-    //   {
-    //     label: 'Iniciar Sesion',
-    //     icon: 'pi pi-fw pi-users',
-    //     routerLink: ['/home/login'],
-    //   },
-    // ];
   }
 
   onRedirigir() {

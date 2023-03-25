@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Device } from 'src/app/modules/model/auth';
 import { AuthService } from 'src/app/modules/services/auth.service';
 import { HostnameService } from 'src/app/modules/services/hostname.service';
@@ -16,6 +16,7 @@ export class ViewGetComponent implements OnInit {
   private readonly hostnameSvc = inject(HostnameService);
   private readonly authSvc = inject(AuthService);
   private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
   private readonly location = inject(Location);
 
   device!: Device;
@@ -24,7 +25,7 @@ export class ViewGetComponent implements OnInit {
   ngOnInit(): void {
     this.authSvc.validarToken().subscribe((resOk) => {
       if (resOk) {
-        console.log(resOk);
+        // console.log(resOk);
 
         this.flag = resOk;
       }
@@ -38,7 +39,14 @@ export class ViewGetComponent implements OnInit {
           this.device = resOk;
         },
         ({ error }: HttpErrorResponse) => {
-          Swal.fire('Advertencia', error.message, 'warning');
+          Swal.fire({
+            title: 'Advertencia',
+            html: error.message,
+            icon: 'warning',
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          this.router.navigate(['/home']);
         }
       );
     }

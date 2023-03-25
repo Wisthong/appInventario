@@ -40,10 +40,13 @@
         </th>
         <td mat-cell *matCellDef="let element">
           <qrcode
+            elementType="img"
+            (qrCodeURL)="onChangeURL($event)"
             [qrdata]="'http://' + local + '/home/view/' + element._id"
-            [width]="70"
+            [width]="80"
             [errorCorrectionLevel]="'L'"
           ></qrcode>
+          <!-- <a [href]="qrCodeDownloadLink" download="qrcode">Download</a> -->
         </td>
       </ng-container>
 

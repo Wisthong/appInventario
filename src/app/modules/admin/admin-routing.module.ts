@@ -38,6 +38,49 @@ const routes: Routes = [
     component: GeneralComponent,
     title: 'Bodega dispositivos mantenimiento',
   },
+  //TODO: Rutas la por AREA Callcenter
+  {
+    path: 'callcenter/lista',
+    component: GeneralComponent,
+    title: 'Callcenter Lista de dispositivos',
+  },
+  {
+    path: 'callcenter/activos',
+    component: GeneralComponent,
+    title: 'Callcenter dispositivos activos',
+  },
+  {
+    path: 'callcenter/inactivos',
+    component: GeneralComponent,
+    title: 'Callcenter dispositivos inactivos',
+  },
+  {
+    path: 'callcenter/mantenimiento',
+    component: GeneralComponent,
+    title: 'Callcenter dispositivos mantenimiento',
+  },
+
+  //TODO: Rutas la por AREA Mercadeo
+  {
+    path: 'mercadeo/lista',
+    component: GeneralComponent,
+    title: 'Mercadeo Lista de dispositivos',
+  },
+  {
+    path: 'mercadeo/activos',
+    component: GeneralComponent,
+    title: 'Mercadeo dispositivos activos',
+  },
+  {
+    path: 'mercadeo/inactivos',
+    component: GeneralComponent,
+    title: 'Mercadeo dispositivos inactivos',
+  },
+  {
+    path: 'mercadeo/mantenimiento',
+    component: GeneralComponent,
+    title: 'Mercadeo dispositivos mantenimiento',
+  },
 
   //TODO: Rutas la por AREA Compras
   {
@@ -350,10 +393,12 @@ const routes: Routes = [
   {
     path: 'create',
     component: FormsComponent,
+    title: 'Registrar dispositivo',
   },
   {
     path: 'update/:id',
     component: FormsComponent,
+    title: 'Actualizar dispositivo',
   },
 ];
 
