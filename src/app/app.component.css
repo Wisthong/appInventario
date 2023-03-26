@@ -1,17 +1,15 @@
+.container-fluid {
+  min-height: 82%;
+}
+
 footer {
   min-height: 10%;
   width: 100%;
   position: absolute;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1600px), (max-height: 900px) {
   .container-fluid {
     min-height: 77%;
-  }
-}
-
-@media (min-width: 1601px) {
-  .container-fluid {
-    min-height: 85%;
   }
 }
