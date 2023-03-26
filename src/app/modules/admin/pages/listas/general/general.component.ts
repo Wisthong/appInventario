@@ -10,10 +10,8 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Device } from 'src/app/modules/model/auth';
-import { AuthService } from 'src/app/modules/services/auth.service';
 import { HostnameService } from 'src/app/modules/services/hostname.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
@@ -33,7 +31,6 @@ export class GeneralComponent implements OnInit, AfterViewInit {
   private readonly _liveAnnouncer = inject(LiveAnnouncer);
 
   public readonly local = environment.direccion + ':' + environment.port;
-  public qrCodeDownloadLink: SafeUrl = '';
 
   totalPorEstado: number = 0;
   listHost: Device[] = [];
@@ -1431,12 +1428,10 @@ export class GeneralComponent implements OnInit, AfterViewInit {
       title: '¿Deseas eliminar el registro?',
       icon: 'question',
       showDenyButton: true,
-      // showCancelButton: true,
       confirmButtonText: 'Si',
       denyButtonText: 'No',
       customClass: {
         actions: 'my-actions',
-        // cancelButton: 'order-1 right-gap',
         confirmButton: 'order-1',
         denyButton: 'order-2',
       },
@@ -1488,11 +1483,5 @@ export class GeneralComponent implements OnInit, AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  onChangeURL(url: SafeUrl) {
-    console.log(url);
-
-    this.qrCodeDownloadLink = url;
   }
 }
