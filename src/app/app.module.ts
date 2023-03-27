@@ -10,6 +10,7 @@ import { NotfoundComponent } from './Pages/notfound/notfound.component';
 
 import localeColombia from '@angular/common/locales/es-CO';
 import { registerLocaleData } from '@angular/common';
+import { AuthGuard } from './modules/guards/auth.guard';
 
 registerLocaleData(localeColombia);
 
@@ -23,6 +24,7 @@ registerLocaleData(localeColombia);
   ],
   exports: [],
   providers: [
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
