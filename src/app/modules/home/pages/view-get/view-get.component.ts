@@ -34,8 +34,7 @@ export class ViewGetComponent implements OnInit {
     if (id !== null) {
       this.hostnameSvc.obtenerUno(id).subscribe(
         (resOk) => {
-          // console.log(resOk);
-
+          console.log('112220', resOk);
           this.device = resOk;
         },
         ({ error }: HttpErrorResponse) => {
