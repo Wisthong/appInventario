@@ -5,7 +5,7 @@
     Inventario Papeleria Universal Distribuidora SAS
   </h1>
   <h4 class="text-center fw-bold">Detalles de dispostivo</h4>
-  <!-- {{ device | json}} -->
+  <!-- america {{ device | json }} -->
 </div>
 
 <mat-card class="example-card" *ngIf="device">
@@ -18,85 +18,151 @@
     <div *ngSwitchCase="'Computador todo en uno'">
       <img
         mat-card-image
-        src="https://pcsystemcolombia.com/wp-content/uploads/2020/11/Todo-En-Uno-HP-200-G4-22.png"
-        alt="Photo of a Shiba Inu"
+        ngSrc="../../../../../assets/img/pctodoenuno.png"
+        width="400"
+        height="500"
+        priority
+        alt="Foto de PC Todo en uno"
       />
     </div>
     <div *ngSwitchCase="'Computador portatil'">
       <img
         mat-card-image
-        src="https://winphonemetro.com/files/2017/09/HP-EliteBook-1040-G4.jpg"
-        alt="Photo of a Shiba Inu"
+        ngSrc="../../../../../assets/img/laptop.jpg"
+        width="400"
+        height="500"
+        priority
+        alt="Foto de laptop"
       />
     </div>
     <div *ngSwitchCase="'Camara'">
       <img
         mat-card-image
-        src="https://bydemes.com/ByDemesFiles/images/DAHUA-2617-FO.jpg"
-        alt="Photo of a Shiba Inu"
+        ngSrc="../../../../../assets/img/camara.jpg"
+        width="400"
+        height="500"
+        priority
+        alt="Foto de camara"
       />
     </div>
     <div *ngSwitchCase="'DVR'">
       <img
         mat-card-image
-        src="https://www.startech.com.bd/image/cache/catalog/DVR/Hikvision/HIKVISION%20DS-7204HGHI-F1-500x500.jpg"
+        ngSrc="../../../../../assets/img/DVR.jpg"
+        width="400"
+        height="500"
+        priority
         alt="Foto DVR"
       />
     </div>
     <div *ngSwitchCase="'Impresora'">
       <img
         mat-card-image
-        src="https://impresoras.com.co/wp-content/uploads/2022/05/Impresora-HP-multifuncion-Smart-Tank-750-ll.png"
+        ngSrc="../../../../../assets/img/impresora.jpg"
+        width="400"
+        height="500"
+        priority
         alt="Foto de Impresora"
       />
     </div>
     <div *ngSwitchCase="'Lectores de barra'">
       <img
         mat-card-image
-        src="https://www.elplural.com/uploads/s1/11/32/43/0/los-mejores-lectores-de-codigos-de-barras.jpeg"
+        ngSrc="../../../../../assets/img/lectores.jpeg"
+        width="400"
+        height="500"
+        priority
         alt="Foto de Lectores de barra"
       />
     </div>
     <div *ngSwitchCase="'NVR'">
       <img
         mat-card-image
-        src="https://www.excelbd.com/wp-content/uploads/2022/08/DS-8661.jpg"
+        ngSrc="../../../../../assets/img/NVR.png"
+        width="400"
+        height="500"
+        priority
         alt="Foto de NVR"
       />
     </div>
     <div *ngSwitchCase="'Router'">
       <img
         mat-card-image
-        src="https://http2.mlstatic.com/D_NQ_NP_788930-MCO46885328490_072021-O.jpg"
+        ngSrc="../../../../../assets/img/router.jpg"
+        width="400"
+        height="500"
+        priority
         alt="Foto de Router"
       />
     </div>
     <div *ngSwitchCase="'Switch'">
       <img
         mat-card-image
-        src="https://www.guiahardware.es/wp-content/uploads/2019/04/mejores-switches-baratos-1024x538.jpg"
+        ngSrc="../../../../../assets/img/switch.jpg"
+        width="400"
+        height="500"
+        priority
         alt="Foto de Switch"
       />
     </div>
     <div *ngSwitchCase="'Televisor'">
       <img
         mat-card-image
-        src="https://www.lg.com/co/images/televisores/md07550995/gallery/1100x55UQ8000PSB.jpg"
+        ngSrc="../../../../../assets/img/televisor.png"
+        width="400"
+        height="500"
+        priority
         alt="Foto de Televisor"
+      />
+    </div>
+    <div *ngSwitchCase="'Torre'">
+      <img
+        mat-card-image
+        ngSrc="../../../../../assets/img/pctorre.jpg"
+        width="400"
+        height="500"
+        priority
+        alt="Foto PC Torre"
       />
     </div>
     <div *ngSwitchCase="'Video beam'">
       <img
         mat-card-image
-        src="https://ml8iidrzyich.i.optimole.com/cb:eBgE~2504/w:600/h:600/q:mauto/rt:fill/g:ce/f:avif/https://digiformats.com/wp-content/uploads/2020/11/homecinema1.gif"
+        ngSrc="../../../../../assets/img/videobeam.png"
+        width="400"
+        height="500"
+        priority
         alt="Foto de Video beam"
+      />
+    </div>
+    <div *ngSwitchCase="'Raspberry'">
+      <img
+        mat-card-image
+        ngSrc="../../../../../assets/img/raspberry.jpg"
+        width="400"
+        height="500"
+        priority
+        alt="Foto de Raspberry"
+      />
+    </div>
+    <div *ngSwitchCase="'Terminal'">
+      <img
+        mat-card-image
+        ngSrc="../../../../../assets/img/terminal.png"
+        width="400"
+        height="500"
+        priority
+        alt="Foto de Terminal"
       />
     </div>
 
     <div *ngSwitchDefault>
       <img
         mat-card-image
-        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        ngSrc="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        width="400"
+        height="500"
+        priority
         alt="Photo of a Shiba Inu"
       />
     </div>

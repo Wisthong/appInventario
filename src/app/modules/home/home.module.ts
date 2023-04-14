@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -31,6 +31,7 @@ import { BienvenidaComponent } from './pages/bienvenida/bienvenida.component';
     MaterialModule,
     AdminModule,
     QRCodeModule,
+    NgOptimizedImage,
   ],
 })
 export class HomeModule {}

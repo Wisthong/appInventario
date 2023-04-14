@@ -2,11 +2,46 @@
 
 <div class="container">
   <div class="row">
+    <h1 class="text-center fw-bold">Bienvenidos</h1>
+
+    <div class="card">
+      <p-carousel
+        [value]="products"
+        [numVisible]="1"
+        [numScroll]="1"
+        [autoplayInterval]="5000"
+        [responsiveOptions]="responsiveOptions"
+        [circular]="true"
+      >
+        <ng-template let-product pTemplate="item">
+          <div
+            class="border-1 surface-border border-round m-2 text-center py-5 px-3"
+          >
+            <div class="mb-3">
+              <img
+                [src]="product.imagen"
+                [alt]="'Nada'"
+                width="1000px"
+                class=""
+              />
+            </div>
+            <div>
+              <h4 class="mb-1 text-dark">{{ product.info }}</h4>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <div class="row">
     <div
       class="col-auto col-lg-6 text-center animate__animated animate__shakeX animate__repeat-1"
     >
       <h1>Bienvenid@.</h1>
-      <p class="">
+      <p>
         Has accedido a la plataforma web del Inventario de la
         <strong> Distribuidora Universal Cali.</strong>
         <br />
@@ -15,16 +50,20 @@
       </p>
       <img
         class="animate__animated animate__bounceIn animate__repeat-2 d-none d-xl-block mt-4"
-        src="../../../../../assets/gif/saludo.gif"
+        ngSrc="../../../../../assets/gif/saludo.gif"
         alt="Gif"
+        [width]="460"
+        [height]="400"
       />
     </div>
     <div class="col-auto col-lg-6 text-center">
       <img
         class="animate__animated animate__bounceIn animate__repeat-2"
-        src="../../../../../assets/gif/homer.gif"
+        ngSrc="../../../../../assets/gif/homer.gif"
         alt="Gif"
+        [width]="500"
+        [height]="560"
       />
     </div>
   </div>
-</div>
+</div> -->

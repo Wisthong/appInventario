@@ -20,6 +20,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [],
@@ -43,6 +45,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ProgressSpinnerModule,
     MatExpansionModule,
     MatPaginatorModule,
+    CarouselModule,
+    ButtonModule,
   ],
 })
 export class MaterialModule {}

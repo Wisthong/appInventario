@@ -9,7 +9,8 @@ import { JwtInterceptor } from './modules/interceptors/jwt.interceptor';
 import { NotfoundComponent } from './Pages/notfound/notfound.component';
 
 import localeColombia from '@angular/common/locales/es-CO';
-import { registerLocaleData } from '@angular/common';
+import { NgOptimizedImage, registerLocaleData } from '@angular/common';
+import { AuthGuard } from './modules/guards/auth.guard';
 
 registerLocaleData(localeColombia);
 
@@ -20,9 +21,11 @@ registerLocaleData(localeColombia);
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgOptimizedImage,
   ],
   exports: [],
   providers: [
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

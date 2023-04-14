@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { inject, NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './modules/guards/auth.guard';
 import { NotfoundComponent } from './Pages/notfound/notfound.component';
@@ -19,7 +19,9 @@ const routes: Routes = [
     loadChildren: () =>
       import('@admin/admin.module').then((m) => m.AdminModule),
     title: 'Administador',
-    canActivate: [AuthGuard],
+    canActivate: [() => inject(AuthGuard).canActivate()],
+    canMatch: [() => inject(AuthGuard).canMatchFn()],
+    // canActivate: [AuthGuard],
   },
   {
     path: '**',

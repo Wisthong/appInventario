@@ -30,15 +30,15 @@ export class FormsComponent implements OnInit {
     'Computador todo en uno',
     'Computador portatil',
     'DVR',
-    'Torre',
     'Impresora',
     'Lectores de barra',
     'NVR',
     'Router',
-    'Rasberry',
+    'Raspberry',
     'Switch',
-    'Terminales',
+    'Terminal',
     'Televisor',
+    'Torre',
     'Video beam',
   ];
   list_centro_operacion = [
@@ -51,14 +51,15 @@ export class FormsComponent implements OnInit {
   ];
   list_areas = [
     'Bodega',
+    'Callcenter',
     'Compras',
     'Contabilidad',
     'Inventario',
+    'Mercadeo',
     'Sistemas',
     'Recursos humanos',
     'Ventas',
     'Tesoreria',
-    'Otro',
   ];
 
   deviceForm = this.fb.nonNullable.group({
@@ -66,17 +67,19 @@ export class FormsComponent implements OnInit {
     area: ['', [Validators.required]],
     co: ['', [Validators.required]],
     device: ['', [Validators.required]],
-    descripcion: ['', [Validators.required, Validators.minLength(5)]],
+    descripcion: ['', []],
     discoduro: ['', []],
     // discoduro: ['', [Validators.required, Validators.minLength(5)]],
     estado: ['', [Validators.required]],
     fecha_ingreso: ['', [Validators.required, Validators.minLength(5)]],
     fecha_baja: ['', []],
-    ip: ['', [Validators.required, Validators.minLength(13)]],
+    ip: ['', [Validators.required, Validators.minLength(12)]],
     hostname: ['', [Validators.required, Validators.minLength(4)]],
     licencias: [''],
-    numserie: ['', [Validators.required]],
-    providers: ['', [Validators.required, Validators.minLength(2)]],
+    numserie: ['', []],
+    // numserie: ['', [Validators.required]],
+    providers: ['', []],
+    // providers: ['', [Validators.required, Validators.minLength(2)]],
     precio: [0, [Validators.required]],
     procesador: [''],
     ram: [0],
@@ -147,29 +150,45 @@ export class FormsComponent implements OnInit {
       const body = this.deviceForm.getRawValue();
       if (this.id !== null) {
         //FIXME: Actualizar
-        this.hostnameSvc.actualizarDevice(body, this.id!).subscribe(
-          (resOk) => {
-            Swal.fire({
-              title: 'Exitoso',
-              html: resOk,
-              icon: 'success',
-              timer: 3000,
-              showConfirmButton: false,
-            });
-            this.cleanForms();
-            this.router.navigate(['/admin']);
+        Swal.fire({
+          title: '¿Deseas actualizar el registro?',
+          icon: 'question',
+          showDenyButton: true,
+          confirmButtonText: 'Si',
+          denyButtonText: 'No',
+          customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-1',
+            denyButton: 'order-2',
           },
-          ({ error }: HttpErrorResponse) => {
-            Swal.fire({
-              title: 'Advertencia',
-              html: error.message,
-              icon: 'warning',
-              showConfirmButton: false,
-              timer: 5000,
-            });
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.hostnameSvc.actualizarDevice(body, this.id!).subscribe(
+              (resOk) => {
+                Swal.fire({
+                  title: 'Exitoso',
+                  html: resOk,
+                  icon: 'success',
+                  timer: 3000,
+                  showConfirmButton: false,
+                });
+                this.cleanForms();
+                this.router.navigate(['/admin']);
+              },
+              ({ error }: HttpErrorResponse) => {
+                Swal.fire({
+                  title: 'Advertencia',
+                  html: error.message,
+                  icon: 'warning',
+                  showConfirmButton: false,
+                  timer: 5000,
+                });
+              }
+            );
           }
-        );
+        });
       } else {
+        //FIXME: Registrar
         this.hostnameSvc.registrarDevice(body).subscribe(
           (resOk) => {
             Swal.fire({

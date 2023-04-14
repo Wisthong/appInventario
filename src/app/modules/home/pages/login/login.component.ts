@@ -23,9 +23,11 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    if (this.authSvc.verifyToken()) {
-      this.router.navigate(['/admin']);
-    }
+    this.authSvc.validarToken().subscribe((valid) => {
+      if (valid) {
+        this.router.navigate(['/admin']);
+      }
+    });
   }
 
   onLogin() {
@@ -33,15 +35,33 @@ export class LoginComponent implements OnInit {
       const { email, password } = this.loginForm.getRawValue();
       this.authSvc.login(email, password).subscribe(
         (resOk) => {
-          Swal.fire('Inicio sesión', resOk, 'success');
+          Swal.fire({
+            title: 'Inicio sesión',
+            html: resOk,
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 3000,
+          });
           this.router.navigate(['/admin']);
         },
         ({ error }: HttpErrorResponse) => {
-          Swal.fire('Inicio sesión', error.message, 'error');
+          Swal.fire({
+            title: 'Inicio sesión',
+            html: error.message,
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 5000,
+          });
         }
       );
     } else {
-      Swal.fire('Advertencia', 'Faltan campos por llenar', 'warning');
+      Swal.fire({
+        title: 'Advertencia',
+        html: 'Faltan campos por llenar',
+        icon: 'warning',
+        showConfirmButton: false,
+        timer: 5000,
+      });
     }
   }
 }
