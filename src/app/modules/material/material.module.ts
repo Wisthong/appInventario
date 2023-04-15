@@ -22,6 +22,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [],
@@ -47,6 +48,7 @@ import { ButtonModule } from 'primeng/button';
     MatPaginatorModule,
     CarouselModule,
     ButtonModule,
+    DialogModule,
   ],
 })
 export class MaterialModule {}

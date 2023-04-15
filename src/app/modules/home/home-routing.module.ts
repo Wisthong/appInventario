@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { LoginComponent } from './pages/login/login.component';
-import { SigninComponent } from './pages/signin/signin.component';
 import { BienvenidaComponent } from './pages/bienvenida/bienvenida.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {
@@ -408,10 +408,12 @@ const routes: Routes = [
     component: LoginComponent,
     title: 'Inicio de sesion',
   },
-  {
-    path: 'signin',
-    component: SigninComponent,
-  },
+  //TODO: User register
+  // {
+  //   path: 'register',
+  //   component: RegisterComponent,
+  //   title: 'Registro de usuario',
+  // },
 ];
 
 @NgModule({

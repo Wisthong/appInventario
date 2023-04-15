@@ -25,7 +25,7 @@ export interface Device {
   antivirus?:     string;
   licencias?:     string;
   usuario?:       string;
-  userAdmin?:     UserAdmin;
+  userAdmin?:     User;
 }
 
 export interface ResponseTrue {
@@ -42,18 +42,17 @@ export interface ResponseData {
 
 
 export interface User {
-  name:       string;
-  lastname:   string;
-  email:      string;
-  role?:      string[];
-  password?:  string;
+  _id?:        string;
+  name:        string;
+  lastname:    string;
+  email:       string;
+  role?:       string[];
+  password?:   string;
 }
 
-export interface UserAdmin {
-  _id:        string;
-  name:       string;
-  lastname:   string;
-  email:      string;
-  password:   string;
-  role?:      string[];
+export interface ResponseDataUser {
+  data:    User[];
+  ok:      boolean,
+  message: string
 }
+

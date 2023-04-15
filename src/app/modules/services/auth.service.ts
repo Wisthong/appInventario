@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { catchError, map, Observable, of, tap } from 'rxjs';
-import { ResponseAuth, User } from '../model/auth';
+import { ResponseAuth, ResponseDataUser, User } from '../model/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -31,8 +31,9 @@ export class AuthService {
         tap(({ token }) => {
           localStorage.setItem('token', token);
         }),
-        map(({ message }) => {
-          return message;
+        map(({ token }) => {
+          const { role } = JSON.parse(atob(token.split('.')[1])) as User;
+          return role!.toString();
         })
       );
   }
@@ -95,6 +96,31 @@ export class AuthService {
     );
   }
 
+  validarTokenMaster(): Observable<boolean> {
+    return this.http.get<ResponseAuth>(this.apiUrl + '/users/renew').pipe(
+      map(({ ok, token }) => {
+        localStorage.setItem('token', token);
+        const { email, lastname, role, name } = JSON.parse(
+          atob(token.split('.')[1])
+        ) as User;
+        this._usuario = {
+          email,
+          lastname,
+          name,
+          role,
+        };
+
+        if (role?.[0] === 'master') {
+          return ok;
+        } else {
+          return false;
+        }
+        // return ok;
+      }),
+      catchError(() => of(false))
+    );
+  }
+
   verifyToken(): boolean {
     if (localStorage.getItem('token') !== null) {
       return true;
@@ -104,5 +130,13 @@ export class AuthService {
 
   logout() {
     localStorage.clear();
+  }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<ResponseDataUser>(this.apiUrl + '/users/').pipe(
+      map(({ data }) => {
+        return data;
+      })
+    );
   }
 }

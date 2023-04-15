@@ -2,6 +2,7 @@ import { inject, NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './modules/guards/auth.guard';
 import { NotfoundComponent } from './Pages/notfound/notfound.component';
+import { MasterGuard } from './modules/guards/master.guard';
 
 const routes: Routes = [
   {
@@ -22,6 +23,14 @@ const routes: Routes = [
     canActivate: [() => inject(AuthGuard).canActivate()],
     canMatch: [() => inject(AuthGuard).canMatchFn()],
     // canActivate: [AuthGuard],
+  },
+  {
+    path: 'master',
+    loadChildren: () =>
+      import('@master/master.module').then((m) => m.MasterModule),
+    title: 'Master',
+    canActivate: [() => inject(MasterGuard).canActivate()],
+    canMatch: [() => inject(MasterGuard).canMatchFn()],
   },
   {
     path: '**',

@@ -1,24 +1,84 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
 
 <div class="container my-2 animate__animated animate__shakeX animate__repeat-1">
   <h1 class="text-center fw-bolder my-2">
     Inventario Papeleria Universal Distribuidora SAS
   </h1>
-  <h4 class="text-center fw-bold">Inicio de sesión</h4>
+  <h4 class="text-center fw-bold">Registro de Usuario</h4>
 </div>
 
 <div class="container pb-5">
-  <form class="py-5" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <form class="py-5" [formGroup]="loginForm" (ngSubmit)="onRegister()">
     <mat-card class="shipping-card">
       <mat-card-content>
         <div class="row">
           <div class="col svg">
-            <!-- <div class="float-right">
-              <a [routerLink]="['/home/register']" class="">Registrarse</a>
-            </div> -->
+            <div class="float-right">
+              <a [routerLink]="['/home/login']" class="">Inicio de sesion</a>
+            </div>
             <img [src]="['../../../../../assets/img/login.png']" alt="" />
           </div>
         </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Nombre</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="name"
+                placeholder="Wisthong"
+              />
+              <mat-error
+                *ngIf="
+                  loginForm.controls['name'].touched &&
+                  loginForm.controls['name'].hasError('required')
+                "
+              >
+                Campo requerido
+              </mat-error>
+              <!-- <mat-error
+                *ngIf="
+                  loginForm.controls['name'].touched &&
+                  loginForm.controls['name'].hasError('name')
+                "
+              >
+                Debes ingresar un email
+              </mat-error> -->
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Apellido</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="lastname"
+                placeholder="Martinez"
+              />
+              <mat-error
+                *ngIf="
+                  loginForm.controls['lastname'].touched &&
+                  loginForm.controls['lastname'].hasError('required')
+                "
+              >
+                Campo requerido
+              </mat-error>
+              <!-- <mat-error
+                *ngIf="
+                  loginForm.controls['lastname'].touched &&
+                  loginForm.controls['lastname'].hasError('email')
+                "
+              >
+                Debes ingresar un email
+              </mat-error> -->
+            </mat-form-field>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">

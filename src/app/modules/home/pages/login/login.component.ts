@@ -35,14 +35,26 @@ export class LoginComponent implements OnInit {
       const { email, password } = this.loginForm.getRawValue();
       this.authSvc.login(email, password).subscribe(
         (resOk) => {
-          Swal.fire({
-            title: 'Inicio sesión',
-            html: resOk,
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 3000,
-          });
-          this.router.navigate(['/admin']);
+          if (resOk === 'admin') {
+            Swal.fire({
+              title: 'Inicio sesión',
+              html: 'Sesión exitosa',
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 3000,
+            });
+            this.router.navigate(['/admin']);
+          }
+          if (resOk === 'master') {
+            Swal.fire({
+              title: 'Inicio sesión',
+              html: 'Sesión exitosa',
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 3000,
+            });
+            this.router.navigate(['/master']);
+          }
         },
         ({ error }: HttpErrorResponse) => {
           Swal.fire({

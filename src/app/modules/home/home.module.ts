@@ -8,20 +8,20 @@ import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
-import { SigninComponent } from './pages/signin/signin.component';
 import { AdminModule } from '@admin/admin.module';
 import { ViewGetComponent } from './pages/view-get/view-get.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { BienvenidaComponent } from './pages/bienvenida/bienvenida.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     InicioComponent,
     LoginComponent,
-    SigninComponent,
     ViewGetComponent,
     BienvenidaComponent,
+    RegisterComponent,
   ],
   imports: [
     CommonModule,

@@ -21,7 +21,8 @@
     "useDefineForClassFields": false,
     "paths": {
       "@home/*": ["src/app/modules/home/*"],
-      "@admin/*": ["src/app/modules/admin/*"]
+      "@admin/*": ["src/app/modules/admin/*"],
+      "@master/*": ["src/app/modules/master/*"]
     },
     "lib": ["ES2022", "dom"]
   },

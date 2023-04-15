@@ -1,0 +1,29 @@
+<p-menubar
+  [model]="items"
+  [style]="{
+    'background-color': '#ada996',
+    background: 'linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea)'
+  }"
+>
+  <ng-template pTemplate="start">
+    <a [routerLink]="['/master/gestion']">
+      <img src="../../../../../assets/img/logo.png" height="40" class="mr-2" />
+    </a>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <button
+      class="animate__animated animate__pulse animate__repeat-3"
+      extended
+      (click)="onCerrarSesion()"
+      matTooltip="Cerrar Sesión"
+      type="submit"
+      mat-mini-fab
+      color="warn"
+    >
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+    <!-- <p-menubar (click)="onCerrarSesion()" [model]="itemSesion"> </p-menubar> -->
+  </ng-template>
+</p-menubar>
+
+<router-outlet></router-outlet>
