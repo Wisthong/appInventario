@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
               showConfirmButton: false,
               timer: 3000,
             });
-            this.router.navigate(['/master']);
+            this.router.navigate(['/master/gestion']);
           }
         },
         ({ error }: HttpErrorResponse) => {
