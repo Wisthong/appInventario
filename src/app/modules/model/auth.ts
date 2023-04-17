@@ -46,12 +46,17 @@ export interface User {
   name:        string;
   lastname:    string;
   email:       string;
-  role?:       string[];
+  role?:       string;
   password?:   string;
 }
 
-export interface ResponseDataUser {
+export interface ResponseDataUsers {
   data:    User[];
+  ok:      boolean,
+  message: string
+}
+export interface ResponseDataUser {
+  data:    User;
   ok:      boolean,
   message: string
 }

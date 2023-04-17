@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { AuthService } from 'src/app/modules/services/auth.service';
 import Swal from 'sweetalert2';
 
@@ -13,44 +13,60 @@ import Swal from 'sweetalert2';
 export class RegisterComponent {
   hide = true;
 
-  fb = inject(FormBuilder);
-  authSvc = inject(AuthService);
-  router = inject(Router);
+  private readonly fb = inject(FormBuilder);
+  private readonly authSvc = inject(AuthService);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+  private id!: string | null;
+  ruta!: string;
+
+  roles = ['user', 'admin', 'master'];
 
   loginForm = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
     name: ['', [Validators.required]],
     lastname: ['', [Validators.required]],
-    password: ['', [Validators.required, Validators.minLength(5)]],
+    role: ['', [Validators.required]],
+    password: ['', [Validators.required]],
   });
 
   ngOnInit(): void {
-    //   this.authSvc.validarToken().subscribe((valid) => {
-    //     if (valid) {
-    //       this.router.navigate(['/admin']);
-    //     }
-    //   });
+    this.ruta = this.route.snapshot.url[0].path.toString();
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.authSvc.getUser(this.id!).subscribe(
+      (resOk) => {
+        this.loginForm.patchValue({
+          email: resOk.email,
+          name: resOk.name,
+          lastname: resOk.lastname,
+          password: resOk.password,
+          role: resOk.role,
+        });
+      },
+      (resFail) => {
+        console.log(resFail);
+      }
+    );
   }
 
   onRegister() {
     if (this.loginForm.valid) {
       const body = this.loginForm.getRawValue();
-      // console.log(body);
 
-      this.authSvc.register(body).subscribe(
+      this.authSvc.updateUser(body, this.id!).subscribe(
         (resOk) => {
           Swal.fire({
-            title: 'Registro exitoso',
+            title: 'Exito',
             html: resOk,
             icon: 'success',
             showConfirmButton: false,
-            timer: 3000,
+            timer: 5000,
           });
-          this.router.navigate(['/master']);
+          this.router.navigate(['/master/gestion']);
         },
         ({ error }: HttpErrorResponse) => {
           Swal.fire({
-            title: 'Error de registro',
+            title: 'Inicio sesión',
             html: error.message,
             icon: 'error',
             showConfirmButton: false,
@@ -58,6 +74,28 @@ export class RegisterComponent {
           });
         }
       );
+
+      // this.authSvc.register(body).subscribe(
+      //   (resOk) => {
+      //     Swal.fire({
+      //       title: 'Registro exitoso',
+      //       html: resOk,
+      //       icon: 'success',
+      //       showConfirmButton: false,
+      //       timer: 3000,
+      //     });
+      //     this.router.navigate(['/master']);
+      //   },
+      //   ({ error }: HttpErrorResponse) => {
+      //     Swal.fire({
+      //       title: 'Error de registro',
+      //       html: error.message,
+      //       icon: 'error',
+      //       showConfirmButton: false,
+      //       timer: 5000,
+      //     });
+      //   }
+      // );
     } else {
       Swal.fire({
         title: 'Advertencia',

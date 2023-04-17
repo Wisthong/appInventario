@@ -23,11 +23,11 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.authSvc.validarToken().subscribe((valid) => {
-      if (valid) {
-        this.router.navigate(['/admin']);
-      }
-    });
+    // this.authSvc.validarToken().subscribe((valid) => {
+    //   if (valid) {
+    //     this.router.navigate(['/admin']);
+    //   }
+    // });
   }
 
   onLogin() {
@@ -35,6 +35,8 @@ export class LoginComponent implements OnInit {
       const { email, password } = this.loginForm.getRawValue();
       this.authSvc.login(email, password).subscribe(
         (resOk) => {
+          console.log(resOk);
+
           if (resOk === 'admin') {
             Swal.fire({
               title: 'Inicio sesión',

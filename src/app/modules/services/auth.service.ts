@@ -2,7 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { catchError, map, Observable, of, tap } from 'rxjs';
-import { ResponseAuth, ResponseDataUser, User } from '../model/auth';
+import {
+  ResponseAuth,
+  ResponseDataUser,
+  ResponseDataUsers,
+  User,
+} from '../model/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -85,7 +90,7 @@ export class AuthService {
           role,
         };
 
-        if (role?.[0] === 'admin') {
+        if (role === 'admin') {
           return ok;
         } else {
           return false;
@@ -110,7 +115,7 @@ export class AuthService {
           role,
         };
 
-        if (role?.[0] === 'master') {
+        if (role === 'master') {
           return ok;
         } else {
           return false;
@@ -133,10 +138,39 @@ export class AuthService {
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<ResponseDataUser>(this.apiUrl + '/users/').pipe(
+    return this.http.get<ResponseDataUsers>(this.apiUrl + '/users/').pipe(
       map(({ data }) => {
         return data;
       })
     );
+  }
+
+  getUser(id: string): Observable<User> {
+    return this.http
+      .get<ResponseDataUser>(this.apiUrl + '/users/obtener/' + id)
+      .pipe(
+        map(({ data }) => {
+          return data;
+        })
+      );
+  }
+
+  updateUser(user: User, id: string): Observable<string> {
+    const body = user;
+    return this.http.put<ResponseAuth>(this.apiUrl + '/users/' + id, body).pipe(
+      map(({ message }) => {
+        return message;
+      })
+    );
+  }
+
+  deleteUser(id: string): Observable<string> {
+    return this.http
+      .delete<ResponseAuth>(this.apiUrl + '/users/delete/' + id)
+      .pipe(
+        map(({ message }) => {
+          return message;
+        })
+      );
   }
 }

@@ -49,12 +49,12 @@ export class BienvenidaComponent implements OnInit, OnDestroy {
         numScroll: 1,
       },
     ];
-    const observer1$ = this.authSvc.validarToken().subscribe((resOk) => {
-      if (resOk) {
-        this.router.navigate(['/admin']);
-      }
-    });
-    this.listObservers$ = [observer1$];
+    // const observer1$ = this.authSvc.validarToken().subscribe((resOk) => {
+    //   if (resOk) {
+    //     this.router.navigate(['/admin']);
+    //   }
+    // });
+    // this.listObservers$ = [observer1$];
   }
 
   ngOnDestroy(): void {

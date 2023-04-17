@@ -13,9 +13,6 @@
       <mat-card-content>
         <div class="row">
           <div class="col svg">
-            <div class="float-right">
-              <a [routerLink]="['/home/login']" class="">Inicio de sesion</a>
-            </div>
             <img [src]="['../../../../../assets/img/login.png']" alt="" />
           </div>
         </div>
@@ -109,7 +106,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row" *ngIf="ruta === 'register'">
           <div class="col">
             <mat-form-field class="full-width">
               <mat-label>Contraseña</mat-label>
@@ -150,6 +147,27 @@
             </mat-form-field>
           </div>
         </div>
+
+        <div class="row" *ngIf="ruta === 'update'">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Roles</mat-label>
+              <mat-select placeholder="Roles" formControlName="role">
+                <mat-option *ngFor="let rol of roles" [value]="rol">
+                  {{ rol | titlecase }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  loginForm.controls['role'].touched &&
+                  loginForm.controls['role'].hasError('required')
+                "
+              >
+                Campo requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
       </mat-card-content>
 
       <div class="d-grid mx-4 mb-3">
@@ -162,7 +180,7 @@
           color="primary"
         >
           <mat-icon>login</mat-icon>
-          Iniciar Sesion
+          Confirmar
         </button>
       </div>
     </mat-card>

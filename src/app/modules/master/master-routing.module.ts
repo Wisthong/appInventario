@@ -19,6 +19,11 @@ const routes: Routes = [
         component: RegisterComponent,
         title: 'Registro de usuario',
       },
+      {
+        path: 'update/:id',
+        component: RegisterComponent,
+        title: 'Actualizar usuario',
+      },
     ],
   },
 ];
