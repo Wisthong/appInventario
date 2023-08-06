@@ -12,10 +12,10 @@ export class BienvenidaComponent implements OnInit, OnDestroy {
   listObservers$: Array<Subscription> = [];
 
   products = [
-    {
-      imagen: '../../../../../assets/img/carousel.jpg',
-      info: 'Mes de la mujer',
-    },
+    // {
+    //   imagen: '../../../../../assets/img/carousel.jpg',
+    //   info: 'Mes de la mujer',
+    // },
     {
       imagen: '../../../../../assets/img/carousel1.jpg',
       info: 'Información de nuestros productos',

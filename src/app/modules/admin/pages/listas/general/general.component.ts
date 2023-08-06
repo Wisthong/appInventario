@@ -30,7 +30,7 @@ export class GeneralComponent implements OnInit, AfterViewInit {
   private readonly route = inject(ActivatedRoute);
   private readonly _liveAnnouncer = inject(LiveAnnouncer);
 
-  public readonly local = environment.direccion + ':' + environment.port;
+  public readonly local = environment.direccion;
 
   totalPorEstado: number = 0;
   listHost: Device[] = [];

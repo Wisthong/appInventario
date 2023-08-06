@@ -34,7 +34,7 @@ export class InicioComponent implements AfterViewInit, OnInit, OnDestroy {
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
 
-  public readonly local = environment.direccion + ':' + environment.port;
+  public readonly local = environment.direccion;
 
   listObservers$: Array<Subscription> = [];
 
